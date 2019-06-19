@@ -1,0 +1,41 @@
+<div class="container">
+
+   <div class="card" *ngIf="data && data.id">
+      <div mat-card class="card">
+         <img mat-card-image src="assets/images/logo.png" alt="">         
+      </div>
+      <mat-card-content>
+         <div class="card__content">
+            <h1 class="card__content-header">Congratulation!</h1>
+            <p>
+               You have purchase an <strong>Original <span class="brand">STRONG ARROW®️</span></strong>  product as below listed detail;
+            </p>
+            <mat-chip-list class="mat-chip-list-stacked"  aria-label="Color selection">
+                  <mat-chip color="primary" selected>Serial no : {{ data.serial }} </mat-chip>
+                  <mat-chip color="primary" selected>Market    : {{ data.market | titlecase}} </mat-chip>
+                  <mat-chip color="primary" selected>No of try : {{ data.authNo }} </mat-chip>
+            </mat-chip-list>
+         </div>
+      </mat-card-content>      
+   </div>
+
+   <div class="card" *ngIf="data.status == 404">
+      <div mat-card class="card">
+         <img mat-card-image src="assets/images/logo.png" alt="">         
+      </div>
+      <mat-card-content>
+         <div class="card__content">
+            <h1 class="card__content-header">Attention!</h1>
+            <p>
+               You have purchase an <strong>Imitation <span class="brand">STRONG ARROW®️</span></strong>  product as below listed detail;
+            </p>
+            <mat-chip-list class="mat-chip-list-stacked"  aria-label="Color selection">
+                  <mat-chip color="warn" selected>Serial no : {{ data.serial }} </mat-chip>
+                  <mat-chip color="primary" selected>Market : {{ data.market || 'Malaysia' | titlecase}} </mat-chip>
+            </mat-chip-list>
+         </div>
+      </mat-card-content>      
+   </div>
+
+
+</div>

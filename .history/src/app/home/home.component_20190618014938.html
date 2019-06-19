@@ -1,0 +1,111 @@
+<div class="content" >
+
+  <div class="banner" fxLayout="column" fxLayoutAlign="center center">
+    <div class="banner__container-image">
+      <img class="banner_image" fxFlex="100" src="assets/images/sa_banner_1.jpg" alt="Strong Arrow Banner 1">
+    </div>
+  </div>
+
+  <div class="intro" fxLayout="column" fxLayoutAlign="center center">
+    <div class="intro__container-content">
+      
+      <div class="intro__spinner" fxLayout fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center center">
+        <mat-progress-spinner [mode]="mode" [value]="value"></mat-progress-spinner>        
+      </div>      
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h1>{{ total | number:'3.0' }} <span class="brand">men </span> <mat-icon>people</mat-icon></h1>
+      </div>
+      <h1>It's an absolute phenomenon! <span class="brand">{{ total | number:'3.0' }}</span> Men around the world are gobbling up <span class="brand">Strong Arrow®️</span> like popcorn!</h1>
+      
+      
+      <div class="intro__spinner" fxLayout fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center center">
+        <mat-progress-spinner [mode]="percentMode" [value]="percentValue"></mat-progress-spinner>        
+      </div>      
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h1>{{ percentTotal | number:'2.0' }} <span class="brand"> % </span><mat-icon>sentiment_satisfied_alt</mat-icon> satisfaction rating</h1>
+      </div>
+      <h1>
+        Men everywhere are raving about it! Why all the excitement? Why the record sales numbers? Why a <span class="brand">{{ percentTotal | number:'2.0' }} %</span> customer satisfaction rating?
+      </h1>
+      <h1>
+        Because <span class="brand">Strong Arrow®️</span> is the worlds first and only male enhancement pill to actually make your penis longer and wider starting at the molecular level inside the two chambers of your penis! Our exclusive formula <span class="brand">"cracked the code"</span> that has eluded other pill manufactures for decades, until now.
+      </h1>
+      <h1>
+        So now you too can now join the happy men around the world who have seen their penis literally transformed and their sex life has skyrocketed like it was ignited with sexual rocket fuel! The <span class="brand">"Game Changer"</span> every man has waited for, is finally here!
+      </h1> 
+    
+    </div>
+  </div>
+
+  <div class="how" fxLayout="column" fxLayoutAlign="center center">
+    <div class="how__container-content" fxLayout="column" fxLayoutAlign="center center">
+
+      <div class="how__banner">
+        <img src="assets/images/sa_banner_2.jpg" alt="Strong Arrow Pills Banner 2">
+      </div>
+
+      <div class="how__title">
+          
+        <h1>WHAT IS YOUR <span class="brand">MAXIMUM </span>?</h1>
+        <mat-progress-bar mode="buffer" value="60" color="primary" bufferValue="80"></mat-progress-bar>
+      </div>
+
+      <div class="how__content">
+        <h2>
+          So the maximum amount your erectile tissue can fill with blood creates the size your erect penis presently is. But what scientists have discovered, is that your erectile tissue can be developed much larger and longer than it currently is manipulating the size of your penis chamber with a specific combination of compounds.
+        </h2>
+
+        <h2>  
+          Published clinical studies have shown that the natural compounds in <span class="brand">STRONG ARROW®️</span> can increase free testosterone in your body, which leads to increased penis size and additional published clinical studies have show that the amino acid combination in <span class="brand">STRONG ARROW®️</span> can increase nitric oxide production which also leads to an increase in size and hardness. Using our "blueprint" to create a better, bigger penis and using the most potent, triple extracted, nutraceutical compound in <span class="brand">STRONG ARROW®️</span>, we have created a virtual assembly line that produces bigger, more masculine penises for men around the world.
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefits__container" >
+
+      <div class="benefits__banner" fxLayout="column" fxLayoutAlign="center center">
+        <img class="benefits__image" src="assets/images/sa_product_1.jpg" alt="Strong Arrow Pills Products">
+      </div>
+
+      <div class="benefits__title">
+        <h1>FUNCTIONS AND BENEFITS OF <span class="brand">STRONG ARROW®️</span></h1>
+      </div>
+
+      <div class="benefits__content" fxLayout="column" fxLayoutAlign="center">
+
+        <div class="blurp" fxLayout="row wrap" fxLayoutAlign="center" *ngFor="let benefit of benefits">
+          <div class="blurp__icon">
+              <button mat-mini-fab color="primary">
+                <mat-icon>done</mat-icon>
+              </button>       
+          </div>
+          <div class="blurp__content">
+            <h2>
+              <span class="brand">STRONG ARROW®️ </span>{{ benefit.text }}
+            </h2>
+          </div>          
+        </div>
+          
+          
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

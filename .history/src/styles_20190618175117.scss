@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.title{ 
+    font-size: 2rem;
+    text-align: center;
+}
+
+.content{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.container{
+    padding: 20px;
+}
+
+.brand{
+    color: #e91e63;
+    padding: 0 10px 0 10px;
+}
+
+.icon{
+    padding: 0 10px 0 10px;
+}
+
+h2{ line-height: 2.5rem !important; }
+
+.card{
+
+    margin: 10px;
+    padding: 10px;
+
+    &__image{
+        max-width: 100% !important;
+        height:auto !important;
+    }
+
+    &__title{
+        padding: 20px;
+        text-align: center;
+    }
+
+    &__content{
+        text-align: center;
+    }
+}
+
+.blurp{
+
+    padding: 20px;
+
+    &__content{
+        text-align: left;
+        padding-left: 20px;
+    }
+}
+

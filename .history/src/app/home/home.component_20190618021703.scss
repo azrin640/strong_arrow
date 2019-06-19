@@ -1,0 +1,48 @@
+.banner{
+
+    height: 90%;
+
+    &__image{
+        width: 100%;
+        height: auto;
+
+    }
+}
+
+.intro{
+
+    padding-top: 50px;
+
+    &__container-content{
+        width: 70%;
+        text-align: center;
+    }
+
+}
+
+.how{
+
+    height: 120%;
+
+    &__title{
+        text-align: center;
+    }
+
+    &__content{
+        width: 70%;
+    }
+}
+
+.benefits{
+
+    height: 100%;
+
+    &__image{
+        width: 60%;
+    }
+
+    &__title{
+        text-align: center;
+    }
+
+}

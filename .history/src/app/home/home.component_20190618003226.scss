@@ -1,0 +1,46 @@
+.banner{
+
+    height: 90vh;
+
+    &__image{
+        width: 100%;
+        height: auto;
+
+    }
+}
+
+.intro{
+
+    &__container-content{
+        width: 70%;
+        text-align: center;
+    }
+
+}
+
+.how{
+
+    height: 100vh;
+
+    &__title{
+        text-align: center;
+    }
+
+    &__content{
+        width: 70%;
+    }
+}
+
+.benefits{
+
+    height: 100vh;
+
+    &__image{
+        width: 70%;
+    }
+
+    &__title{
+        text-align: center;
+    }
+
+}

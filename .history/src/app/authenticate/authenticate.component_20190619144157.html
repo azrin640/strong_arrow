@@ -1,0 +1,29 @@
+<div class="full" fxLayout="column" fxLayoutAlign="center center">
+
+   <mat-card>
+      <mat-card-content>
+         <div class="auth__input">
+
+            <form [formGroup]="authForm">
+
+               <div class="form__component" fxLayout="column" fxLayoutAlign="center center">
+
+                  <mat-form-field appearance="fill">
+                     <mat-label>Serial Number</mat-label>
+                     <input matInput type="password" placeholder="DFXXXXXXX" formControlName="serial" required>
+                     <mat-icon matSuffix color="primary">vpn_key</mat-icon>
+                     <mat-hint>Enter serial number here</mat-hint>
+                  </mat-form-field>
+
+                  <button mat-raised-button color="primary" (click)="authenticate()">Check
+                     Authenticity</button>
+
+               </div>
+
+            </form>
+
+         </div>
+      </mat-card-content>
+   </mat-card>
+
+</div>

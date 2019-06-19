@@ -1,0 +1,104 @@
+<div class="card">
+
+   <div mat-card class="card__image">
+      <img mat-card-image src="assets/images/logo.png">         
+   </div>
+
+   <mat-card-content>
+
+      <div class="card__content" *ngIf="data && data.id && !toReview">
+         <h1 class="card__content-header">Congratulation!</h1>
+         <p>
+            You have purchase an <strong>Original <span class="brand">STRONG ARROW®️</span></strong>  product as below listed detail;
+         </p>
+         <mat-chip-list class="mat-chip-list-stacked"  aria-label="Color selection">
+               <mat-chip color="primary" selected>Serial no : {{ data.serial }} </mat-chip>
+               <mat-chip color="primary" selected>Market    : {{ data.market | titlecase}} </mat-chip>
+               <mat-chip color="primary" selected>No of try : {{ data.authNo }} </mat-chip>
+         </mat-chip-list>
+      </div>
+
+      <div class="card__content" *ngIf="data.status == 404">
+         <p>You have entered an <strong><span class="brand">IMITATION (NOT ORIGINAL) </span></strong> product as below listed details;</p>
+         <mat-chip-list class="mat-chip-list-stacked"  aria-label="Color selection">
+               <mat-chip color="warn" selected>Serial no : {{ data.serial }} </mat-chip>
+               <mat-chip color="warn" selected>Market : {{ data.market || 'Malaysia' | titlecase}} </mat-chip>
+         </mat-chip-list>
+         
+         <p>Would you like to report it to our <span class="brand">STRONG ARROW®️</span> {{ data.market || 'Malaysia' | titlecase}} representative?</p>
+      </div>
+      
+      <div class="card__actions" fxLayout fxLayoutAlign="center center">
+         <div class="card__actions-report" *ngIf="data && data.id && !toReview" fxLayout="column" fxLayoutAlign="center center">
+            <p>
+               <i class="fas fa-exclamation-circle" color="primary"></i>
+               If number of try is more than "0" and it is not you who checked, please report it to our {{ data.market || 'Malaysia' | titlecase}} 
+               <a href=""  target="0">
+                  <i class="fab fa-whatsapp"></i>
+                  representative.         
+               </a>
+               Would you like to leave a review?
+            </p>
+            <button mat-raised-button color="primary" (click)="reviewForm()">
+               <mat-icon>rate_review</mat-icon>
+               Leave a review
+            </button>
+         </div>
+         <div class="card__actions-report" *ngIf="data.status == 404">
+            <button mat-raised-button color="primary" >
+               <i class="fab fa-whatsapp"></i>
+               {{ data.market || 'Malaysia' | titlecase}} Representative
+            </button>
+         </div>
+      </div>
+
+      <div class="review" *ngIf="toReview">
+         <h2>Product & Service Review</h2>
+
+         <!-- <form name="reviewForm">
+
+            <mat-form-field appearance="fill">
+               <mat-label>Name</mat-label>
+               <input matInput placeholder="Enter Name" [formControl]="name" required>
+               <mat-icon matSuffix color="primary">contacts</mat-icon>
+               <mat-hint>Ex: Severus Snape</mat-hint>
+               <mat-error *ngIf="name.invalid">
+                  Name is <strong>required</strong>
+               </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+               <mat-label>Phone No</mat-label>
+               <input matInput placeholder="Enter Phone No" [formControl]="phone" required>
+               <mat-icon matSuffix color="primary">contact_phone</mat-icon>
+               <mat-hint>Ex: Severus Snape</mat-hint>
+               <mat-error *ngIf="phone.invalid">
+                  Phone no is <strong>required</strong>
+               </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+               <mat-label>Email</mat-label>
+               <input matInput type="email" placeholder="Enter email" [formControl]="email" required>
+               <mat-icon matSuffix color="primary">contact_mail</mat-icon>
+               <mat-hint>Ex: snape@hogwarts.com</mat-hint>
+               <mat-error *ngIf="email.invalid">
+                  Email is <strong>required</strong>
+               </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+               <mat-label>Review</mat-label>
+               <textarea matInput placeholder="Enter review" [formControl]="review" required>
+               <mat-icon matSuffix color="primary">comment</mat-icon>
+               <mat-hint>Ex: Fast delivery</mat-hint>
+               <mat-error *ngIf="review.invalid">
+                  Review is <strong>required</strong>
+               </mat-error>
+            </mat-form-field>
+
+         </form> -->
+      </div>
+
+   </mat-card-content>  
+</div>

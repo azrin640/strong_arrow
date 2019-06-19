@@ -1,0 +1,41 @@
+.banner{
+    padding: 30px;
+    object-fit: contain;
+
+    &__image{
+        
+    }
+}
+
+.intro{
+
+    &__container-content{
+        text-align: center;
+    }
+
+    &__spinner{
+        padding: 20px;
+    }
+
+}
+
+.benefits{
+
+    height: 100%;
+
+    &__image{
+        width: 60%;
+    }
+
+    &__title{
+        text-align: center;
+    }
+
+}
+
+.instruction{
+
+    &__card{
+        padding: 20px;
+    }
+}
