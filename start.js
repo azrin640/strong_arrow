@@ -18,7 +18,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // READY?! Let's go!
-// Import db model
+// // Import db model
 require('./server/models/User');
 require('./server/models/Product');
 require('./server/models/Category');
@@ -28,6 +28,8 @@ require('./server/models/Wallet');
 require('./server/models/BlogCategory');
 require('./server/models/Blog');
 require('./server/models/Rate');
+require('./server/models/Serial');
+require('./server/models/Review');
 
 // Start our app!
 const app = require('./app');

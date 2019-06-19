@@ -33,6 +33,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 
 
@@ -70,7 +71,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatSliderModule,
         MatDividerModule,
         MatRadioModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatBottomSheetModule
     ],
     exports: [
         MatButtonModule,
@@ -104,7 +106,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatSliderModule,
         MatDividerModule,
         MatRadioModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatBottomSheetModule
 
     ]
 })

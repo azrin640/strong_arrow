@@ -1,343 +1,355 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
 const productController = require('../controllers/productController');
-const cartController = require('../controllers/cartController');
-const contactController = require('../controllers/contactController');
-const checkoutController = require('../controllers/checkoutController');
-const walletController = require('../controllers/walletController');
-const blogController = require('../controllers/blogController');
-const rateController = require('../controllers/rateController');
-const testController = require('../controllers/testController');
+const validateController = require('../controllers/validateController');
 const { catchErrors } = require('../handlers/errorHandlers');
+// const userController = require('../controllers/userController');
+// const cartController = require('../controllers/cartController');
+// const contactController = require('../controllers/contactController');
+// const checkoutController = require('../controllers/checkoutController');
+// const walletController = require('../controllers/walletController');
+// const blogController = require('../controllers/blogController');
+// const rateController = require('../controllers/rateController');
+// const testController = require('../controllers/testController');
 
-const multer = require('multer');
 
-var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
+// const multer = require('multer');
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+// var storage = multer.memoryStorage();
+// var upload = multer({ storage: storage });
+
+// router.get('/', (req, res) => {
+//     res.render('index');
+// });
 
 
 // ** USER **
 
-router.post('/user', 
-    catchErrors(userController.isLoggedIn),
-    userController.validateRegister,
-    catchErrors(userController.getUser)
-);
+// router.post('/user', 
+//     catchErrors(userController.isLoggedIn),
+//     userController.validateRegister,
+//     catchErrors(userController.getUser)
+// );
 
-router.post('/user/registration',
-    catchErrors(userController.registration)
-);
+// router.post('/user/registration',
+//     catchErrors(userController.registration)
+// );
 
-router.post('/user/new', 
-    catchErrors(userController.isLoggedIn),
-    catchErrors(userController.adminRegister)
-);
+// router.post('/user/new', 
+//     catchErrors(userController.isLoggedIn),
+//     catchErrors(userController.adminRegister)
+// );
 
-router.post('/user/username', 
-    catchErrors(userController.getUserByUsername)
-);
+// router.post('/user/username', 
+//     catchErrors(userController.getUserByUsername)
+// );
 
-router.post('/users',
-    catchErrors(userController.isLoggedIn),
-    catchErrors(userController.getUsers)
-);
+// router.post('/users',
+//     catchErrors(userController.isLoggedIn),
+//     catchErrors(userController.getUsers)
+// );
 
-router.post('/users/search',
-    catchErrors(userController.searchUsers)
-);
+// router.post('/users/search',
+//     catchErrors(userController.searchUsers)
+// );
 
-router.post('/user/edit',
-    catchErrors(userController.isLoggedIn),
-    catchErrors(userController.editUser)
-);
+// router.post('/user/edit',
+//     catchErrors(userController.isLoggedIn),
+//     catchErrors(userController.editUser)
+// );
 
-router.post('/user/google/address', 
-    userController.googleAddress
-);
+// router.post('/user/google/address', 
+//     userController.googleAddress
+// );
 
-router.post('/user/introducer/id', 
-    catchErrors(userController.getIntroducerId)
-);
+// router.post('/user/introducer/id', 
+//     catchErrors(userController.getIntroducerId)
+// );
 
-router.post('/user/username/autocomplete', 
-    catchErrors(userController.getUsernameAutocomplete)
-)
+// router.post('/user/username/autocomplete', 
+//     catchErrors(userController.getUsernameAutocomplete)
+// )
 
-router.post('/register', 
-    userController.validateRegister,
-    catchErrors(userController.register)
-);
+// router.post('/register', 
+//     userController.validateRegister,
+//     catchErrors(userController.register)
+// );
 
-router.post('/user/remove', catchErrors(userController.removeUser));
+// router.post('/user/remove', catchErrors(userController.removeUser));
 
-router.post('/login', 
-    userController.validateLogin,
-    userController.login
-);
+// router.post('/login', 
+//     userController.validateLogin,
+//     userController.login
+// );
 
 // ** PRODUCT **
 
-router.post('/product/category', 
-    catchErrors(userController.isLoggedIn),
-    catchErrors(productController.createCategory)
+router.post('/product/authentication', 
+   validateController.serialValidation,
+   catchErrors(productController.checkSerialNo)
 );
 
-router.post('/product',
-    catchErrors(productController.getProduct)
+router.post('/product/review', 
+   validateController.newReviewValidation,
+   catchErrors(productController.reviewProduct)
 );
 
-router.get('/product/:id',
-    catchErrors(productController.getProductById)
-);
+// router.post('/product/category', 
+//     catchErrors(userController.isLoggedIn),
+//     catchErrors(productController.createCategory)
+// );
 
-router.post('/product/update/:id', 
-    catchErrors(productController.updateProduct)
-);
+// router.post('/product',
+//     catchErrors(productController.getProduct)
+// );
 
-router.post('/product/bulk', 
-    catchErrors(cartController.addBulkProduct)
-)
+// router.get('/product/:id',
+//     catchErrors(productController.getProductById)
+// );
 
-router.post('/product/category/delete',
-    catchErrors(productController.deleteProductCategory)
-);
+// router.post('/product/update/:id', 
+//     catchErrors(productController.updateProduct)
+// );
 
-router.post('/product/category/update', 
-    catchErrors(productController.updateProductCategory)
-);
+// router.post('/product/bulk', 
+//     catchErrors(cartController.addBulkProduct)
+// )
 
-router.post('/admin/product/new',
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(productController.resize),
-    catchErrors(productController.createProduct)
-);
+// router.post('/product/category/delete',
+//     catchErrors(productController.deleteProductCategory)
+// );
 
-router.post('/admin/product/edit/image',
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(productController.resize),
-    catchErrors(productController.editProduct)
-);
+// router.post('/product/category/update', 
+//     catchErrors(productController.updateProductCategory)
+// );
 
-router.post('/admin/product/edit', 
-    catchErrors(productController.editProductNoImage)
-)
+// router.post('/admin/product/new',
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(productController.resize),
+//     catchErrors(productController.createProduct)
+// );
 
-router.post('/admin/product/delete',
-    catchErrors(productController.deleteProduct)
-)
+// router.post('/admin/product/edit/image',
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(productController.resize),
+//     catchErrors(productController.editProduct)
+// );
 
-// ** PRODUCTS ** 
-router.get('/products/categories', 
-    catchErrors(productController.getProductsCategories)
-);
+// router.post('/admin/product/edit', 
+//     catchErrors(productController.editProductNoImage)
+// )
 
-router.get('/categories', 
-    catchErrors(productController.getCategories)
-);
+// router.post('/admin/product/delete',
+//     catchErrors(productController.deleteProduct)
+// )
 
-router.get('/products', 
-    catchErrors(productController.getProducts)
-);
+// // ** PRODUCTS ** 
+// router.get('/products/categories', 
+//     catchErrors(productController.getProductsCategories)
+// );
 
-// ** CART **
+// router.get('/categories', 
+//     catchErrors(productController.getCategories)
+// );
 
-router.post('/cart/new',
-    catchErrors(cartController.newCart)
-);
+// router.get('/products', 
+//     catchErrors(productController.getProducts)
+// );
 
-router.post('/cart/product/add',
-    catchErrors(cartController.addToCart)
-);
+// // ** CART **
 
-router.post('/cart/create',
-    catchErrors(cartController.createCart)
-);
+// router.post('/cart/new',
+//     catchErrors(cartController.newCart)
+// );
 
-router.post('/cart/add',
-    catchErrors(cartController.addProduct)
-);
+// router.post('/cart/product/add',
+//     catchErrors(cartController.addToCart)
+// );
 
-router.post('/cart/get', 
-    catchErrors(cartController.getCart)
-);
+// router.post('/cart/create',
+//     catchErrors(cartController.createCart)
+// );
 
-router.post('/cart/decrease',
-    catchErrors(cartController.decreaseCart)
-);
+// router.post('/cart/add',
+//     catchErrors(cartController.addProduct)
+// );
 
-router.post('/cart/increase',
-    catchErrors(cartController.increaseCart)
-)
+// router.post('/cart/get', 
+//     catchErrors(cartController.getCart)
+// );
 
-router.post('/carts', 
-    catchErrors(cartController.getCarts)
-);
+// router.post('/cart/decrease',
+//     catchErrors(cartController.decreaseCart)
+// );
 
-router.post('/carts/user', 
-    catchErrors(cartController.getCartsByUserId)
-)
+// router.post('/cart/increase',
+//     catchErrors(cartController.increaseCart)
+// )
 
-router.post('/carts/getUserRelatedCarts', 
-    catchErrors(cartController.getUserCart)
-);
+// router.post('/carts', 
+//     catchErrors(cartController.getCarts)
+// );
 
-router.get('/carts/checkout',
-    catchErrors(cartController.getAllCheckedOutCarts)
-);
+// router.post('/carts/user', 
+//     catchErrors(cartController.getCartsByUserId)
+// )
 
-router.post('/cart/approve', 
-    catchErrors(cartController.approveOrder)
-);
+// router.post('/carts/getUserRelatedCarts', 
+//     catchErrors(cartController.getUserCart)
+// );
 
-router.post('/cart/delete', 
-    catchErrors(cartController.deleteOrder)
-);
+// router.get('/carts/checkout',
+//     catchErrors(cartController.getAllCheckedOutCarts)
+// );
 
-router.post('/cart/update',
-    catchErrors(cartController.updateCart)
-);
+// router.post('/cart/approve', 
+//     catchErrors(cartController.approveOrder)
+// );
 
-router.post('/cart/checkout', 
-    catchErrors(cartController.checkoutCart)
-);
+// router.post('/cart/delete', 
+//     catchErrors(cartController.deleteOrder)
+// );
 
-router.post('/cart/payment',
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(cartController.resize),
-    catchErrors(cartController.paymentCart)
-);
+// router.post('/cart/update',
+//     catchErrors(cartController.updateCart)
+// );
 
-router.post('/cart/payment/billplz',
-    catchErrors(cartController.billplz)
-);
+// router.post('/cart/checkout', 
+//     catchErrors(cartController.checkoutCart)
+// );
 
-//  ** CHECKOUT **
+// router.post('/cart/payment',
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(cartController.resize),
+//     catchErrors(cartController.paymentCart)
+// );
 
-router.post('/checkout',
-    catchErrors(checkoutController.checkout)
-);
+// router.post('/cart/payment/billplz',
+//     catchErrors(cartController.billplz)
+// );
 
-// ** CONTACT **
+// //  ** CHECKOUT **
 
-router.post('/contact', 
-    contactController.validateMail,
-    catchErrors(contactController.sendMail)
-);
+// router.post('/checkout',
+//     catchErrors(checkoutController.checkout)
+// );
 
-router.post('/withdraw', 
-    catchErrors(walletController.withdraw)
-);
+// // ** CONTACT **
 
-// ** BLOG **
+// router.post('/contact', 
+//     contactController.validateMail,
+//     catchErrors(contactController.sendMail)
+// );
 
-router.post('/admin/blog/category/new',    
-    catchErrors(blogController.addBlogCategory)
-);
+// router.post('/withdraw', 
+//     catchErrors(walletController.withdraw)
+// );
 
-router.get('/admin/blog/categories', 
-    catchErrors(blogController.getCategories)
-);
+// // ** BLOG **
 
-router.post('/admin/blog/new', 
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(blogController.resize),
-    catchErrors(blogController.createBlog)
-);
+// router.post('/admin/blog/category/new',    
+//     catchErrors(blogController.addBlogCategory)
+// );
 
-router.post('/admin/blog/get', 
-    catchErrors(blogController.getBlog)
-);
+// router.get('/admin/blog/categories', 
+//     catchErrors(blogController.getCategories)
+// );
 
-router.post('/admin/blog/edit',
-    catchErrors(blogController.editBlogNoImage)
-);
+// router.post('/admin/blog/new', 
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(blogController.resize),
+//     catchErrors(blogController.createBlog)
+// );
 
-router.post('/admin/blog/edit/image',
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(blogController.resize),
-    catchErrors(blogController.editBlog)
-);
+// router.post('/admin/blog/get', 
+//     catchErrors(blogController.getBlog)
+// );
 
-router.post('/admin/blog/delete', 
-    catchErrors(blogController.deleteBlog)
-);
+// router.post('/admin/blog/edit',
+//     catchErrors(blogController.editBlogNoImage)
+// );
 
-router.get('/admin/blogs', 
-    catchErrors(blogController.getBlogs)
-);
+// router.post('/admin/blog/edit/image',
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(blogController.resize),
+//     catchErrors(blogController.editBlog)
+// );
 
-router.get('/blogs/get', 
-    catchErrors(blogController.getBlogPosts)
-);
+// router.post('/admin/blog/delete', 
+//     catchErrors(blogController.deleteBlog)
+// );
 
-router.post('/blog/get', 
-    catchErrors(blogController.getBlog)
-);
+// router.get('/admin/blogs', 
+//     catchErrors(blogController.getBlogs)
+// );
 
-// RATES
+// router.get('/blogs/get', 
+//     catchErrors(blogController.getBlogPosts)
+// );
 
-router.post('/admin/shipping/rate',
-    catchErrors(rateController.newRate)
-);
+// router.post('/blog/get', 
+//     catchErrors(blogController.getBlog)
+// );
 
-router.get('/admin/shipping/rate/get',
-    catchErrors(rateController.getRates)
-)
+// // RATES
+
+// router.post('/admin/shipping/rate',
+//     catchErrors(rateController.newRate)
+// );
+
+// router.get('/admin/shipping/rate/get',
+//     catchErrors(rateController.getRates)
+// )
 
 
-// TEST
+// // TEST
 
-router.post('/test', 
-    upload.single('image'), function (req, res, next){
-        const isFile = req.file.mimetype.startsWith('image/');
-        if(isFile){
-            return next();
-        }else{
-            res.json({status: 406, message: 'Not Acceptable'});
-        }     
-    },
-    catchErrors(testController.resize)
-);
+// router.post('/test', 
+//     upload.single('image'), function (req, res, next){
+//         const isFile = req.file.mimetype.startsWith('image/');
+//         if(isFile){
+//             return next();
+//         }else{
+//             res.json({status: 406, message: 'Not Acceptable'});
+//         }     
+//     },
+//     catchErrors(testController.resize)
+// );
 
 module.exports = router;
 
