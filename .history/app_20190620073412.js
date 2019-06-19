@@ -23,7 +23,7 @@ app.set('view engine', 'ejs'); // we use the engine pug, mustache or EJS work gr
 const api = require('./server/routes/api');
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-app.use(express.static(path.join(__dirname, 'dist/strong-arrow/')));
+app.use(express.static(path.join(__dirname, 'dist/strong-arrow')));
 
 
 // Return other routes to Angular index file
