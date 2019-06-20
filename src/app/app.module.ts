@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { IntroComponent } from './home/intro/intro.component';
 import { HowComponent } from './home/how/how.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     IntroComponent,
     HowComponent,
-    SerialCheckDialog
+    SerialCheckDialog,
+    UserComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

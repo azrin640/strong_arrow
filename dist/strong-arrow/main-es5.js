@@ -29,7 +29,7 @@ module.exports = "<div class=\"card\" id=\"top\">\n\n   <div mat-card class=\"ca
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" >\n\n   <div class=\"layout\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n         <mat-card>\n            <mat-card-title>AUTHENTICATE PRODUCT</mat-card-title>\n            <mat-card-content>\n               <div class=\"auth__input\">\n\n                  <form>\n\n                     <div class=\"form__component\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field appearance=\"fill\">\n                           <mat-label>Serial Number</mat-label>\n                           <input matInput placeholder=\"DFXXXXXXX\" [formControl]=\"serial\" required>\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter serial number here</mat-hint>\n                           <mat-error *ngIf=\"serial.invalid\">\n                              Serial number is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"form__button-submit\" color=\"primary\" [disabled]=\"serial.invalid\" (click)=\"authenticate()\">\n                           <i class=\"fas fa-skull-crossbones\"></i>\n                           Check Authenticity\n                        </button>\n\n                     </div>\n\n                  </form>\n\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>\n   \n   </div>\n\n</div>"
+module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n         <mat-card>\n            <mat-card-title>AUTHENTICATE PRODUCT</mat-card-title>\n            <mat-card-content>\n               <div class=\"auth__input\">\n\n                  <form>\n\n                     <div class=\"form__component\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field appearance=\"fill\">\n                           <mat-label>Serial Number</mat-label>\n                           <input matInput placeholder=\"DFXXXXXXX\" [formControl]=\"serial\" required>\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter serial number here</mat-hint>\n                           <mat-error *ngIf=\"serial.invalid\">\n                              Serial number is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"form__button-submit\" color=\"primary\" [disabled]=\"serial.invalid\" (click)=\"authenticate()\">\n                           <i class=\"fas fa-skull-crossbones\"></i>\n                           Check Authenticity\n                        </button>\n\n                     </div>\n\n                  </form>\n\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>\n   \n   </div>\n\n</div>"
 
 /***/ }),
 
@@ -40,7 +40,7 @@ module.exports = "<div class=\"container\" >\n\n   <div class=\"layout\" fxLayou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.\n                  </div>\n                  <button mat-raised-button color=\"accent\">\n                     <i class=\"fab fa-whatsapp\"></i>\n                     Contact Our Malaysian Representative\n                  </button>      \n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" routerLink=\"products/product/strong-arrow/authenticate\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"toolbar\">\n      <mat-toolbar color=\"primary\">\n         <div class=\"content\" fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.\n                  </div>\n                  <button mat-raised-button color=\"accent\">\n                     <i class=\"fab fa-whatsapp\"></i>\n                     Contact Our Malaysian Representative\n                  </button>      \n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"toolbar\">\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -51,7 +51,7 @@ module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" fxLayout=\"column\" fxLayoutAlign=\"space-evenly none\">\n\n  <div class=\"container\">\n    <div class=\"banner\" fxLayoutAlign=\"center center\">\n      <img class=\"banner__image\" src=\"assets/images/sa_banner_1.jpg\" alt=\"Strong Arrow Banner 1\">\n    </div>    \n  </div>\n\n  <mat-divider></mat-divider>\n\n  <app-intro></app-intro>\n\n  <mat-divider></mat-divider>\n\n  <app-how></app-how>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"container\" id=\"benefits\" fxLayout fxLayoutAlign=\"center center\">\n    <div class=\"benefits__container\" >\n\n      <mat-card>\n         <img mat-card-image class=\"benefits__image\" src=\"assets/images/sa_product_1.jpg\" alt=\"Strong Arrow Pills Products\">\n\n         <mat-card-title>FUNCTIONS AND BENEFITS OF <span class=\"brand\">STRONG ARROW®️</span></mat-card-title>\n\n         <mat-card-content>\n            <div class=\"content\" fxLayout=\"column\" fxLayoutAlign=\"center\">\n\n               <div class=\"blurp\" fxFlex.gt-xs=\"70%\" fxLayout=\"row\" *ngFor=\"let benefit of benefits\">\n                  <div class=\"blurp__icon\" fxFlex.xs=\"20\" fxLayout fxLayoutAlign=\"center center\">\n                     <button mat-mini-fab color=\"primary\">\n                        <mat-icon>done</mat-icon>\n                     </button>       \n                  </div>\n                  <div class=\"blurp__content\" fxFlex.xs=\"80\">\n                     <div class=\"text__subtitle\">\n                        <span class=\"brand\">STRONG ARROW®️ </span>{{ benefit.text }}\n                     </div>\n                  </div>          \n               </div>         \n          \n            </div>\n         </mat-card-content>\n      </mat-card>\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"instruction\" id=\"instructions\">\n    <div class=\"container instruction__container\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"instruction__banner\">\n        <img src=\"assets/images/sa_banner_3.jpg\" alt=\"\">\n      </div>\n\n      <div class=\"text__title instruction__title\">\n          HOW TO CONSUME <span class=\"brand\">STRONG ARROW®️ </span>:\n      </div>\n\n      <div class=\"instruction__cards\" fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex.xs=\"100\">\n          <mat-card>\n            <mat-card-title>FOR DAILY INTAKE</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                INCREASE PENIS SIZE\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                QUALITY SEMEN / SPERM\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Daily maximum 2 capsules after breakfast.\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                TAKE 1 capsule, 20min before intercourse\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>IMPORTANT TIPS</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Reduce caffeine daily intake(tea, coffee, chocolate) \n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE carbonated drinks , alcohol, icy cool drinks\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE greasy food for maximum effective\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n      </div>\n\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n</div>\n"
+module.exports = "<div class=\"content\" id=\"top\" fxLayout=\"column\" fxLayoutAlign=\"space-evenly none\">\n\n  <div class=\"container\">\n    <div class=\"banner\" fxLayoutAlign=\"center center\">\n      <img class=\"banner__image\" src=\"assets/images/sa_banner_1.jpg\" alt=\"Strong Arrow Banner 1\">\n    </div>    \n  </div>\n\n  <mat-divider></mat-divider>\n\n  <app-intro></app-intro>\n\n  <mat-divider></mat-divider>\n\n  <app-how></app-how>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"container\" id=\"benefits\" fxLayout fxLayoutAlign=\"center center\">\n    <div class=\"benefits__container\" >\n\n      <mat-card>\n         <img mat-card-image class=\"benefits__image\" src=\"assets/images/sa_product_1.jpg\" alt=\"Strong Arrow Pills Products\">\n\n         <mat-card-title>FUNCTIONS AND BENEFITS OF <span class=\"brand\">STRONG ARROW®️</span></mat-card-title>\n\n         <mat-card-content>\n            <div class=\"content\" fxLayout=\"column\" fxLayoutAlign=\"center\">\n\n               <div class=\"blurp\" fxFlex.gt-xs=\"70%\" fxLayout=\"row\" *ngFor=\"let benefit of benefits\">\n                  <div class=\"blurp__icon\" fxFlex.xs=\"20\" fxLayout fxLayoutAlign=\"center center\">\n                     <button mat-mini-fab color=\"primary\">\n                        <mat-icon>done</mat-icon>\n                     </button>       \n                  </div>\n                  <div class=\"blurp__content\" fxFlex.xs=\"80\">\n                     <div class=\"text__subtitle\">\n                        <span class=\"brand\">STRONG ARROW®️ </span>{{ benefit.text }}\n                     </div>\n                  </div>          \n               </div>         \n          \n            </div>\n         </mat-card-content>\n      </mat-card>\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"instruction\" id=\"instructions\">\n    <div class=\"container instruction__container\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"instruction__banner\">\n        <img src=\"assets/images/sa_banner_3.jpg\" alt=\"\">\n      </div>\n\n      <div class=\"text__title instruction__title\">\n          HOW TO CONSUME <span class=\"brand\">STRONG ARROW®️ </span>:\n      </div>\n\n      <div class=\"instruction__cards\" fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex.xs=\"100\">\n          <mat-card>\n            <mat-card-title>FOR DAILY INTAKE</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                INCREASE PENIS SIZE\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                QUALITY SEMEN / SPERM\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Daily maximum 2 capsules after breakfast.\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                TAKE 1 capsule, 20min before intercourse\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>IMPORTANT TIPS</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Reduce caffeine daily intake(tea, coffee, chocolate) \n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE carbonated drinks , alcohol, icy cool drinks\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE greasy food for maximum effective\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n      </div>\n\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n</div>\n"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<div class=\"container\">\n\n  <div class=\"how\" id=\"how\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayout.xs=\"column\" fxLayout.gt-xs=\"row\">\n\n        <div class=\"card\" fxFlex=\"50\" fxFlex.xs=\"100\">\n          \n          <mat-card>\n\n            <mat-card-content>\n              <div class=\"intro__spinner\" fxLayout fxLayoutAlign=\"center center\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <mat-progress-spinner [mode]=\"mode\" [value]=\"value\"></mat-progress-spinner>        \n              </div>  \n            \n              <div class=\"content\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                {{ total | number:'3.0' }} <span class=\"brand\">Men</span> <mat-icon class=\"icon\">people</mat-icon>\n              </div>\n              <div class=\"content\">\n                It's an absolute phenomenon! <span class=\"brand\">{{ total | number:'3.0' }}</span> Men around the world are gobbling up <span class=\"brand\">Strong Arrow®️</span> like popcorn!\n              </div>\n            </mat-card-content>\n\n          </mat-card>\n\n        </div>   \n\n        <div class=\"card\" fxFlex=\"50\" fxFlex.xs=\"100\">\n          <mat-card>\n            <mat-card-content>\n              <div class=\"intro__spinner\" fxLayout fxLayoutAlign=\"center center\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <mat-progress-spinner [mode]=\"percentMode\" [value]=\"percentValue\"></mat-progress-spinner>        \n              </div>\n              <div class=\"content\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                {{ percentTotal | number:'2.0' }}% <span class=\"brand\"> satisfaction rating</span>\n                <mat-icon class=\"icon\">sentiment_satisfied_alt</mat-icon> \n              </div>\n              <div class=\"content\">\n                Men everywhere are raving about it! Why all the excitement? Why the record sales numbers? Why a <span class=\"brand\">{{ percentTotal | number:'2.0' }} %</span> customer satisfaction rating?\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n      </div><!-- container -->\n\n      <div class=\"content\">\n        Because <span class=\"brand\">Strong Arrow®️</span> is the worlds first and only male enhancement pill to actually make your penis longer and wider starting at the molecular level inside the two chambers of your penis! Our exclusive formula <span class=\"brand\">\"cracked the code\"</span> that has eluded other pill manufactures for decades, until now.\n      </div>\n\n      <div class=\"content\">\n        So now you too can now join the happy men around the world who have seen their penis literally transformed and their sex life has skyrocketed like it was ignited with sexual rocket fuel! The <span class=\"brand\">\"Game Changer\"</span> every man has waited for, is finally here!\n      </div> \n \n</div> "
+module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayout.xs=\"column\" fxLayout.gt-xs=\"row\">\n\n        <div class=\"card\" fxFlex=\"50\" fxFlex.xs=\"100\">\n          \n          <mat-card>\n\n            <mat-card-content>\n              <div class=\"intro__spinner\" fxLayout fxLayoutAlign=\"center center\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <mat-progress-spinner [mode]=\"mode\" [value]=\"value\"></mat-progress-spinner>        \n              </div>  \n            \n              <div class=\"content\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                {{ total | number:'3.0' }} <span class=\"brand\">Men</span> <mat-icon class=\"icon\">people</mat-icon>\n              </div>\n              <div class=\"content\">\n                It's an absolute phenomenon! <span class=\"brand\">{{ total | number:'3.0' }}</span> Men around the world are gobbling up <span class=\"brand\">Strong Arrow®️</span> like popcorn!\n              </div>\n            </mat-card-content>\n\n          </mat-card>\n\n        </div>   \n\n        <div class=\"card\" fxFlex=\"50\" fxFlex.xs=\"100\">\n          <mat-card>\n            <mat-card-content>\n              <div class=\"intro__spinner\" fxLayout fxLayoutAlign=\"center center\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                <mat-progress-spinner [mode]=\"percentMode\" [value]=\"percentValue\"></mat-progress-spinner>        \n              </div>\n              <div class=\"content\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n                {{ percentTotal | number:'2.0' }}% <span class=\"brand\"> Satisfaction Rating</span>\n                <mat-icon class=\"icon\">sentiment_satisfied_alt</mat-icon> \n              </div>\n              <div class=\"content\">\n                Men everywhere are raving about it! Why all the excitement? Why the record sales numbers? Why a <span class=\"brand\">{{ percentTotal | number:'2.0' }} %</span> customer satisfaction rating?\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n      </div><!-- container -->\n\n      <div class=\"content\">\n        Because <span class=\"brand\">Strong Arrow®️</span> is the worlds first and only male enhancement pill to actually make your penis longer and wider starting at the molecular level inside the two chambers of your penis! Our exclusive formula <span class=\"brand\">\"cracked the code\"</span> that has eluded other pill manufactures for decades, until now.\n      </div>\n\n      <div class=\"content\">\n        So now you too can now join the happy men around the world who have seen their penis literally transformed and their sex life has skyrocketed like it was ignited with sexual rocket fuel! The <span class=\"brand\">\"Game Changer\"</span> every man has waited for, is finally here!\n      </div> \n \n</div> "
 
 /***/ }),
 
@@ -84,7 +84,40 @@ module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navbar\">\n\n  <div class=\"navbar__items\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n\n    <div class=\"navbar__logo\" fxFlex=\"40\">\n      <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"\">    \n    </div>\n\n  </div>\n\n</mat-toolbar>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+module.exports = "<mat-toolbar class=\"navbar\">\n\n  <div class=\"navbar__items\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n\n    <div class=\"navbar__logo\" fxFlex=\"40\">\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"\"> \n      </a>   \n    </div>\n\n  </div>\n\n</mat-toolbar>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/user/login/login.component.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/user/login/login.component.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  login works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/user/register/register.component.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/user/register/register.component.html ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  register works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/user/user.component.html":
+/*!********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/user/user.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  user works!\n</p>\n"
 
 /***/ }),
 
@@ -136,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
     { path: 'products/product/strong-arrow/authenticate', component: _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_4__["AuthenticateComponent"] },
-    // test
+    { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
     { path: 'intro', component: _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_5__["IntroComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -144,7 +177,9 @@ var AppRoutingModule = /** @class */ (function () {
     }
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+            imports: [
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { anchorScrolling: 'enabled' })
+            ],
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
         })
     ], AppRoutingModule);
@@ -228,6 +263,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./home/intro/intro.component */ "./src/app/home/intro/intro.component.ts");
 /* harmony import */ var _home_how_how_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./home/how/how.component */ "./src/app/home/how/how.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _user_user_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user.component */ "./src/app/user/user.component.ts");
+/* harmony import */ var _user_login_login_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user/login/login.component */ "./src/app/user/login/login.component.ts");
+/* harmony import */ var _user_register_register_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user/register/register.component */ "./src/app/user/register/register.component.ts");
+
+
+
 
 
 
@@ -261,7 +302,10 @@ var AppModule = /** @class */ (function () {
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_15__["FooterComponent"],
                 _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_17__["IntroComponent"],
                 _home_how_how_component__WEBPACK_IMPORTED_MODULE_18__["HowComponent"],
-                _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"]
+                _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
+                _user_user_component__WEBPACK_IMPORTED_MODULE_20__["UserComponent"],
+                _user_login_login_component__WEBPACK_IMPORTED_MODULE_21__["LoginComponent"],
+                _user_register_register_component__WEBPACK_IMPORTED_MODULE_22__["RegisterComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -300,7 +344,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".layout {\n  height: 80vh;\n}\n\n.auth {\n  font-size: 2.8rem;\n}\n\n.form__button-submit {\n  width: 100%;\n  margin-top: 20px;\n}\n\n.card__review-button {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2F1dGhlbnRpY2F0ZS9hdXRoZW50aWNhdGUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2F1dGhlbnRpY2F0ZS9hdXRoZW50aWNhdGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDRyxZQUFBO0FDQUg7O0FER0E7RUFDUSxpQkFBQTtBQ0FSOztBREtHO0VBQ0csV0FBQTtFQUNBLGdCQUFBO0FDRk47O0FEUUc7RUFDRyxXQUFBO0FDTE4iLCJmaWxlIjoic3JjL2FwcC9hdXRoZW50aWNhdGUvYXV0aGVudGljYXRlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4ubGF5b3V0e1xuICAgaGVpZ2h0OiA4MHZoO1xufVxuXG4uYXV0aHtcbiAgICAgICAgZm9udC1zaXplOiAyLjhyZW07XG59XG5cbi5mb3Jte1xuXG4gICAmX19idXR0b24tc3VibWl0e1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBtYXJnaW4tdG9wOiAyMHB4O1xuICAgfVxufVxuXG4uY2FyZHtcblxuICAgJl9fcmV2aWV3LWJ1dHRvbntcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgfVxufVxuXG5cbiIsIi5sYXlvdXQge1xuICBoZWlnaHQ6IDgwdmg7XG59XG5cbi5hdXRoIHtcbiAgZm9udC1zaXplOiAyLjhyZW07XG59XG5cbi5mb3JtX19idXR0b24tc3VibWl0IHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbi10b3A6IDIwcHg7XG59XG5cbi5jYXJkX19yZXZpZXctYnV0dG9uIHtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */"
+module.exports = ".auth {\n  font-size: 2.8rem;\n}\n\n.form__button-submit {\n  width: 100%;\n  margin-top: 20px;\n}\n\n.card__review-button {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2F1dGhlbnRpY2F0ZS9hdXRoZW50aWNhdGUuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2F1dGhlbnRpY2F0ZS9hdXRoZW50aWNhdGUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDUSxpQkFBQTtBQ0NSOztBRElHO0VBQ0csV0FBQTtFQUNBLGdCQUFBO0FDRE47O0FET0c7RUFDRyxXQUFBO0FDSk4iLCJmaWxlIjoic3JjL2FwcC9hdXRoZW50aWNhdGUvYXV0aGVudGljYXRlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmF1dGh7XG4gICAgICAgIGZvbnQtc2l6ZTogMi44cmVtO1xufVxuXG4uZm9ybXtcblxuICAgJl9fYnV0dG9uLXN1Ym1pdHtcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgbWFyZ2luLXRvcDogMjBweDtcbiAgIH1cbn1cblxuLmNhcmR7XG5cbiAgICZfX3Jldmlldy1idXR0b257XG4gICAgICB3aWR0aDogMTAwJTtcbiAgIH1cbn1cblxuXG4iLCIuYXV0aCB7XG4gIGZvbnQtc2l6ZTogMi44cmVtO1xufVxuXG4uZm9ybV9fYnV0dG9uLXN1Ym1pdCB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufVxuXG4uY2FyZF9fcmV2aWV3LWJ1dHRvbiB7XG4gIHdpZHRoOiAxMDAlO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -448,17 +492,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var FooterComponent = /** @class */ (function () {
-    function FooterComponent(iconRegistry, sanitizer) {
+    function FooterComponent(iconRegistry, sanitizer, router) {
         this.iconRegistry = iconRegistry;
         this.sanitizer = sanitizer;
+        this.router = router;
     }
     FooterComponent.prototype.ngOnInit = function () {
         this.iconRegistry.addSvgIcon('whatsapp', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/whatsapp.svg'));
+    };
+    FooterComponent.prototype.authenticateProduct = function () {
+        this.router.navigate(['products/product/strong-arrow/authenticate'], { fragment: 'top' });
     };
     FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -467,7 +517,8 @@ var FooterComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./footer.component.scss */ "./src/app/footer/footer.component.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material_icon__WEBPACK_IMPORTED_MODULE_3__["MatIconRegistry"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], FooterComponent);
     return FooterComponent;
 }());
@@ -483,7 +534,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".banner {\n  padding: 30px;\n}\n.banner__image {\n  max-width: 100%;\n  height: auto;\n}\n.intro__container-content {\n  text-align: center;\n}\n.intro__spinner {\n  padding: 20px;\n}\n.benefits {\n  height: 100%;\n}\n.benefits__container {\n  width: 60%;\n}\n.benefits__title {\n  text-align: center;\n}\n.instruction__card {\n  padding: 20px;\n}\n@media only screen and (max-width: 600px) {\n  .benefits {\n    height: 100%;\n  }\n  .benefits__container {\n    width: 100%;\n  }\n  .benefits__title {\n    text-align: center;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtBQ0NKO0FERUk7RUFDSSxlQUFBO0VBQ0EsWUFBQTtBQ0FSO0FETUk7RUFDSSxrQkFBQTtBQ0hSO0FETUk7RUFDSSxhQUFBO0FDSlI7QURTQTtFQUVJLFlBQUE7QUNQSjtBRFNJO0VBQ0csVUFBQTtBQ1BQO0FEVUk7RUFDSSxrQkFBQTtBQ1JSO0FEZUk7RUFDSSxhQUFBO0FDWlI7QURrQkE7RUFHQTtJQUVHLFlBQUE7RUNsQkQ7RURvQkM7SUFDRyxXQUFBO0VDbEJKO0VEcUJDO0lBQ0ksa0JBQUE7RUNuQkw7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYW5uZXJ7XG4gICAgcGFkZGluZzogMzBweDtcbiAgICBcblxuICAgICZfX2ltYWdle1xuICAgICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICB9XG59XG5cbi5pbnRyb3tcblxuICAgICZfX2NvbnRhaW5lci1jb250ZW50e1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgfVxuXG4gICAgJl9fc3Bpbm5lcntcbiAgICAgICAgcGFkZGluZzogMjBweDtcbiAgICB9XG5cbn1cblxuLmJlbmVmaXRze1xuXG4gICAgaGVpZ2h0OiAxMDAlO1xuXG4gICAgJl9fY29udGFpbmVye1xuICAgICAgIHdpZHRoOiA2MCU7XG4gICAgfVxuXG4gICAgJl9fdGl0bGV7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG5cbn1cblxuLmluc3RydWN0aW9ue1xuXG4gICAgJl9fY2FyZHtcbiAgICAgICAgcGFkZGluZzogMjBweDtcbiAgICB9XG59XG5cblxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XG5cblxuLmJlbmVmaXRze1xuXG4gICBoZWlnaHQ6IDEwMCU7XG5cbiAgICZfX2NvbnRhaW5lcntcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgfVxuXG4gICAmX190aXRsZXtcbiAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICB9XG5cbn1cblxuXG59IiwiLmJhbm5lciB7XG4gIHBhZGRpbmc6IDMwcHg7XG59XG4uYmFubmVyX19pbWFnZSB7XG4gIG1heC13aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiBhdXRvO1xufVxuXG4uaW50cm9fX2NvbnRhaW5lci1jb250ZW50IHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmludHJvX19zcGlubmVyIHtcbiAgcGFkZGluZzogMjBweDtcbn1cblxuLmJlbmVmaXRzIHtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuLmJlbmVmaXRzX19jb250YWluZXIge1xuICB3aWR0aDogNjAlO1xufVxuLmJlbmVmaXRzX190aXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmluc3RydWN0aW9uX19jYXJkIHtcbiAgcGFkZGluZzogMjBweDtcbn1cblxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA2MDBweCkge1xuICAuYmVuZWZpdHMge1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuICAuYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgLmJlbmVmaXRzX190aXRsZSB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB9XG59Il19 */"
+module.exports = ".banner {\n  margin-top: 10vh;\n}\n.banner__image {\n  max-width: 100%;\n  height: auto;\n}\n.intro__container-content {\n  text-align: center;\n}\n.intro__spinner {\n  padding: 20px;\n}\n.benefits {\n  height: 100%;\n}\n.benefits__container {\n  width: 60%;\n}\n.benefits__title {\n  text-align: center;\n}\n.instruction__card {\n  padding: 20px;\n}\n@media only screen and (max-width: 600px) {\n  .banner {\n    margin-top: 10vh;\n  }\n  .banner__image {\n    max-width: 100%;\n    height: auto;\n  }\n\n  .benefits {\n    height: 100%;\n  }\n  .benefits__container {\n    width: 100%;\n  }\n  .benefits__title {\n    text-align: center;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUcsZ0JBQUE7QUNBSDtBREVJO0VBQ0ksZUFBQTtFQUNBLFlBQUE7QUNBUjtBRE1JO0VBQ0ksa0JBQUE7QUNIUjtBRE1JO0VBQ0ksYUFBQTtBQ0pSO0FEU0E7RUFFSSxZQUFBO0FDUEo7QURTSTtFQUNHLFVBQUE7QUNQUDtBRFVJO0VBQ0ksa0JBQUE7QUNSUjtBRGVJO0VBQ0ksYUFBQTtBQ1pSO0FEa0JBO0VBRUc7SUFDRyxnQkFBQTtFQ2hCSjtFRGtCSTtJQUNJLGVBQUE7SUFDQSxZQUFBO0VDaEJSOztFRHFCQztJQUVHLFlBQUE7RUNuQko7RURxQkk7SUFDRyxXQUFBO0VDbkJQO0VEc0JJO0lBQ0csa0JBQUE7RUNwQlA7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYW5uZXJ7XG5cbiAgIG1hcmdpbi10b3A6IDEwdmg7ICAgIFxuXG4gICAgJl9faW1hZ2V7XG4gICAgICAgIG1heC13aWR0aDogMTAwJTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbn1cblxuLmludHJve1xuXG4gICAgJl9fY29udGFpbmVyLWNvbnRlbnR7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG5cbiAgICAmX19zcGlubmVye1xuICAgICAgICBwYWRkaW5nOiAyMHB4O1xuICAgIH1cblxufVxuXG4uYmVuZWZpdHN7XG5cbiAgICBoZWlnaHQ6IDEwMCU7XG5cbiAgICAmX19jb250YWluZXJ7XG4gICAgICAgd2lkdGg6IDYwJTtcbiAgICB9XG5cbiAgICAmX190aXRsZXtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIH1cblxufVxuXG4uaW5zdHJ1Y3Rpb257XG5cbiAgICAmX19jYXJke1xuICAgICAgICBwYWRkaW5nOiAyMHB4O1xuICAgIH1cbn1cblxuXG5cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNjAwcHgpIHtcblxuICAgLmJhbm5lcnsgXG4gICAgICBtYXJnaW4tdG9wOiAxMHZoO1xuICBcbiAgICAgICZfX2ltYWdle1xuICAgICAgICAgIG1heC13aWR0aDogMTAwJTtcbiAgICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICB9XG5cblxuICAgLmJlbmVmaXRze1xuXG4gICAgICBoZWlnaHQ6IDEwMCU7XG5cbiAgICAgICZfX2NvbnRhaW5lcntcbiAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgfVxuXG4gICAgICAmX190aXRsZXtcbiAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgIH1cblxuICAgfVxuXG5cbn0iLCIuYmFubmVyIHtcbiAgbWFyZ2luLXRvcDogMTB2aDtcbn1cbi5iYW5uZXJfX2ltYWdlIHtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbi5pbnRyb19fY29udGFpbmVyLWNvbnRlbnQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uaW50cm9fX3NwaW5uZXIge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBoZWlnaHQ6IDEwMCU7XG59XG4uYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gIHdpZHRoOiA2MCU7XG59XG4uYmVuZWZpdHNfX3RpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uaW5zdHJ1Y3Rpb25fX2NhcmQge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XG4gIC5iYW5uZXIge1xuICAgIG1hcmdpbi10b3A6IDEwdmg7XG4gIH1cbiAgLmJhbm5lcl9faW1hZ2Uge1xuICAgIG1heC13aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IGF1dG87XG4gIH1cblxuICAuYmVuZWZpdHMge1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuICAuYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgLmJlbmVmaXRzX190aXRsZSB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB9XG59Il19 */"
 
 /***/ }),
 
@@ -882,7 +933,7 @@ var MaterialModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navbar {\n  background-color: #000;\n  height: 10vh;\n}\n.navbar__img {\n  width: 200px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxzQkFBQTtFQUNBLFlBQUE7QUNBSjtBREVJO0VBQ0ksWUFBQTtBQ0FSIiwiZmlsZSI6InNyYy9hcHAvbmF2YmFyL25hdmJhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uYXZiYXJ7XG4gICAgXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcbiAgICBoZWlnaHQ6IDEwdmg7XG5cbiAgICAmX19pbWd7XG4gICAgICAgIHdpZHRoOiAyMDBweDtcbiAgICB9XG5cblxufSIsIi5uYXZiYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwO1xuICBoZWlnaHQ6IDEwdmg7XG59XG4ubmF2YmFyX19pbWcge1xuICB3aWR0aDogMjAwcHg7XG59Il19 */"
+module.exports = ".navbar {\n  position: fixed;\n  background-color: #000;\n  height: 10vh;\n  z-index: 5;\n}\n.navbar__img {\n  width: 200px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxlQUFBO0VBQ0Esc0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtBQ0FKO0FERUk7RUFDSSxZQUFBO0FDQVIiLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhcntcblxuICAgIHBvc2l0aW9uOiBmaXhlZDsgICAgXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcbiAgICBoZWlnaHQ6IDEwdmg7XG4gICAgei1pbmRleDogNTtcblxuICAgICZfX2ltZ3tcbiAgICAgICAgd2lkdGg6IDIwMHB4O1xuICAgIH1cblxuXG59IiwiLm5hdmJhciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcbiAgaGVpZ2h0OiAxMHZoO1xuICB6LWluZGV4OiA1O1xufVxuLm5hdmJhcl9faW1nIHtcbiAgd2lkdGg6IDIwMHB4O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -1138,6 +1189,141 @@ var SerialAuthService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], SerialAuthService);
     return SerialAuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/login/login.component.scss":
+/*!*************************************************!*\
+  !*** ./src/app/user/login/login.component.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/user/login/login.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/user/login/login.component.ts ***!
+  \***********************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent() {
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/user/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/user/login/login.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/register/register.component.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/user/register/register.component.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvcmVnaXN0ZXIvcmVnaXN0ZXIuY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/user/register/register.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/user/register/register.component.ts ***!
+  \*****************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var RegisterComponent = /** @class */ (function () {
+    function RegisterComponent() {
+    }
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-register',
+            template: __webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/index.js!./src/app/user/register/register.component.html"),
+            styles: [__webpack_require__(/*! ./register.component.scss */ "./src/app/user/register/register.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], RegisterComponent);
+    return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/user/user.component.scss":
+/*!******************************************!*\
+  !*** ./src/app/user/user.component.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VzZXIvdXNlci5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/user/user.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/user/user.component.ts ***!
+  \****************************************/
+/*! exports provided: UserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserComponent", function() { return UserComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var UserComponent = /** @class */ (function () {
+    function UserComponent() {
+    }
+    UserComponent.prototype.ngOnInit = function () {
+    };
+    UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-user',
+            template: __webpack_require__(/*! raw-loader!./user.component.html */ "./node_modules/raw-loader/index.js!./src/app/user/user.component.html"),
+            styles: [__webpack_require__(/*! ./user.component.scss */ "./src/app/user/user.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UserComponent);
+    return UserComponent;
 }());
 
 

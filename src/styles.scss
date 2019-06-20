@@ -29,6 +29,10 @@ mat-card {
     font-size: 1.5rem;
     text-align: center;
     padding: 20px;
+
+    &__100vh{
+       height: 100vh;
+    }
 }
 
 .container{
@@ -85,19 +89,21 @@ i{
 
 
 @media only screen and (max-width: 600px) {
-    .content{
-        font-size: 1rem;
-        text-align: center;
-        padding: 10px;
-    }
+   
+   .title{ 
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 10px;
+   }
+   
+   .content{
+      font-size: 1rem;
+      text-align: center;
+      padding: 10px;
+   }   
 
-    .title{ 
-        font-size: 1.5rem;
-        text-align: center;
-        padding: 10px;
-    }
+   .container{
+      padding: 10px;
+   }
 
-    .container{
-        padding: 10px;
-    }
   }

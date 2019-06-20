@@ -1,7 +1,9 @@
 .navbar{
-    
+
+    position: fixed;    
     background-color: #000;
     height: 10vh;
+    z-index: 5;
 
     &__img{
         width: 200px;
