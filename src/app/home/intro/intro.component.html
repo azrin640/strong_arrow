@@ -1,7 +1,6 @@
  <div class="container">
-  <div class="intro" id="intro">
 
-      <div class="intro__container-card" fxLayout.xs="column" fxLayout.gt-xs="row">
+      <div class="card" fxLayout.xs="column" fxLayout.gt-xs="row">
 
         <div class="card" fxFlex="50" fxFlex.xs="100">
           
@@ -11,15 +10,10 @@
               <div class="intro__spinner" fxLayout fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center center">
                 <mat-progress-spinner [mode]="mode" [value]="value"></mat-progress-spinner>        
               </div>  
-            </mat-card-content>
-
-            <mat-card-title>
-              <div fxLayout="row" fxLayoutAlign="center center">
+            
+              <div class="content" fxLayout="row" fxLayoutAlign="center center">
                 {{ total | number:'3.0' }} <span class="brand">Men</span> <mat-icon class="icon">people</mat-icon>
               </div>
-            </mat-card-title>
-
-            <mat-card-content>
               <div class="content">
                 It's an absolute phenomenon! <span class="brand">{{ total | number:'3.0' }}</span> Men around the world are gobbling up <span class="brand">Strong Arrow®️</span> like popcorn!
               </div>
@@ -35,14 +29,10 @@
               <div class="intro__spinner" fxLayout fxLayoutAlign="center center" fxLayout="column" fxLayoutAlign="center center">
                 <mat-progress-spinner [mode]="percentMode" [value]="percentValue"></mat-progress-spinner>        
               </div>
-            </mat-card-content>
-            <mat-card-title>
-              <div fxLayout="row" fxLayoutAlign="center center">
+              <div class="content" fxLayout="row" fxLayoutAlign="center center">
                 {{ percentTotal | number:'2.0' }}% <span class="brand"> satisfaction rating</span>
                 <mat-icon class="icon">sentiment_satisfied_alt</mat-icon> 
               </div>
-            </mat-card-title>
-            <mat-card-content>
               <div class="content">
                 Men everywhere are raving about it! Why all the excitement? Why the record sales numbers? Why a <span class="brand">{{ percentTotal | number:'2.0' }} %</span> customer satisfaction rating?
               </div>
@@ -59,6 +49,5 @@
       <div class="content">
         So now you too can now join the happy men around the world who have seen their penis literally transformed and their sex life has skyrocketed like it was ignited with sexual rocket fuel! The <span class="brand">"Game Changer"</span> every man has waited for, is finally here!
       </div> 
-
-  </div>  
+ 
 </div> 
