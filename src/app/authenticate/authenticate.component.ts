@@ -89,7 +89,7 @@ export class SerialCheckDialog implements OnInit{
 
       this.auth.saveReview(contact).subscribe(
          (response: Review) => {
-            if(response && response._id) {
+            if(response) {
                this.toReview = false;
                this.savedReview = response;
                this.savedReviewSucces = true;

@@ -12,7 +12,8 @@ exports.serialValidation = (req, res, next) => {
 
 exports.newReviewValidation = (req, res, next) => {
 
-   req.check('name').not().isEmpty().sanitizeBody().remove_extensions();
+   req.sanitizeBody('name');
+   req.check('name').not().isEmpty();
    
    req.sanitizeBody('email').normalizeEmail({
        remove_dots: false,
@@ -24,7 +25,8 @@ exports.newReviewValidation = (req, res, next) => {
    req.sanitizeBody('phone');
    req.check('phone').not().isEmpty();
 
-   req.check('review').not().isEmpty().sanitizeBody().remove_extensions();
+   req.sanitizeBody('review');
+   req.check('review').not().isEmpty();
 
    const errors = req.validationErrors();  
    if(errors) res.json(errors);

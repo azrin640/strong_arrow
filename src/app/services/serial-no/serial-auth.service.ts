@@ -14,7 +14,6 @@ export class SerialAuthService {
 
   authenticateSerial(serial)
   {
-     console.log(serial);
      return this.http.post('/api/product/authentication', {serial: serial}).pipe(
         catchError(error => throwError(error))
      )
@@ -22,6 +21,7 @@ export class SerialAuthService {
 
   saveReview(review)
   {
+     console.log(review);
      return this.http.post('/api/product/review', review).pipe(
          catchError(error => throwError(error))
      )
