@@ -12,47 +12,30 @@ const userSchema = new mongoose.Schema({
         default: Date.now()
     },
     username: {
-        type: String,
-        required: 'Please supply a username',
-        unique: true
-    },
-    name: {
-        type: String,
-        required: 'Please supply a name',
-        trim: true
+        type: String       
     },
     email: {
         type: String,
         required: 'Please supply an email address',
         lowercase: true,
-        trim: true     
+        trim: true,
+        unique: true   
     },
-    phone: {
+    terms: {
+        type: Boolean
+    },
+    company: String,
+    handphone: {
         type: Number,
-        required: 'Please supply a phone number',
         trim: true
     },
-    birthDate: Date,
-    level: {
-        type: String,
-        default: 'customer'
-    },
-    introducer: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    },
-    address1: {
-        type: String,
-        required: true
-    },
-    address2: {
-        type: String,
-        required: true
-    },
-    tcCheckBox: {
-        type: Boolean,
-        required: 'Please agree to the terms and conditions'
-    },
+    birthday: Date,
+    address: String,
+    address2: String,
+    city: String,
+    state: String,
+    postcode: Number,
+    country: String,
     admin: {
         type: Boolean,
         default: false
@@ -69,6 +52,9 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String
+    },
+    image: {
+        type: String
     }
 },
 {
@@ -76,6 +62,7 @@ const userSchema = new mongoose.Schema({
   toObject: {virtuals: true}
 });
 
+// Make sure the email is unique
 userSchema.plugin(passportLocalMongoose, {usernameField: 'email'});
 userSchema.plugin(mongodbErrorHandler);
 
@@ -88,16 +75,15 @@ userSchema.methods.generateJwt = function() {
       _id: this._id,
       username: this.username,
       email: this.email,
-      name: this.name,
       admin: this.admin,
       exp: parseInt(expiry.getTime() / 1000),
     }, process.env.MY_SECRET); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
-userSchema.virtual('introducerInfo', {
-    ref: 'User',
-    localField: 'introducer', 
-    foreignField: '_id'
-});
+// userSchema.virtual('introducerInfo', {
+//     ref: 'User',
+//     localField: 'introducer', 
+//     foreignField: '_id'
+// });
 
 module.exports = mongoose.model('User', userSchema);

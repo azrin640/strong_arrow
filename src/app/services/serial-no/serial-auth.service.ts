@@ -14,7 +14,8 @@ export class SerialAuthService {
 
   authenticateSerial(serial)
   {
-     return this.http.post('/api/product/authentication', {serial}).pipe(
+     console.log(serial);
+     return this.http.post('/api/product/authentication', {serial: serial}).pipe(
         catchError(error => throwError(error))
      )
   }

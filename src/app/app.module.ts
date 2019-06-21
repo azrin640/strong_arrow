@@ -22,6 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter(){
+   return localStorage.getItem('access_token');
+}
 
 
 @NgModule({
@@ -47,13 +52,11 @@ import { RegisterComponent } from './user/register/register.component';
     FlexLayoutModule,
     HttpClientModule ,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({config: { tokenGetter: tokenGetter }})
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'},
-    AuthService,
-    AuthGuardService,
-    AdminAuthGuardService
+    {provide: APP_BASE_HREF, useValue: '/'}
   ],
   entryComponents: [
      SerialCheckDialog

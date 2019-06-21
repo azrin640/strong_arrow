@@ -2,12 +2,14 @@ require('express-validator');
 
 exports.serialValidation = (req, res, next) => {
 
-   req.check('serial').not().isEmpty().sanitizeBody().remove_extensions();
+   req.sanitizeBody('serial');
+   req.check('serial').not().isEmpty();
 
    const errors = req.validationErrors();  
    if(errors) res.json(errors);
    return next();
 };
+
 exports.newReviewValidation = (req, res, next) => {
 
    req.check('name').not().isEmpty().sanitizeBody().remove_extensions();

@@ -17,6 +17,8 @@ const Review =  mongoose.model('Review');
 
 // Check serial no authentication
 exports.checkSerialNo = async (req, res) => {
+
+   console.log(req.body);
    
    const product = await Serial.findOneAndUpdate({serial: req.body.serial}, {$inc: {authNo: 1}}, {new: true, useFindAndModify: false})
          .catch(error => res.json(error));

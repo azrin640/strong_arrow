@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { catchErrors } = require('../handlers/errorHandlers');
+
 const productController = require('../controllers/productController');
 const validateController = require('../controllers/validateController');
-const { catchErrors } = require('../handlers/errorHandlers');
-// const userController = require('../controllers/userController');
+const userController = require('../controllers/userController');
 // const cartController = require('../controllers/cartController');
 // const contactController = require('../controllers/contactController');
 // const checkoutController = require('../controllers/checkoutController');
@@ -12,75 +13,65 @@ const { catchErrors } = require('../handlers/errorHandlers');
 // const rateController = require('../controllers/rateController');
 // const testController = require('../controllers/testController');
 
+const multer = require('multer');
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
-// const multer = require('multer');
+//  ** USER **
+router.post('/user/registration',
+    userController.reqValidateRegister,
+    userController.validationErrors,
+    catchErrors(userController.userExist),
+    catchErrors(userController.register)    
+);
 
-// var storage = multer.memoryStorage();
-// var upload = multer({ storage: storage });
+router.post('/user/authenticate', 
+    userController.reqValidateLogin,
+    userController.validationErrors,
+    catchErrors(userController.authenticate)
+);
 
-// router.get('/', (req, res) => {
-//     res.render('index');
-// });
+router.post('/user/login', 
+    userController.reqValidateLogin,
+    userController.validationErrors,
+    catchErrors(userController.login)
+);
 
+router.post('/user/forgot-password',
+    userController.reqValidateForgotPassword,
+    userController.validationErrors,
+    catchErrors(userController.forgotPassword)
+);
 
-// ** USER **
+router.post('/user/reset-password',
+    userController.reqValidateResetPassword,
+    userController.validationErrors,
+    catchErrors(userController.resetPassword)
+);
 
-// router.post('/user', 
-//     catchErrors(userController.isLoggedIn),
-//     userController.validateRegister,
-//     catchErrors(userController.getUser)
-// );
+router.post('/user/profile', 
+    userController.validateUserId,
+    userController.validationErrors,
+    catchErrors(userController.profileUser)
+);
 
-// router.post('/user/registration',
-//     catchErrors(userController.registration)
-// );
+router.post('/user/profile/edit',
+    userController.reqValidateProfile,
+    userController.validationErrors,
+    catchErrors(userController.editProfile)
+);
 
-// router.post('/user/new', 
-//     catchErrors(userController.isLoggedIn),
-//     catchErrors(userController.adminRegister)
-// );
+router.post('/user/profile/address',
+    catchErrors(userController.addressAutoComplete)
+);
 
-// router.post('/user/username', 
-//     catchErrors(userController.getUserByUsername)
-// );
+router.post('/user/profile/image',
+    upload.single('image'),
+    userController.checkMimeType,
+    userController.resize,
+    catchErrors(userController.saveProfileImage)
 
-// router.post('/users',
-//     catchErrors(userController.isLoggedIn),
-//     catchErrors(userController.getUsers)
-// );
-
-// router.post('/users/search',
-//     catchErrors(userController.searchUsers)
-// );
-
-// router.post('/user/edit',
-//     catchErrors(userController.isLoggedIn),
-//     catchErrors(userController.editUser)
-// );
-
-// router.post('/user/google/address', 
-//     userController.googleAddress
-// );
-
-// router.post('/user/introducer/id', 
-//     catchErrors(userController.getIntroducerId)
-// );
-
-// router.post('/user/username/autocomplete', 
-//     catchErrors(userController.getUsernameAutocomplete)
-// )
-
-// router.post('/register', 
-//     userController.validateRegister,
-//     catchErrors(userController.register)
-// );
-
-// router.post('/user/remove', catchErrors(userController.removeUser));
-
-// router.post('/login', 
-//     userController.validateLogin,
-//     userController.login
-// );
+);
 
 // ** PRODUCT **
 

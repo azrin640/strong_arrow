@@ -33,6 +33,7 @@ export class AuthenticateComponent implements OnInit {
       this.auth.authenticateSerial(this.serial.value).subscribe(
          (response: Serial) => {
                
+            console.log(response);
             const dialogRef = this.dialog.open(SerialCheckDialog, {
                width: '320px',
                data: response

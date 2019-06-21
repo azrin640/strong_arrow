@@ -3,7 +3,8 @@ mongoose.Promise = global.Promise;
 const passport = require('passport');
 const User = mongoose.model('User');
 const { promisify } = require('es6-promisify');
-require('express-validator');
+const { body, validationResult  } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 const jwt = require('jsonwebtoken');
 const passportJWT = require('passport-jwt');
 const JwtStrategy = require('passport-jwt').Strategy,
@@ -12,307 +13,305 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const axios = require('axios');
 
-exports.validateRegister = (req, res, next) => {
+// ** Reusable **
+exports.validateUserId = [
 
-    req.sanitizeBody('username');
-    req.check('username').not().isEmpty();
+   body('_id').not().isEmpty().trim().escape()
 
-    req.sanitizeBody('name');
-    req.check('name').not().isEmpty();
-    
-    req.sanitizeBody('email').normalizeEmail({
-        remove_dots: false,
-        remove_extensions: false,
-        gmail_remove_subaddress: false 
-    });
-    req.check('email').not().isEmpty();
+];
 
-    req.sanitizeBody('phone');
-    req.check('phone').not().isEmpty();
-    
-    req.sanitizeBody('introducer');
+exports.validationErrors = (req, res, next) => {
 
-    req.sanitizeBody('password');
-    req.check('password').not().isEmpty();
+   const errors = validationResult(req);    
 
-    req.sanitizeBody('cpassword');
-    req.check('cpassword').not().isEmpty();
-    
-    req.sanitizeBody('address1');
-    req.check('address1').not().isEmpty();
+   if (!errors.isEmpty()) {
+       return res.status(422).json({ errors: errors.array() });    
+   }
+   else return next();
 
-    req.sanitizeBody('address2');
-    req.check('address2').not().isEmpty();
+};
 
-    req.sanitizeBody('postcode');
-    req.check('postcode').not().isEmpty();
+exports.checkMimeType = (req, res, next) => {
+   const isFile = req.file.mimetype.startsWith('image/');
+       if(isFile){
+           return next();
+       }
+       else{
+           res.json({status: 406, message: 'Not Acceptable'});
+       }    
+};
 
-    req.sanitizeBody('city');
-    req.check('city').not().isEmpty();
+exports.resize = async (req, res, next) => {  
+   //check if there is no new file to upload
+   if (!req.file) {
+       return next();
+   }
+   if(req.file){
+       const extension = req.file.mimetype.split('/')[1];
+       const fileName = `${uuidv4()}.${extension}`.toLowerCase();
+       req.file.fileName = fileName;
+       var buffer = req.file.buffer;
+       
+       //Now resize and upload file/photos to public/uploads
+       const photo = await jimp.read(buffer);
+       await photo.resize(400, jimp.AUTO);
+       await photo.write(`src/assets/uploads/${fileName}`);
+       return next();
+   }    
+};
 
-    req.sanitizeBody('state');
-    req.check('state').not().isEmpty();
+// ** Registration **
+exports.reqValidateRegister = [
 
-    const errors = req.validationErrors();  
-    if(errors) res.json(errors);
-    return next();
+   body('username').not().isEmpty().trim().escape(),
+   body('email').isEmail().normalizeEmail(),
+   body('password').not().isEmpty().trim().escape(),
+   body('passwordConfirm').not().isEmpty().trim().escape(),
+   sanitizeBody('terms').toBoolean()
+                           
+];
+
+exports.userExist = async (req, res, next) => {
+
+   const user = await User.findOne({ email: req.body.email });
+
+   if(!user){
+      return next();               
+   }
+
+   res.json({ status: 400, statusText: 'Email already exist. Please login with your email'});       
+
 };
 
 exports.register = async (req, res) => {
-    const authToken = crypto.randomBytes(20).toString('hex');
-    const authTokenExpire = Date.now() + 3600000; 
-    
-    const user = new User({
-        introducer: req.body.introducer,
-        username: req.body.username,
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        birthdate: req.body.birthdate,
-        address1: req.body.address1,
-        address2: req.body.address2,    
-        postcode: req.body.postcode,
-        city: req.body.city,
-        state: req.body.state,    
-        tcCheckBox : req.body.tcCheckBox,
-        authToken,
-        authTokenExpire
-    });
 
-    await user.setPassword(req.body.password);
+   const authToken = crypto.randomBytes(20).toString('hex');
+   const authTokenExpire = Date.now() + 3600000; 
+   
+   const user = new User({
+       username: req.body.username,
+       email: req.body.email,
+       authToken,
+       authTokenExpire,
+       terms: req.body.terms
+   });
 
-    const response = await user.save().catch(error => {
-        res.json(error);
-    });
+   await user.setPassword(req.body.password);
 
-    if(response && response._id){
+   const response = await user.save();
 
-        // Send email for authentication                           
-        const authURL = `http://${req.headers.host}/register/auth/${response.authToken}`;
-        var options = {
-            user: {
-                email: response.email
-            },
-            subject: 'Register Account Authentication',
-            html: `Authenticate your account by pressing clicking <a href="${authURL}"> this link</a></br>
-                or this link ${authURL}`
-        };
-        var sendMail = mail.send(options); 
+   if(response && response._id){
 
-        res.json(response);
-    }
+       // Send email for authentication                           
+       const authURL = `http://${req.headers.host}/auth/login-2/${response.authToken}`;
+       var options = {
+           user: {
+               email: response.email
+           },
+           subject: 'Register Account Authentication',
+           html: `Authenticate your account by pressing clicking <a href="${authURL}"> this link</a></br>
+               or this link ${authURL}`
+       };
+       var sendMail = mail.send(options); 
+       res.json(response);
+   }
+
 };
+
+// ** Login **
+exports.reqValidateLogin = [
+
+   body('email').isEmail().normalizeEmail(),
+   body('password').not().isEmpty().trim().escape()
+                           
+];
 
 exports.authenticate = async (req, res, next) => {
-    const authToken = req.body.authToken;
-    const user = await User.findOne({authToken});
-    if(user){
-        const token = user.generateJwt();
-        const authenticate = await User.findOneAndUpdate({_id: user._id}, {authenticated: true});
-        res.json({token: token});
-    }else{
-        res.json({
-            status: 400,
-            message: 'No user found'
-        })
-    }
+
+   const authToken = req.body.authToken; 
+
+   const authenticate = User.authenticate();
+   const authenticateUser = await authenticate(req.body.email, req.body.password)
+       .catch(error => res.json(error));
+   const user = authenticateUser.user;
+
+   if(user){
+       const tokenExpiry = user.authTokenExpire.getTime();
+       const now = Date.now();
+
+       if(tokenExpiry > now){
+           const authenticated = await User.findOneAndUpdate({_id: user._id}, {authenticated: true}, {new: true, useFindAndModify: false})
+               .catch(error => res.json(error));
+
+           if(authenticated){
+               const token = user.generateJwt();
+               res.json({id: user._id, token});
+           }
+           else res.json({ status: 400, statusText: 'Authentication error. Please login again.' });
+       }
+       else res.json({ status: 401, statusText: 'Your authentication link has already expired. Please register again.' });
+   }
+   else res.json({ status: 400, statusText: 'Authentication link error. Please register again.' });
 };
 
-exports.validateLogin = (req, res, next) => {
+exports.login = async (req, res) => {
 
-    req.sanitizeBody('email').normalizeEmail({
-        remove_dots: false,
-        remove_extensions: false,
-        gmail_remove_subaddress: false 
-    });
-    req.checkBody('email', 'That email is not valid').isEmail();
+   const authenticate = User.authenticate();
+   const authenticateUser = await authenticate(req.body.email, req.body.password)
+       .catch(error => res.json(error));
+   const user = authenticateUser.user;
 
-    req.sanitizeBody('password');
-    req.checkBody('password', 'Password can not be blank').notEmpty();
+   if(user){
+       
+       const token = user.generateJwt();
+       res.json({id: user._id, token});
 
-    const errors = req.validationErrors();  
-    if(errors) res.json(errors);
-    return next();
+   }         
+   else res.json({ status: 400, statusText: 'Email or password error.'});
 
-} 
+}
 
-exports.login = (req, res, next) => {
+// ** Forgot Password **
+exports.reqValidateForgotPassword = [
 
-    passport.authenticate('local', function(err, user, info){
-        if(err) res.json(error);
-        if(!user) {
-            res.json({
-                status: 404,
-                message: 'User not found'
-            })
-        }
-        if(user){
-            var token = user.generateJwt();
-            res.json({
-                status: 202,
-                message: 'User login accepted',
-                token: token,
-                id: user._id
-            });
-        }
+   body('email').isEmail().normalizeEmail()
+                           
+];
 
-    })(req, res, next);
-};
+exports.forgotPassword = async(req, res) => {
 
-exports.isLoggedIn = async (req, res, next) => {
-    var auth = req.headers.authorization;
-    var token = auth.split(' ')[1];
-    var decodedUser = jwt.decode(token);
-    const user = await User.findOne({_id: decodedUser._id});
-    if(user){
-        return next();
-    }
-    else{
-        res.json('No User');
-    }      
-};
-
-exports.adminRegister = async (req, res) => {
-
-    if(req.body.level === admin){
-        var admin = true;
-    }else{
-        admin = false;
-    }
-
-    const authToken = crypto.randomBytes(20).toString('hex');
-    const authTokenExpire = Date.now() + 3600000; 
+   const user = await User.findOne({ email: req.body.email })
+       .catch(error => res.json(error));
     
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        level: req.body.level,
-        introducer: req.body.introducer,        
-        address1: req.body.address1,
-        address2: req.body.address2,
-        admin,
-        authToken,
-        authTokenExpire,
-    });
+   if(user) {
 
-    await user.setPassword(req.body.password);
+       const authToken = crypto.randomBytes(20).toString('hex');
+       const authTokenExpire = Date.now() + 3600000; 
 
-    const response = await user.save().catch(error => {
-        res.json(error);
-    });
+       const updatedAuthTokenUser = await User.findOneAndUpdate({_id: user._id}, {authToken, authTokenExpire}, {new: true, useFindAndModify: false})
+           .catch(error => res.json(error));        
 
-    /* Send email for authentication                       
-    const authURL = `http://${req.headers.host}/register/auth/${response.authToken}`;
-    var options = {
-        user: {
-            email: response.email
-        },
-        subject: 'Register Account Authentication',
-        html: `Authenticate your account by pressing clicking <a href="${authURL}"> this link</a></br>
-            or this link ${authURL}`
-    };
-    var sendMail = mail.send(options); 
-    */
-    res.json(response);
-}
+       if(updatedAuthTokenUser){
 
-exports.getUser = async (req, res) => {
-    const user = await User.findOne({_id: req.body._id});
-    if(!user){
-        return;
-    }
-    res.json(user);
-}
+           // Send email for password change                           
+           const authURL = `http://${req.headers.host}/auth/reset-password-2/${updatedAuthTokenUser.authToken}`;
+           var options = {
+               user: {
+                   email: updatedAuthTokenUser.email
+               },
+               subject: 'Forgot password authentication',
+               html: `
+                   <p>IMPORTANT: We have received a request from you to change your password. Please change your password in one hour after receiving this email. If it is not you, please ignore this email.</p>
+                   <p>Change your password <a href="${authURL}"> this link</a></br>
+                   or this link ${authURL}.</p>`
+           };
+           var sendMail = mail.send(options); 
+           res.json({ status: 200, statusText: 'Success. Please check your email to change your password in one hour before link expired.'});
 
-exports.getUsers = async (req, res) => {
-    await User.find((err, users) => {
-        if(users){
-            res.json(users);
-        }
-        if(err){
-            res.json(err);
-        }
-    }); 
+       }
+       else res.json({ status: 400, statusText: 'Fail to generate token, please try again'});
+   }
+   else res.json({ status: 400, statusText: 'Email does not exist, please register to login.'});        
+
 };
 
-exports.searchUsers = async (req, res) => {
-    var search = req.body.input;
-    var user = await User.find();
-    if(user){
-        res.json(user);
-    }
+// ** Reset Password
+exports.reqValidateResetPassword = [
+
+   body('email').isEmail().normalizeEmail(),
+   body('password').not().isEmpty().trim().escape(),
+   body('passwordConfirm').not().isEmpty().trim().escape()
+                           
+];
+
+exports.resetPassword = async(req, res) => {
+
+   const user = await User.findOne({authToken: req.body.token})
+       .catch(error => res.json(error));
+
+   if(user){
+
+       const tokenExpiry = user.authTokenExpire.getTime();
+       const now = Date.now();
+
+       if(tokenExpiry > now){
+
+           const editedUser = await user.setPassword(req.body.password)
+               .catch(error => res.json(error));
+           
+           if(editedUser){
+               const jwtToken = user.generateJwt();
+               const id = editedUser._id;
+               res.json({status: 200, statusText: 'Password reset successful.', id, jwtToken});
+           }
+           else res.json({ status: 401, statusText: 'Error resetting password, please try again.' });
+           
+       }
+       else res.json({ status: 401, statusText: 'Your authentication link has already expired. Please re apply forgot password again.' });
+
+   }
+   else res.json({status: 400, statusText: 'Email or password or link error, please apply to reset your password again.'});
+
 };
 
-exports.editUser = async (req, res) => {
-    const user = await User.findOneAndUpdate(
-        {_id: req.body.id},
-        { 
-            name: req.body.name,            
-            email: req.body.email,
-            phone: req.body.phone,
-            level: req.body.level,
-            introducer: req.body.introducer,
-            address1: req.body.address1,
-            address2: req.body.address2
-        },
-        { new: true }
-    ).catch(error => {
-        res.json(error);
-    });
+exports.profileUser = async(req, res) => {
+   
+   const user = await User.findOne({_id: req.body._id})
+       .catch(error => res.json(error));
 
-    if(req.body.password){
-        await user.setPassword(req.body.password);
+   if(user && user._id) res.json(user);
+   else res.json({ status: 400, statusText: 'User does not exist, please register to login.'});  
 
-        const response = await user.save().catch(error => {
-            res.json(error);
-        });
-    }
-    
-    res.json(user);
 }
 
-exports.removeUser = async (req, res) => {
+// ** Edit Profile
+exports.reqValidateProfile = [
 
-    const deletedUser = await User.findOneAndRemove({_id: req.body.id}).catch((error) => {
-        res.json(error);
-    });
-    res.json(deletedUser);
+   body('_id').not().isEmpty().trim().escape(),
+   body('username').not().isEmpty().trim().escape(),
+   body('birthday').not().isEmpty().trim().escape(),
+   body('handphone').not().isEmpty().trim().escape(),   
+   body('address').not().isEmpty().trim(),
+   body('address2').not().isEmpty().trim(),
+   body('address2').not().isEmpty().trim().escape(),
+   body('city').not().isEmpty().trim().escape(),
+   body('state').not().isEmpty().trim().escape(),
+   body('postcode').not().isEmpty().trim().escape(),
+   body('country').not().isEmpty().trim().escape()
+
+];
+
+exports.editProfile = async (req, res) => {
+
+   const profile = req.body;
+   const user = await User.findOneAndUpdate({_id: req.body._id}, profile, {new: true, useFindAndModify: false})
+       .catch(error => res.json(error));
+   
+   if(user) {
+       res.json(user);
+   }
+   else res.json({ status: 400, statusText: 'Fail to update profile, please try again'});
+
 }
 
-exports.getUserByUsername = async (req, res) => {
-    const user = await User.findOne({username: req.body.username}).populate('introducerInfo');
-    res.json(user);
+exports.addressAutoComplete = async(req, res) => {
+   
+   const query = req.body.address;
+   console.log(query);
+
+   const geocode = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${apiKey}`);
+   console.log(geocode);
 }
 
-exports.googleAddress = (req, res) => {
-    var search = req.body.search;
-    axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${search}&inputtype=textquery&fields=formatted_address&key=${process.env.GOOGLE_KEY}`)
-        .then(response => {
-            if(response){
-                res.json(response.data.candidates);
-            }
-        })
-        .catch(error => res.json(error));
+exports.saveProfileImage = async (req, res) => {
+   const user = await User.findOneAndUpdate({_id: req.body._id}, {image: req.file.fileName}, {new: true, useFindAndModify: false})
+       .catch(error => res.json(error));
+   if(user && user._id) res.json(user);
+   else res.json({status: 401, statusText: 'Unauthorized'});
+
 }
 
-exports.getIntroducerId = async (req, res) => {
-    const user = await User.findOne({ username: req.body.introducer })
-        .catch(error => {
-            res.json(error);
-        });
-    if(user){
-        res.json(user);
-    }
-}
 
-exports.getUsernameAutocomplete = async (req, res) => {
-    const user = await User.find({username: req.body.input})
-    .catch(error => {
-        res.json(error);
-    });
 
-    if(user){       
-        res.json(user);
-    }
-}
+
+
