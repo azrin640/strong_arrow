@@ -423,7 +423,7 @@ let SerialCheckDialog = class SerialCheckDialog {
             review: this.review.value
         };
         this.auth.saveReview(contact).subscribe((response) => {
-            if (response && response._id) {
+            if (response) {
                 this.toReview = false;
                 this.savedReview = response;
                 this.savedReviewSucces = true;
@@ -1034,10 +1034,10 @@ let SerialAuthService = class SerialAuthService {
         this.http = http;
     }
     authenticateSerial(serial) {
-        console.log(serial);
         return this.http.post('/api/product/authentication', { serial: serial }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
     }
     saveReview(review) {
+        console.log(review);
         return this.http.post('/api/product/review', review).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
     }
 };

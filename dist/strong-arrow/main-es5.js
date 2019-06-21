@@ -433,7 +433,7 @@ var SerialCheckDialog = /** @class */ (function () {
             review: this.review.value
         };
         this.auth.saveReview(contact).subscribe(function (response) {
-            if (response && response._id) {
+            if (response) {
                 _this.toReview = false;
                 _this.savedReview = response;
                 _this.savedReviewSucces = true;
@@ -1062,10 +1062,10 @@ var SerialAuthService = /** @class */ (function () {
         this.http = http;
     }
     SerialAuthService.prototype.authenticateSerial = function (serial) {
-        console.log(serial);
         return this.http.post('/api/product/authentication', { serial: serial }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
     };
     SerialAuthService.prototype.saveReview = function (review) {
+        console.log(review);
         return this.http.post('/api/product/review', review).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
     };
     SerialAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
