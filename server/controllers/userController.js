@@ -13,6 +13,8 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const axios = require('axios');
 
+
+
 // ** Reusable **
 exports.validateUserId = [
 
@@ -85,35 +87,34 @@ exports.userExist = async (req, res, next) => {
 
 exports.register = async (req, res) => {
 
-   const authToken = crypto.randomBytes(20).toString('hex');
-   const authTokenExpire = Date.now() + 3600000; 
-   
+   // const authToken = crypto.randomBytes(20).toString('hex');
+   // const authTokenExpire = Date.now() + 3600000; 
+   console.log('Saving user ...');
    const user = new User({
-       username: req.body.username,
-       email: req.body.email,
-       authToken,
-       authTokenExpire,
-       terms: req.body.terms
+      email: 'admin@strongarrowpills.com'
+      //  authToken,
+      //  authTokenExpire,
+      //  terms: req.body.terms
    });
 
-   await user.setPassword(req.body.password);
+   await user.setPassword('User123');
 
    const response = await user.save();
 
    if(response && response._id){
 
        // Send email for authentication                           
-       const authURL = `http://${req.headers.host}/auth/login-2/${response.authToken}`;
-       var options = {
-           user: {
-               email: response.email
-           },
-           subject: 'Register Account Authentication',
-           html: `Authenticate your account by pressing clicking <a href="${authURL}"> this link</a></br>
-               or this link ${authURL}`
-       };
-       var sendMail = mail.send(options); 
-       res.json(response);
+      //  const authURL = `http://${req.headers.host}/auth/login-2/${response.authToken}`;
+      //  var options = {
+      //      user: {
+      //          email: response.email
+      //      },
+      //      subject: 'Register Account Authentication',
+      //      html: `Authenticate your account by pressing clicking <a href="${authURL}"> this link</a></br>
+      //          or this link ${authURL}`
+      //  };
+      //  var sendMail = mail.send(options); 
+      console.log(response);
    }
 
 };

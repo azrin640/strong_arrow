@@ -33,11 +33,14 @@ export class LoginComponent implements OnInit {
      this.authService.login(this.loginForm.value).subscribe(
          (response: User) => {
             if(response && response.id){
-               let token = localStorage.setItem('token', response.token);
-               this.user = response;
+
+               localStorage.setItem('token', response.token);
+               this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'primary'} );
+
+               this.router.navigate(['/#top']);
             } 
          },
-         error => this.snackBar.open(error, 'X', {duration: 10000})
+         error => this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'warn' })
      )
   }
 

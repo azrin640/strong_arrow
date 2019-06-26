@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 // const Product =  mongoose.model('Product');
 // const User = mongoose.model('User');
 // const Category = mongoose.model('Category');
-// const { promisify } = require('es6-promisify');
+const { promisify } = require('es6-promisify');
 require ('express-validator');
 // const uuidv4 = require('uuid/v4');
 const Serial =  mongoose.model('Serial');
@@ -17,8 +17,6 @@ const Review =  mongoose.model('Review');
 
 // Check serial no authentication
 exports.checkSerialNo = async (req, res) => {
-
-   console.log(req.body);
    
    const product = await Serial.findOneAndUpdate({serial: req.body.serial}, {$inc: {authNo: 1}}, {new: true, useFindAndModify: false})
          .catch(error => res.json(error));
@@ -35,6 +33,80 @@ exports.reviewProduct = async (req, res) => {
    res.json(review);
    
 }
+
+exports.generateSerialNo = async (req, res) => {
+   
+   var serial1 = req.body.serial1;
+   var serial2 = req.body.serial2;
+   var volume  = req.body.volume; 
+   var market  = req.body.market;
+   var serialNos = [];
+
+   let i = 0;
+
+   while( i < volume )
+   {
+      let serialNo = new Serial({
+         serial: serial1 + serial2,
+         market: market
+      });
+
+      serialNos.push(serialNo);
+      serial2 ++;
+      i ++;
+   }
+
+   const serials = await Serial.insertMany(serialNos, { ordered: false })
+      .catch(error => {
+         res.json(error);
+         return;
+      });
+      res.json(serials);
+
+}
+
+exports.getSerials = async (req, res) => {
+   const serials = await Serial.find().catch(error => {
+      console.log(error);
+      res.json(error);
+      return;
+   });
+
+   res.json(serials);
+}
+
+exports.deleteSerials = async (req, res) => {
+   
+   let toDelete = req.body;
+   toDelete = req.body.reduce((acc, val) => {
+      if(val){
+         acc.push(val.id);
+      }
+      return acc;
+   }, []);
+
+   const serials = await Serial.remove({_id: { $in: (toDelete).map(mongoose.Types.ObjectId)}}).catch(
+      error => {
+         res.json(error);
+         return;
+      }
+   )
+   res.json(serials);
+}
+
+exports.deleteSerial = async (req, res) => {
+   const serial = await Serial.findOneAndRemove({ _id: req.body.id})
+      .catch(error => {
+         res.json(error);
+         return;
+      });   
+   res.json(serial);
+}
+
+
+
+
+
 
 // Create Product Category
 // exports.createCategory = async (req, res) => {

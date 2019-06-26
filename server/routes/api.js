@@ -17,8 +17,12 @@ const multer = require('multer');
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
+
+// router.get('/', userController.test);
+// router.get('/user/dummy', catchErrors(userController.dummy));
+
 //  ** USER **
-router.post('/user/registration',
+router.get('/user/registration',
     userController.reqValidateRegister,
     userController.validationErrors,
     catchErrors(userController.userExist),
@@ -85,6 +89,21 @@ router.post('/product/review',
    catchErrors(productController.reviewProduct)
 );
 
+router.post('/product/serial/generate',
+   catchErrors(productController.generateSerialNo)
+);
+
+router.get('/products/serials',
+   catchErrors(productController.getSerials)
+);
+
+router.post('/product/serials/rm',
+   catchErrors(productController.deleteSerials)
+);
+
+router.post('/product/serial/rm',
+   catchErrors(productController.deleteSerial)
+);
 // router.post('/product/category', 
 //     catchErrors(userController.isLoggedIn),
 //     catchErrors(productController.createCategory)

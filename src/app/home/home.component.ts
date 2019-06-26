@@ -1,17 +1,17 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {  
+export class HomeComponent implements OnInit{  
   
   
   @Output() menChange: EventEmitter<number> = new EventEmitter();
   @Output() percentChange: EventEmitter<number> = new EventEmitter();
   
-  
+  init: boolean = true;
   // Men Count
   count: number = 203728;
   i: number = 0;  
@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+   this.init = false;
 
     setInterval( () => {
       if( this.i < this.count){
@@ -67,7 +69,7 @@ export class HomeComponent implements OnInit {
         this.percentValue = 99;
         this.percentMode = 'determinate';        
       } 
-    }, 200);
+    }, 200);    
 
   }
 

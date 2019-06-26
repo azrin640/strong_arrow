@@ -4,5 +4,10 @@ export interface Serial {
    serial?: string,
    market?: string,
    status?: number,
-   statusText?: string
+   statusText?: string,
+   
+   // Error
+   code?: number,
+   name?: string,
+   writeErrors?: []
 }

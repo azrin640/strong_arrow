@@ -23,6 +23,10 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AdminComponent } from './admin/admin.component';
+import { AdminSerialComponent } from './admin/admin-serial/admin-serial.component';
+import { AdminSerialTableComponent, BottomSheetConfirm } from './admin/admin-serial/admin-serial-table/admin-serial-table.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MAT_CHECKBOX_CLICK_ACTION, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheetRef } from '@angular/material';
 
 export function tokenGetter(){
    return localStorage.getItem('access_token');
@@ -41,7 +45,11 @@ export function tokenGetter(){
     SerialCheckDialog,
     UserComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent,
+    AdminSerialComponent,
+    AdminSerialTableComponent,
+    BottomSheetConfirm
   ],
   imports: [
     BrowserModule,
@@ -53,13 +61,19 @@ export function tokenGetter(){
     HttpClientModule ,
     FormsModule,
     ReactiveFormsModule,
-    JwtModule.forRoot({config: { tokenGetter: tokenGetter }})
+    JwtModule.forRoot({config: { tokenGetter: tokenGetter }}),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'}
+    {provide: APP_BASE_HREF, useValue: '/'},
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
+    {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   entryComponents: [
-     SerialCheckDialog
+     SerialCheckDialog,
+     BottomSheetConfirm
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
-const validator = require('validator');
 
 
 const serialSchema = new mongoose.Schema({
@@ -12,7 +10,9 @@ const serialSchema = new mongoose.Schema({
         unique: true
     }, 
     market: {
-       type: String
+       type: String,
+       trim: true,
+       lowercase: true
     },
     authNo: {
        type: Number,

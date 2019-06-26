@@ -1,3 +1,9 @@
+<div class="spinner" fxLayout="row" fxLayoutAlign="center center" *ngIf="init">
+   <div class="spinner__container" fxFlex="100vh" fxFlexAlign="center center">
+      <mat-spinner ></mat-spinner>
+   </div>
+</div>
+
 <div class="content" id="top" fxLayout="column" fxLayoutAlign="space-evenly none">
 
   <div class="container">
@@ -49,88 +55,92 @@
   <mat-divider></mat-divider>
 
   <div class="instruction" id="instructions">
+
     <div class="container instruction__container" fxLayout="column" fxLayoutAlign="center center">
+       <div >
+         <mat-card>
+            <img mat-card-image src="assets/images/sa_banner_3.jpg" alt="">
+            <mat-card-title class="instruction__title">
+               HOW TO CONSUME <span class="brand">STRONG ARROW®️ </span>
+            </mat-card-title>
+            <mat-card-content>
 
-      <div class="instruction__banner">
-        <img src="assets/images/sa_banner_3.jpg" alt="">
+               <div class="cards" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center wrap" fxLayoutGap="10px" fxLayoutGap.xs="10px">
+            
+                  <div fxFlex="30" fxFlex.xs="100">
+                     <mat-card class="instruction__card">
+                        <mat-card-title>FOR DAILY INTAKE</mat-card-title>
+                        <mat-card-content>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>done</mat-icon>
+                           </button>
+                           INCREASE PENIS SIZE
+                        </div>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>done</mat-icon>
+                           </button>
+                           QUALITY SEMEN / SPERM
+                        </div>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>notification_important</mat-icon>
+                           </button>
+                           Daily maximum 2 capsules after breakfast.
+                        </div>
+                        </mat-card-content>
+                     </mat-card>
+                  </div>
+
+                  <div  fxFlex="30" fxFlex.xs="100">
+                     <mat-card class="instruction__card">
+                        <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>
+                        <mat-card-content>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>notification_important</mat-icon>
+                           </button>
+                           TAKE 1 capsule, 20min before intercourse
+                        </div>
+                        </mat-card-content>
+                     </mat-card>
+                  </div>
+
+                  <div  fxFlex="30" fxFlex.xs="100">
+                     <mat-card class="instruction__card">
+                        <mat-card-title>IMPORTANT TIPS</mat-card-title>
+                        <mat-card-content>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>notification_important</mat-icon>
+                           </button>
+                           Reduce caffeine daily intake(tea, coffee, chocolate) 
+                        </div>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>notification_important</mat-icon>
+                           </button>
+                           REDUCE carbonated drinks , alcohol, icy cool drinks
+                        </div>
+                        <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
+                           <button mat-mini-fab color="primary" style="margin-right: 20px;">
+                              <mat-icon>notification_important</mat-icon>
+                           </button>
+                           REDUCE greasy food for maximum effective
+                        </div>
+                        </mat-card-content>
+                     </mat-card>
+                  </div>
+
+               </div>
+            </mat-card-content>
+         </mat-card>
       </div>
 
-      <div class="text__title instruction__title">
-          HOW TO CONSUME <span class="brand">STRONG ARROW®️ </span>:
-      </div>
+   </div>
 
-      <div class="instruction__cards" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="center stretch">
-
-        <div class="instruction__card" fxFlex="30" fxFlex.xs="100">
-          <mat-card>
-            <mat-card-title>FOR DAILY INTAKE</mat-card-title>
-            <mat-card-content>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>done</mat-icon>
-                </button>
-                INCREASE PENIS SIZE
-              </div>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>done</mat-icon>
-                </button>
-                QUALITY SEMEN / SPERM
-              </div>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>notification_important</mat-icon>
-                </button>
-                Daily maximum 2 capsules after breakfast.
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-        <div class="instruction__card" fxFlex="30" fxFlex="100">
-          <mat-card>
-            <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>
-            <mat-card-content>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>notification_important</mat-icon>
-                </button>
-                TAKE 1 capsule, 20min before intercourse
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-        <div class="instruction__card" fxFlex="30" fxFlex="100">
-          <mat-card>
-            <mat-card-title>IMPORTANT TIPS</mat-card-title>
-            <mat-card-content>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>notification_important</mat-icon>
-                </button>
-                Reduce caffeine daily intake(tea, coffee, chocolate) 
-              </div>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>notification_important</mat-icon>
-                </button>
-                REDUCE carbonated drinks , alcohol, icy cool drinks
-              </div>
-              <div class="blurp__content" fxLayout="row" fxLayoutAlign=" center">
-                <button mat-mini-fab color="primary" style="margin-right: 20px;">
-                  <mat-icon>notification_important</mat-icon>
-                </button>
-                REDUCE greasy food for maximum effective
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
+   </div>
 
   <mat-divider></mat-divider>
 

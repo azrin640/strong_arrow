@@ -1,5 +1,38 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.html ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = " <div class=\"table\">\n\n   <div class=\"title__start\" fxLayout=\"column\" fxLayoutAlign=\"start\">\n      Serial Number List \n   </div>\n\n   <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.value)\">\n         \n      <div class=\"table__actions-menu\" fxLayout fxLayoutAlign=\"center center\">\n         <button type=\"button\" mat-icon-button [color]=\"deleteColor\" (click)=\"selectAction()\" \n            matTooltip=\"Open check box to select all serial nos or select serial no to delete\">\n               <mat-icon>delete</mat-icon>\n         </button>\n         <button type=\"button\" mat-icon-button [color]=\"filterColor\" (click)=\"filterAction()\" \n            matTooltip=\"Filter all serial no information.\">\n               <mat-icon>find_in_page</mat-icon>\n         </button>\n      </div>\n      \n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button type=\"button\" mat-icon-button [color]=\"selectAllColor\" (click)=\"selectAll()\"\n            matTooltip=\"Select all serial nos to delete\">\n               <mat-icon>select_all</mat-icon>\n         </button>\n         <button mat-icon-button color=\"primary\"  type=\"submit\" [disabled]=\"!f.form.valid\"\n            matTooltip=\"Delete serial nos, deletion is permanent.\">\n               <mat-icon>delete_forever</mat-icon>\n         </button>\n      </div>\n\n      <div class=\"table__filter-input\" *ngIf=\"filter\">\n         <mat-form-field>\n            <input class=\"table__filter\" \n               type=\"text\" \n               matInput \n               (keyup)=\"filterTable($event.target.value)\"\n               placeholder=\"Filter Table\"\n            >\n         </mat-form-field>\n      </div>\n\n      <div class=\"table__table\">\n         <div class=\"mat-elevation-z8\">\n            <table mat-table class=\"full-width-table\" matSort aria-label=\"Elements\" [dataSource]=\"dataSource\">\n\n               <div class=\"table__check\" *ngIf=\"editMode\">\n                     <ng-container matColumnDef=\"check\">\n                        <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Select</th>\n                        <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                           <mat-checkbox #serial color=\"primary\" [(indeterminate)]=\"indeterminate\" [labelPosition]=\"labelPosition\" \n                              [(checked)]=\"checked\" [(ngModel)]=\"serial.checked\" name=\"{{row.id}}\">\n                           </mat-checkbox>\n                     </ng-container>           \n               </div>\n\n               <ng-container matColumnDef=\"serial\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.serial | uppercase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"market\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>For Market</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.market | titlecase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"delete\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                     <button mat-icon-button type=\"button\" color=\"warn\" (click)=\"deleteASerialNo(row)\">\n                        <mat-icon>clear</mat-icon>\n                     </button>\n                  </td>\n               </ng-container>\n\n               <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n               <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            </table>\n\n            <mat-paginator #paginator\n                  [length]=\"dataSource?.data.length\"\n                  [pageIndex]=\"0\"\n                  [pageSize]=\"25\"\n                  [pageSizeOptions]=\"[25, 50, 100, 250]\">\n            </mat-paginator>\n         </div>\n      </div>\n\n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button mat-icon-button (click)=\"selectAll()\"><mat-icon>select_all</mat-icon></button>\n         <button mat-icon-button type=\"submit\" ><mat-icon>delete_forever</mat-icon></button>\n      </div>\n\n   </form>\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-serial/admin-serial.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin-serial/admin-serial.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\" id=\"top\">\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"card\">\n         <mat-card>\n            <mat-card-title>\n               Serial Form \n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"serial__form\">\n\n                  <form [formGroup]=\"serialForm\" (ngSubmit)=\"submitSerialForm()\">\n\n                     <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Serial 1</mat-label>\n                           <input matInput placeholder=\"Serial 1\" #serial1 formControlName=\"serial1\" minlength=\"2\" maxlength=\"2\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: AZ</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('required')\">\n                              Serial 1 is <strong>required</strong>\n                           </mat-error>     \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('minlength')\">\n                              Please enter only <strong>2 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('maxlength')\">\n                              Please enter max <strong>2 digits</strong> alphabet\n                           </mat-error>                   \n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <span matPrefix class=\"serial__form-prefix\" *ngIf=\"serial1.value\">{{ serial1.value }} - </span>\n                           <mat-label>Serial 2</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Serial 2\" formControlName=\"serial2\" min=\"6\" max=\"6\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: 300200</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('required')\">\n                              Serial 2 is <strong>required</strong>\n                           </mat-error>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('minlength')\">\n                              Please enter only <strong>6 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('maxlength')\">\n                              Please enter max <strong>6 digits</strong> alphabet\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Volume</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Volume\" formControlName=\"volume\" required>\n                           <mat-icon matSuffix color=\"primary\">ballot</mat-icon>\n                           <mat-hint>Ex: 100 (Will register AZ300200 - AZ300300)</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('volume').hasError('required')\">\n                              Volume is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Market</mat-label>\n                           <mat-select formControlName=\"market\">\n                             <mat-option *ngFor=\"let market of markets\" [value]=\"market.area\">\n                                 {{ market.area }}\n                             </mat-option>\n                           </mat-select>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"serial__form-button\" type=\"submit\" [disabled]=\"serialForm.invalid\" color=\"primary\">\n                           <mat-icon>check_circle</mat-icon>\n                           Generate Serial No\n                        </button>\n\n                     </div>\n\n                  </form>\n               </div>\n            \n            </mat-card-content>\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"content_100pct\" *ngIf=\"serials\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\">\n\n         <mat-card>\n            <mat-card-title>SERIAL NUMBER GENERATED</mat-card-title>\n            <mat-card-content>\n               <div class=\"serial__save-result\" >\n                  <mat-list>\n                     <mat-list-item *ngFor=\"let result of serials\">\n                        <mat-icon mat-list-icon>view_list</mat-icon>\n                        <h4 mat-line>{{ result.serial | titlecase }}</h4>\n                        <p mat-line> {{ result.market | titlecase }} </p>\n                     </mat-list-item>\n                  </mat-list>\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>               \n   </div>\n\n   <mat-divider></mat-divider>\n\n   <div class=\"content_100pct\">\n      <app-admin-serial-table>      \n      </app-admin-serial-table>\n   </div>\n   \n</div>\n\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin.component.html":
+/*!**********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  admin works!\n</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/app.component.html":
 /*!**************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/app.component.html ***!
@@ -29,7 +62,7 @@ module.exports = "<div class=\"card\" id=\"top\">\n\n   <div mat-card class=\"ca
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n         <mat-card>\n            <mat-card-title>AUTHENTICATE PRODUCT</mat-card-title>\n            <mat-card-content>\n               <div class=\"auth__input\">\n\n                  <form>\n\n                     <div class=\"form__component\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field appearance=\"fill\">\n                           <mat-label>Serial Number</mat-label>\n                           <input matInput placeholder=\"DFXXXXXXX\" [formControl]=\"serial\" required>\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter serial number here</mat-hint>\n                           <mat-error *ngIf=\"serial.invalid\">\n                              Serial number is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"form__button-submit\" color=\"primary\" [disabled]=\"serial.invalid\" (click)=\"authenticate()\">\n                           <i class=\"fas fa-skull-crossbones\"></i>\n                           Check Authenticity\n                        </button>\n\n                     </div>\n\n                  </form>\n\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>\n   \n   </div>\n\n</div>"
+module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n         <mat-card>\n            <mat-card-title>AUTHENTICATE PRODUCT</mat-card-title>\n            <mat-card-content>\n               <div class=\"auth__input\">\n\n                  <form>\n\n                     <div class=\"form__component\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field appearance=\"fill\">\n                           <mat-label>Serial Number</mat-label>\n                           <input matInput placeholder=\"DFXXXXXXX\" [formControl]=\"serial\" required autocomplete=\"serial\">\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter serial number here</mat-hint>\n                           <mat-error *ngIf=\"serial.invalid\">\n                              Serial number is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"form__button-submit\" color=\"primary\" [disabled]=\"serial.invalid\" (click)=\"authenticate()\">\n                           <i class=\"fas fa-skull-crossbones fa-icon__skull\"></i>\n                           Check Authenticity\n                        </button>\n\n                     </div>\n\n                  </form>\n\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>\n   \n   </div>\n\n</div>"
 
 /***/ }),
 
@@ -40,7 +73,7 @@ module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.\n                  </div>\n                  <button mat-raised-button color=\"accent\">\n                     <i class=\"fab fa-whatsapp\"></i>\n                     Contact Our Malaysian Representative\n                  </button>      \n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"toolbar\">\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.\n                  </div>\n                  <form [(action)]=\"telegram\">\n                  <button mat-raised-button color=\"accent\" type=\"submit\">\n                     <i class=\"fab fa-telegram fa-icon__telegram\"></i>\n                     Contact Our Malaysian Representative\n                  </button>   \n                  </form>   \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a [(href)]=\"telegram\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -51,7 +84,7 @@ module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" id=\"top\" fxLayout=\"column\" fxLayoutAlign=\"space-evenly none\">\n\n  <div class=\"container\">\n    <div class=\"banner\" fxLayoutAlign=\"center center\">\n      <img class=\"banner__image\" src=\"assets/images/sa_banner_1.jpg\" alt=\"Strong Arrow Banner 1\">\n    </div>    \n  </div>\n\n  <mat-divider></mat-divider>\n\n  <app-intro></app-intro>\n\n  <mat-divider></mat-divider>\n\n  <app-how></app-how>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"container\" id=\"benefits\" fxLayout fxLayoutAlign=\"center center\">\n    <div class=\"benefits__container\" >\n\n      <mat-card>\n         <img mat-card-image class=\"benefits__image\" src=\"assets/images/sa_product_1.jpg\" alt=\"Strong Arrow Pills Products\">\n\n         <mat-card-title>FUNCTIONS AND BENEFITS OF <span class=\"brand\">STRONG ARROW®️</span></mat-card-title>\n\n         <mat-card-content>\n            <div class=\"content\" fxLayout=\"column\" fxLayoutAlign=\"center\">\n\n               <div class=\"blurp\" fxFlex.gt-xs=\"70%\" fxLayout=\"row\" *ngFor=\"let benefit of benefits\">\n                  <div class=\"blurp__icon\" fxFlex.xs=\"20\" fxLayout fxLayoutAlign=\"center center\">\n                     <button mat-mini-fab color=\"primary\">\n                        <mat-icon>done</mat-icon>\n                     </button>       \n                  </div>\n                  <div class=\"blurp__content\" fxFlex.xs=\"80\">\n                     <div class=\"text__subtitle\">\n                        <span class=\"brand\">STRONG ARROW®️ </span>{{ benefit.text }}\n                     </div>\n                  </div>          \n               </div>         \n          \n            </div>\n         </mat-card-content>\n      </mat-card>\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"instruction\" id=\"instructions\">\n    <div class=\"container instruction__container\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"instruction__banner\">\n        <img src=\"assets/images/sa_banner_3.jpg\" alt=\"\">\n      </div>\n\n      <div class=\"text__title instruction__title\">\n          HOW TO CONSUME <span class=\"brand\">STRONG ARROW®️ </span>:\n      </div>\n\n      <div class=\"instruction__cards\" fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex.xs=\"100\">\n          <mat-card>\n            <mat-card-title>FOR DAILY INTAKE</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                INCREASE PENIS SIZE\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>done</mat-icon>\n                </button>\n                QUALITY SEMEN / SPERM\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Daily maximum 2 capsules after breakfast.\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                TAKE 1 capsule, 20min before intercourse\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n        <div class=\"instruction__card\" fxFlex=\"30\" fxFlex=\"100\">\n          <mat-card>\n            <mat-card-title>IMPORTANT TIPS</mat-card-title>\n            <mat-card-content>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                Reduce caffeine daily intake(tea, coffee, chocolate) \n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE carbonated drinks , alcohol, icy cool drinks\n              </div>\n              <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>notification_important</mat-icon>\n                </button>\n                REDUCE greasy food for maximum effective\n              </div>\n            </mat-card-content>\n          </mat-card>\n        </div>\n\n      </div>\n\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n</div>\n"
+module.exports = "<div class=\"spinner\" fxLayout=\"row\" fxLayoutAlign=\"center center\" *ngIf=\"init\">\n   <div class=\"spinner__container\" fxFlex=\"100vh\" fxFlexAlign=\"center center\">\n      <mat-spinner ></mat-spinner>\n   </div>\n</div>\n\n<div class=\"content\" id=\"top\" fxLayout=\"column\" fxLayoutAlign=\"space-evenly none\">\n\n  <div class=\"container\">\n    <div class=\"banner\" fxLayoutAlign=\"center center\">\n      <img class=\"banner__image\" src=\"assets/images/sa_banner_1.jpg\" alt=\"Strong Arrow Banner 1\">\n    </div>    \n  </div>\n\n  <mat-divider></mat-divider>\n\n  <app-intro></app-intro>\n\n  <mat-divider></mat-divider>\n\n  <app-how></app-how>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"container\" id=\"benefits\" fxLayout fxLayoutAlign=\"center center\">\n    <div class=\"benefits__container\" >\n\n      <mat-card>\n         <img mat-card-image class=\"benefits__image\" src=\"assets/images/sa_product_1.jpg\" alt=\"Strong Arrow Pills Products\">\n\n         <mat-card-title>FUNCTIONS AND BENEFITS OF <span class=\"brand\">STRONG ARROW®️</span></mat-card-title>\n\n         <mat-card-content>\n            <div class=\"content\" fxLayout=\"column\" fxLayoutAlign=\"center\">\n\n               <div class=\"blurp\" fxFlex.gt-xs=\"70%\" fxLayout=\"row\" *ngFor=\"let benefit of benefits\">\n                  <div class=\"blurp__icon\" fxFlex.xs=\"20\" fxLayout fxLayoutAlign=\"center center\">\n                     <button mat-mini-fab color=\"primary\">\n                        <mat-icon>done</mat-icon>\n                     </button>       \n                  </div>\n                  <div class=\"blurp__content\" fxFlex.xs=\"80\">\n                     <div class=\"text__subtitle\">\n                        <span class=\"brand\">STRONG ARROW®️ </span>{{ benefit.text }}\n                     </div>\n                  </div>          \n               </div>         \n          \n            </div>\n         </mat-card-content>\n      </mat-card>\n    </div>\n  </div>\n\n  <mat-divider></mat-divider>\n\n  <div class=\"instruction\" id=\"instructions\">\n\n    <div class=\"container instruction__container\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n       <div >\n         <mat-card>\n            <img mat-card-image src=\"assets/images/sa_banner_3.jpg\" alt=\"\">\n            <mat-card-title class=\"instruction__title\">\n               HOW TO CONSUME <span class=\"brand\">STRONG ARROW®️ </span>\n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"cards\" fxLayout=\"row wrap\" fxLayout.xs=\"column\" fxLayoutAlign=\"center wrap\" fxLayoutGap=\"10px\" fxLayoutGap.xs=\"10px\">\n            \n                  <div fxFlex=\"30\" fxFlex.xs=\"100\">\n                     <mat-card class=\"instruction__card\">\n                        <mat-card-title>FOR DAILY INTAKE</mat-card-title>\n                        <mat-card-content>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>done</mat-icon>\n                           </button>\n                           INCREASE PENIS SIZE\n                        </div>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>done</mat-icon>\n                           </button>\n                           QUALITY SEMEN / SPERM\n                        </div>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>notification_important</mat-icon>\n                           </button>\n                           Daily maximum 2 capsules after breakfast.\n                        </div>\n                        </mat-card-content>\n                     </mat-card>\n                  </div>\n\n                  <div  fxFlex=\"30\" fxFlex.xs=\"100\">\n                     <mat-card class=\"instruction__card\">\n                        <mat-card-title>FOR LONG LASTING & STAMINA</mat-card-title>\n                        <mat-card-content>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>notification_important</mat-icon>\n                           </button>\n                           TAKE 1 capsule, 20min before intercourse\n                        </div>\n                        </mat-card-content>\n                     </mat-card>\n                  </div>\n\n                  <div  fxFlex=\"30\" fxFlex.xs=\"100\">\n                     <mat-card class=\"instruction__card\">\n                        <mat-card-title>IMPORTANT TIPS</mat-card-title>\n                        <mat-card-content>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>notification_important</mat-icon>\n                           </button>\n                           Reduce caffeine daily intake(tea, coffee, chocolate) \n                        </div>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>notification_important</mat-icon>\n                           </button>\n                           REDUCE carbonated drinks , alcohol, icy cool drinks\n                        </div>\n                        <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                           <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                              <mat-icon>notification_important</mat-icon>\n                           </button>\n                           REDUCE greasy food for maximum effective\n                        </div>\n                        </mat-card-content>\n                     </mat-card>\n                  </div>\n\n               </div>\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n   </div>\n\n   </div>\n\n  <mat-divider></mat-divider>\n\n</div>\n"
 
 /***/ }),
 
@@ -84,7 +117,7 @@ module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navbar\">\n\n  <div class=\"navbar__items\" fxLayout=\"row\" fxLayoutAlign=\"center center\">\n\n    <div class=\"navbar__logo\" fxFlex=\"40\">\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"\"> \n      </a>   \n    </div>\n\n  </div>\n\n</mat-toolbar>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a>  \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\">Login</button>\n</mat-toolbar>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -95,7 +128,7 @@ module.exports = "<mat-toolbar class=\"navbar\">\n\n  <div class=\"navbar__items
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" id=\"top\">\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"card\">\n         <mat-card>\n            <mat-card-title>\n               Login Form \n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"login__form\">\n\n                  <form [formGroup]=\"loginForm\" (ngSubmit)=\"login()\">\n\n                     <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field class=\"login__input\" appearance=\"fill\">\n                           <mat-label>Email</mat-label>\n                           <input matInput placeholder=\"Email\" #email formControlName=\"email\" required>\n                           <mat-icon matSuffix color=\"primary\">alternate_email</mat-icon>\n                           <mat-hint>Enter email here</mat-hint>\n                           <mat-error *ngIf=\"loginForm.get('email').hasError('required')\">\n                              Email is <strong>required</strong>\n                           </mat-error>\n                           <mat-error *ngIf=\"loginForm.get('email').hasError('email')\">\n                              Please enter a valid <strong>email</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"login__input\" appearance=\"fill\">\n                           <mat-label>Password</mat-label>\n                           <input matInput type=\"password\" placeholder=\"Password\" formControlName=\"password\" required>\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter password here</mat-hint>\n                           <mat-error *ngIf=\"loginForm.get('password').hasError('required')\">\n                              Password is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"login__form-button\" type=\"submit\" [disabled]=\"loginForm.invalid\" color=\"primary\" >\n                           <mat-icon>check_circle</mat-icon>\n                           Login\n                        </button>\n\n                     </div>\n\n                     {{ loginForm.errors }}\n\n                  </form>\n\n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"content\" id=\"top\">\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"card\">\n         <mat-card>\n            <mat-card-title>\n               Login Form \n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"login__form\">\n\n                  <form [formGroup]=\"loginForm\" (ngSubmit)=\"login()\">\n\n                     <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field class=\"login__input\" appearance=\"fill\">\n                           <mat-label>Email</mat-label>\n                           <input matInput placeholder=\"Email\" #email formControlName=\"email\" required autocomplete=\"email\">\n                           <mat-icon matSuffix color=\"primary\">alternate_email</mat-icon>\n                           <mat-hint>Enter email here</mat-hint>\n                           <mat-error *ngIf=\"loginForm.get('email').hasError('required')\">\n                              Email is <strong>required</strong>\n                           </mat-error>\n                           <mat-error *ngIf=\"loginForm.get('email').hasError('email')\">\n                              Please enter a valid <strong>email</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"login__input\" appearance=\"fill\">\n                           <mat-label>Password</mat-label>\n                           <input matInput type=\"password\" placeholder=\"Password\" formControlName=\"password\" required autocomplete=\"password\">\n                           <mat-icon matSuffix color=\"primary\">vpn_key</mat-icon>\n                           <mat-hint>Enter password here</mat-hint>\n                           <mat-error *ngIf=\"loginForm.get('password').hasError('required')\">\n                              Password is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"login__form-button\" type=\"submit\" [disabled]=\"loginForm.invalid\" color=\"primary\" >\n                           <mat-icon>check_circle</mat-icon>\n                           Login\n                        </button>\n\n                     </div>\n\n                     {{ loginForm.errors }}\n\n                  </form>\n\n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -144,6 +177,351 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.scss":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.scss ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".table {\n  margin-top: 10vh;\n}\n.table__actions-submit {\n  margin: 0;\n  padding: 0;\n}\n.full-width-table {\n  width: 100%;\n}\n.bottom-sheet {\n  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);\n  background: #f44336;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FkbWluL2FkbWluLXNlcmlhbC9hZG1pbi1zZXJpYWwtdGFibGUvYWRtaW4tc2VyaWFsLXRhYmxlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hZG1pbi9hZG1pbi1zZXJpYWwvYWRtaW4tc2VyaWFsLXRhYmxlL2FkbWluLXNlcmlhbC10YWJsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNHLGdCQUFBO0FDQ0g7QURDRztFQUNHLFNBQUE7RUFDQSxVQUFBO0FDQ047QURHQTtFQUNFLFdBQUE7QUNBRjtBREdBO0VBQ0cscUhBQUE7RUFDRixtQkFBQTtFQUNBLFdBQUE7QUNBRCIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLXNlcmlhbC9hZG1pbi1zZXJpYWwtdGFibGUvYWRtaW4tc2VyaWFsLXRhYmxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRhYmxle1xuICAgbWFyZ2luLXRvcDogMTB2aDtcblxuICAgJl9fYWN0aW9ucy1zdWJtaXR7XG4gICAgICBtYXJnaW46IDA7XG4gICAgICBwYWRkaW5nOiAwO1xuICAgfVxufVxuXG4uZnVsbC13aWR0aC10YWJsZSB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uYm90dG9tLXNoZWV0e1xuICAgYm94LXNoYWRvdzogMCA1cHggNXB4IC0zcHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDhweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuMTQpLCAwIDNweCAxNHB4IDJweCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xuXHRiYWNrZ3JvdW5kOiAjZjQ0MzM2O1xuXHRjb2xvcjogI2ZmZlxufVxuIiwiLnRhYmxlIHtcbiAgbWFyZ2luLXRvcDogMTB2aDtcbn1cbi50YWJsZV9fYWN0aW9ucy1zdWJtaXQge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG5cbi5mdWxsLXdpZHRoLXRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5ib3R0b20tc2hlZXQge1xuICBib3gtc2hhZG93OiAwIDVweCA1cHggLTNweCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgOHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgM3B4IDE0cHggMnB4IHJnYmEoMCwgMCwgMCwgMC4xMik7XG4gIGJhY2tncm91bmQ6ICNmNDQzMzY7XG4gIGNvbG9yOiAjZmZmO1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts":
+/*!***************************************************************************************!*\
+  !*** ./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts ***!
+  \***************************************************************************************/
+/*! exports provided: AdminSerialTableComponent, BottomSheetConfirm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminSerialTableComponent", function() { return AdminSerialTableComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BottomSheetConfirm", function() { return BottomSheetConfirm; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var src_app_services_serial_no_serial_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/serial-no/serial-auth.service */ "./src/app/services/serial-no/serial-auth.service.ts");
+
+
+
+
+;
+;
+;
+;
+var AdminSerialTableComponent = /** @class */ (function () {
+    function AdminSerialTableComponent(serialService, snackBar, bottomSheet) {
+        this.serialService = serialService;
+        this.snackBar = snackBar;
+        this.bottomSheet = bottomSheet;
+        this.deleteColor = 'primary';
+        this.filterColor = 'primary';
+        this.selectAllColor = 'primary';
+        // Checkbox settings
+        this.checked = false;
+        this.indeterminate = false;
+        this.labelPosition = 'after';
+        this.disabled = false;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
+        this.editMode = false;
+        this.filter = false;
+        this.displayedColumns = ['serial', 'market', 'delete'];
+        this.serials = [];
+        this.toDeleteData = {};
+        this.toDeleteList = [];
+        this.datasToDelete = [];
+        this.length = 0;
+        this.index = [];
+    }
+    AdminSerialTableComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.serialService.getSerialNos().subscribe(function (response) {
+            _this.dataSource.data = response;
+        }, function (error) { return _this.snackBar.open("There is a problem getting data from the server. Error: " + error, 'X', { duration: 10000, panelClass: 'warn' }); });
+    };
+    AdminSerialTableComponent.prototype.ngAfterViewInit = function () {
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+    };
+    AdminSerialTableComponent.prototype.selectAction = function () {
+        this.editMode ?
+            (this.editMode = false, this.displayedColumns = ['serial', 'market', 'delete'], this.deleteColor = 'primary') :
+            (this.editMode = true, this.displayedColumns = ['check', 'serial', 'market', 'delete'], this.deleteColor = 'accent');
+    };
+    AdminSerialTableComponent.prototype.filterAction = function () {
+        this.filter ? (this.filter = false, this.filterColor = 'primary') : (this.filter = true, this.filterColor = 'accent');
+    };
+    AdminSerialTableComponent.prototype.filterTable = function (filterValue) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+        console.log(this.dataSource.filteredData);
+    };
+    AdminSerialTableComponent.prototype.deleteASerialNo = function (serial) {
+        this.length = 1;
+        this.toDeleteData = serial;
+        // Open bottom sheet for user confirmation
+        this.openBottomSheet();
+    };
+    AdminSerialTableComponent.prototype.selectAll = function () {
+        this.checked ? (this.checked = false, this.selectAllColor = 'primary') : (this.checked = true, this.selectAllColor = 'accent');
+    };
+    AdminSerialTableComponent.prototype.onSubmit = function (datas) {
+        if (datas) {
+            /* Convert objects from ngFor checkbox to array, objects example: { {"abc100": true}, {"abc101" false}, {"abc102": false}, ...}, to {{"abc100": true}, undefined, undefined, ...} then convert it with map to [{id: "abc100"}, undefined, undefined, ...] */
+            var datasToDelete = Object.keys(datas).map(function (key) {
+                if (datas[key])
+                    return { id: key };
+                else
+                    return;
+            })
+                // Further chain it to reduce method with array initializer to rebuild the array and exclude undefined data  
+                .reduce(function (acc, val) {
+                if (val)
+                    acc.push(val);
+                return acc;
+            }, []);
+            this.datasToDelete = datasToDelete;
+            this.length = datasToDelete.length;
+            this.openBottomSheet();
+        }
+        else
+            return;
+    };
+    AdminSerialTableComponent.prototype.openBottomSheet = function () {
+        var _this = this;
+        var bottomSheetRef;
+        var length = this.length;
+        // Test and open bottomSheet and send data
+        var data = { length: length, delete: false };
+        if (length >= 1) {
+            var openBottomSheet = this.bottomSheet.open(BottomSheetConfirm, { data: data, panelClass: 'red-theme' });
+            bottomSheetRef = openBottomSheet;
+        }
+        // If the user confirm deletion, deleteManyReq function to delete from db
+        bottomSheetRef.afterDismissed().subscribe(function (confirm) {
+            if (confirm && confirm.delete && length == 1) {
+                // delete in db
+                _this.deleteASerialNoInDb();
+            }
+            else if (confirm && confirm.delete && length > 1) {
+                // delete in db
+                _this.deleteManyReqInDb();
+            }
+        });
+    };
+    AdminSerialTableComponent.prototype.deleteASerialNoInDb = function () {
+        var _this = this;
+        var serial = this.toDeleteData;
+        this.serialService.deleteASerialNo(serial).subscribe(function (response) {
+            if (response && response.id) {
+                var currDatas = _this.dataSource.data;
+                var index = currDatas.findIndex(function (serial) { return serial.id == response.id; });
+                currDatas.splice(index, 1);
+                _this.snackBar.open('Serial number is successfully deleted from database.', 'X', { duration: 10000, panelClass: 'primary' });
+            }
+            else
+                _this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', { duration: 10000, panelClass: 'warn' });
+        }, function (error) { return _this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', { duration: 10000, panelClass: 'warn' }); });
+    };
+    AdminSerialTableComponent.prototype.deleteManyReqInDb = function () {
+        var _this = this;
+        this.serialService.deleteSerialNos(this.datasToDelete).subscribe(function (response) {
+            if (response.ok == 1)
+                _this.deleteFromDataSource();
+            else
+                _this.snackBar.open("Error deleting file from the server. Please try again", 'X', { duration: 10000, panelClass: 'warn' });
+        }, function (error) {
+            _this.snackBar.open("Error deleting file from the server. Error: " + error, 'X', { duration: 10000, panelClass: 'warn' });
+            _this.deletedInDb = false;
+        });
+    };
+    AdminSerialTableComponent.prototype.deleteFromDataSource = function () {
+        var currData = this.dataSource.data;
+        var datasToDelete = this.datasToDelete;
+        var dataSource = datasToDelete.reduce(function (acc, val) {
+            if (val) {
+                var index = currData.findIndex(function (serial) { return serial.id === val.id; });
+                currData.splice(index, 1);
+            }
+            acc = currData;
+            return acc;
+        }, []);
+        this.dataSource.data = dataSource;
+        this.selectAction;
+        this.checked = false;
+        this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', { duration: 10000, panelClass: 'primary' });
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"])
+    ], AdminSerialTableComponent.prototype, "paginator", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"], { static: false }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"])
+    ], AdminSerialTableComponent.prototype, "sort", void 0);
+    AdminSerialTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-admin-serial-table',
+            template: __webpack_require__(/*! raw-loader!./admin-serial-table.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.html"),
+            styles: [__webpack_require__(/*! ./admin-serial-table.component.scss */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_serial_no_serial_auth_service__WEBPACK_IMPORTED_MODULE_3__["SerialAuthService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheet"]])
+    ], AdminSerialTableComponent);
+    return AdminSerialTableComponent;
+}());
+
+var BottomSheetConfirm = /** @class */ (function () {
+    function BottomSheetConfirm(bottomSheetRef, data) {
+        this.bottomSheetRef = bottomSheetRef;
+        this.data = data;
+        this.dataLength = 0;
+    }
+    BottomSheetConfirm.prototype.ngOnInit = function () {
+        this.dataLength = this.data.length;
+    };
+    BottomSheetConfirm.prototype.delete = function (action) {
+        this.data.delete = action;
+        this.bottomSheetRef.dismiss(this.data);
+    };
+    BottomSheetConfirm = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'bottom-sheet-confirm',
+            template: "\n                  <div fxLayout=\"column\" fxLayoutAlign=\"center center\" >\n                        <mat-card-title class=\"card__title\">Confirm Delete</mat-card-title>\n                        <mat-card-content>\n\n                           <div class=\"mb__warning\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                              Are you sure you want to delete these serial numbers?\n\n                              <h2>{{ dataLength }} serial numbers</h2>\n                           </div>\n                           \n                        </mat-card-content>\n                        <mat-card-actions>\n                           <div class=\"bsheet__button-cancel\" fxLayout=\"row\" fxLayoutAlign=\"center center\" >\n                              <button mat-raised-button (click)=\"delete(false)\" color=\"accent\" >Cancel</button>\n                              <button mat-raised-button (click)=\"delete(true)\" color=\"primary\" >Delete</button>\n                           </div>\n                        </mat-card-actions>\n                  </div>   \n   ",
+            styles: [__webpack_require__(/*! ./admin-serial-table.component.scss */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_BOTTOM_SHEET_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetRef"], Object])
+    ], BottomSheetConfirm);
+    return BottomSheetConfirm;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-serial/admin-serial.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/admin/admin-serial/admin-serial.component.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".serial__input {\n  width: 100%;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.serial__form-button {\n  width: 100%;\n}\n.serial__form-prefix {\n  padding-right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FkbWluL2FkbWluLXNlcmlhbC9hZG1pbi1zZXJpYWwuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FkbWluL2FkbWluLXNlcmlhbC9hZG1pbi1zZXJpYWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUc7RUFDRyxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxtQkFBQTtBQ0ROO0FESUc7RUFDRyxXQUFBO0FDRk47QURLRztFQUNHLG1CQUFBO0FDSE4iLCJmaWxlIjoic3JjL2FwcC9hZG1pbi9hZG1pbi1zZXJpYWwvYWRtaW4tc2VyaWFsLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNlcmlhbHtcblxuICAgJl9faW5wdXR7XG4gICAgICB3aWR0aDogMTAwJTtcbiAgICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICAgfVxuXG4gICAmX19mb3JtLWJ1dHRvbntcbiAgICAgIHdpZHRoOiAxMDAlO1xuICAgfVxuXG4gICAmX19mb3JtLXByZWZpeHtcbiAgICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gICB9XG59IiwiLnNlcmlhbF9faW5wdXQge1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLXRvcDogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn1cbi5zZXJpYWxfX2Zvcm0tYnV0dG9uIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uc2VyaWFsX19mb3JtLXByZWZpeCB7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-serial/admin-serial.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/admin/admin-serial/admin-serial.component.ts ***!
+  \**************************************************************/
+/*! exports provided: AdminSerialComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminSerialComponent", function() { return AdminSerialComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var src_app_services_serial_no_serial_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/serial-no/serial-auth.service */ "./src/app/services/serial-no/serial-auth.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+
+
+var AdminSerialComponent = /** @class */ (function () {
+    function AdminSerialComponent(serialService, snackBar) {
+        this.serialService = serialService;
+        this.snackBar = snackBar;
+        this.serialForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            serial1: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(2), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(2)]),
+            serial2: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(6)]),
+            volume: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            market: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required)
+        });
+        this.markets = [
+            { area: 'Malaysia' },
+            { area: 'Singapore' }
+        ];
+    }
+    AdminSerialComponent.prototype.ngOnInit = function () {
+    };
+    AdminSerialComponent.prototype.submitSerialForm = function () {
+        var _this = this;
+        this.serialService.generateSerialNo(this.serialForm.value).subscribe(function (response) {
+            if (response.code)
+                _this.snackBar.open("Bulk serial number generation error: " + response.name, 'X', { duration: 10000, panelClass: 'primary' });
+            else {
+                _this.snackBar.open('Bulk serial number generation is successfull', 'X', { duration: 10000, panelClass: 'primary' });
+                _this.serials = response;
+            }
+        });
+    };
+    AdminSerialComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-admin-serial',
+            template: __webpack_require__(/*! raw-loader!./admin-serial.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin-serial/admin-serial.component.html"),
+            styles: [__webpack_require__(/*! ./admin-serial.component.scss */ "./src/app/admin/admin-serial/admin-serial.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_serial_no_serial_auth_service__WEBPACK_IMPORTED_MODULE_3__["SerialAuthService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
+    ], AdminSerialComponent);
+    return AdminSerialComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.scss":
+/*!********************************************!*\
+  !*** ./src/app/admin/admin.component.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/admin/admin.component.ts ***!
+  \******************************************/
+/*! exports provided: AdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AdminComponent = /** @class */ (function () {
+    function AdminComponent() {
+    }
+    AdminComponent.prototype.ngOnInit = function () {
+    };
+    AdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-admin',
+            template: __webpack_require__(/*! raw-loader!./admin.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin.component.html"),
+            styles: [__webpack_require__(/*! ./admin.component.scss */ "./src/app/admin/admin.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AdminComponent);
+    return AdminComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -160,6 +538,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./authenticate/authenticate.component */ "./src/app/authenticate/authenticate.component.ts");
 /* harmony import */ var _user_login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user/login/login.component */ "./src/app/user/login/login.component.ts");
+/* harmony import */ var _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial.component */ "./src/app/admin/admin-serial/admin-serial.component.ts");
+/* harmony import */ var _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/admin-auth-guard/admin-auth-guard.service */ "./src/app/services/admin-auth-guard/admin-auth-guard.service.ts");
+/* harmony import */ var _services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/auth-guard/auth-guard.service */ "./src/app/services/auth-guard/auth-guard.service.ts");
+
+
+
 
 
 
@@ -171,6 +555,8 @@ var routes = [
     { path: 'products/product/strong-arrow/authenticate', component: _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_4__["AuthenticateComponent"] },
     // User routes
     { path: 'login', component: _user_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    // Admin routes
+    { path: 'admin/serial', component: _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_6__["AdminSerialComponent"], canActivate: [_services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__["AuthGuardService"], _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AdminAuthGuardService"]] },
     // Wildcard routes
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
@@ -199,7 +585,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".layout {\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ1EsZ0JBQUE7QUNDUiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sYXlvdXR7XG4gICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG59IiwiLmxheW91dCB7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59Il19 */"
+module.exports = ".layout {\n  overflow: hidden;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ1EsZ0JBQUE7QUNEUiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuXG4ubGF5b3V0e1xuICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xufSIsIi5sYXlvdXQge1xuICBvdmVyZmxvdzogaGlkZGVuO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -267,6 +653,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_login_login_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/login/login.component */ "./src/app/user/login/login.component.ts");
 /* harmony import */ var _user_register_register_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/register/register.component */ "./src/app/user/register/register.component.ts");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial.component */ "./src/app/admin/admin-serial/admin-serial.component.ts");
+/* harmony import */ var _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial-table/admin-serial-table.component */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
+
+
+
 
 
 
@@ -307,7 +701,11 @@ var AppModule = /** @class */ (function () {
                 _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
                 _user_user_component__WEBPACK_IMPORTED_MODULE_17__["UserComponent"],
                 _user_login_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"],
-                _user_register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"]
+                _user_register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
+                _admin_admin_component__WEBPACK_IMPORTED_MODULE_21__["AdminComponent"],
+                _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_22__["AdminSerialComponent"],
+                _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialTableComponent"],
+                _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -319,13 +717,19 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"],
-                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_20__["JwtModule"].forRoot({ config: { tokenGetter: tokenGetter } })
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_20__["JwtModule"].forRoot({ config: { tokenGetter: tokenGetter } }),
+                _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatSortModule"]
             ],
             providers: [
-                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["APP_BASE_HREF"], useValue: '/' }
+                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["APP_BASE_HREF"], useValue: '/' },
+                { provide: _angular_material__WEBPACK_IMPORTED_MODULE_24__["MAT_CHECKBOX_CLICK_ACTION"], useValue: 'check' },
+                { provide: _angular_material__WEBPACK_IMPORTED_MODULE_24__["MAT_BOTTOM_SHEET_DEFAULT_OPTIONS"], useValue: { hasBackdrop: false } }
             ],
             entryComponents: [
-                _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"]
+                _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
+                _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
@@ -475,7 +879,7 @@ var SerialCheckDialog = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".cta__button {\n  width: 15px;\n  z-index: 10;\n  position: absolute;\n}\n.cta__detect {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  text-align: center;\n}\n.footer__card {\n  margin: 10px;\n}\n.footer__copyright {\n  text-align: center;\n}\n.images {\n  width: 100%;\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUk7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDRFI7QURJSTtFQUNHLGlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxrQkFBQTtBQ0ZQO0FEUUc7RUFDRyxZQUFBO0FDTE47QURRRztFQUNHLGtCQUFBO0FDTk47QURVQTtFQUNHLFdBQUE7RUFDQSxZQUFBO0FDUEgiLCJmaWxlIjoic3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmN0YXtcblxuICAgICZfX2J1dHRvbntcbiAgICAgICAgd2lkdGg6IDE1cHg7XG4gICAgICAgIHotaW5kZXg6IDEwO1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgfVxuXG4gICAgJl9fZGV0ZWN0e1xuICAgICAgIHBhZGRpbmctdG9wOiAyMHB4O1xuICAgICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xuICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG59XG5cbi5mb290ZXJ7XG5cbiAgICZfX2NhcmR7XG4gICAgICBtYXJnaW46IDEwcHg7XG4gICB9XG5cbiAgICZfX2NvcHlyaWdodHtcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgIH1cbn1cblxuLmltYWdlc3tcbiAgIHdpZHRoOiAxMDAlO1xuICAgaGVpZ2h0OiAxMDAlO1xufSIsIi5jdGFfX2J1dHRvbiB7XG4gIHdpZHRoOiAxNXB4O1xuICB6LWluZGV4OiAxMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuLmN0YV9fZGV0ZWN0IHtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAyMHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5mb290ZXJfX2NhcmQge1xuICBtYXJnaW46IDEwcHg7XG59XG4uZm9vdGVyX19jb3B5cmlnaHQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5pbWFnZXMge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufSJdfQ== */"
+module.exports = ".cta__button {\n  width: 15px;\n  z-index: 10;\n  position: absolute;\n}\n.cta__detect {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  text-align: center;\n}\n.footer__card {\n  margin: 10px;\n}\n.footer__copyright {\n  text-align: center;\n}\n.images {\n  width: 100%;\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUk7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDRFI7QURJSTtFQUNHLGlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxrQkFBQTtBQ0ZQO0FEUUc7RUFDRyxZQUFBO0FDTE47QURRRztFQUNHLGtCQUFBO0FDTk47QURVQTtFQUNHLFdBQUE7RUFDQSxZQUFBO0FDUEgiLCJmaWxlIjoic3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmN0YXtcblxuICAgICZfX2J1dHRvbntcbiAgICAgICAgd2lkdGg6IDE1cHg7XG4gICAgICAgIHotaW5kZXg6IDEwO1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgfVxuXG4gICAgJl9fZGV0ZWN0e1xuICAgICAgIHBhZGRpbmctdG9wOiAyMHB4O1xuICAgICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xuICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG59XG5cbi5mb290ZXJ7XG5cbiAgICZfX2NhcmR7XG4gICAgICBtYXJnaW46IDEwcHg7XG4gICB9XG5cbiAgICZfX2NvcHlyaWdodHtcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgIH1cbn1cblxuLmltYWdlc3tcbiAgIHdpZHRoOiAxMDAlO1xuICAgaGVpZ2h0OiAxMDAlO1xufVxuIiwiLmN0YV9fYnV0dG9uIHtcbiAgd2lkdGg6IDE1cHg7XG4gIHotaW5kZXg6IDEwO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG4uY3RhX19kZXRlY3Qge1xuICBwYWRkaW5nLXRvcDogMjBweDtcbiAgcGFkZGluZy1ib3R0b206IDIwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmZvb3Rlcl9fY2FyZCB7XG4gIG1hcmdpbjogMTBweDtcbn1cbi5mb290ZXJfX2NvcHlyaWdodCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmltYWdlcyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG59Il19 */"
 
 /***/ }),
 
@@ -504,6 +908,7 @@ var FooterComponent = /** @class */ (function () {
         this.iconRegistry = iconRegistry;
         this.sanitizer = sanitizer;
         this.router = router;
+        this.telegram = 'https://t.me/@azrin640';
     }
     FooterComponent.prototype.ngOnInit = function () {
         this.iconRegistry.addSvgIcon('whatsapp', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/whatsapp.svg'));
@@ -535,7 +940,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".banner {\n  margin-top: 10vh;\n}\n.banner__image {\n  max-width: 100%;\n  height: auto;\n}\n.intro__container-content {\n  text-align: center;\n}\n.intro__spinner {\n  padding: 20px;\n}\n.benefits {\n  height: 100%;\n}\n.benefits__container {\n  width: 60%;\n}\n.benefits__title {\n  text-align: center;\n}\n.instruction__card {\n  padding: 20px;\n}\n@media only screen and (max-width: 600px) {\n  .banner {\n    margin-top: 10vh;\n  }\n  .banner__image {\n    max-width: 100%;\n    height: auto;\n  }\n\n  .benefits {\n    height: 100%;\n  }\n  .benefits__container {\n    width: 100%;\n  }\n  .benefits__title {\n    text-align: center;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUcsZ0JBQUE7QUNBSDtBREVJO0VBQ0ksZUFBQTtFQUNBLFlBQUE7QUNBUjtBRE1JO0VBQ0ksa0JBQUE7QUNIUjtBRE1JO0VBQ0ksYUFBQTtBQ0pSO0FEU0E7RUFFSSxZQUFBO0FDUEo7QURTSTtFQUNHLFVBQUE7QUNQUDtBRFVJO0VBQ0ksa0JBQUE7QUNSUjtBRGVJO0VBQ0ksYUFBQTtBQ1pSO0FEa0JBO0VBRUc7SUFDRyxnQkFBQTtFQ2hCSjtFRGtCSTtJQUNJLGVBQUE7SUFDQSxZQUFBO0VDaEJSOztFRHFCQztJQUVHLFlBQUE7RUNuQko7RURxQkk7SUFDRyxXQUFBO0VDbkJQO0VEc0JJO0lBQ0csa0JBQUE7RUNwQlA7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYW5uZXJ7XG5cbiAgIG1hcmdpbi10b3A6IDEwdmg7ICAgIFxuXG4gICAgJl9faW1hZ2V7XG4gICAgICAgIG1heC13aWR0aDogMTAwJTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbn1cblxuLmludHJve1xuXG4gICAgJl9fY29udGFpbmVyLWNvbnRlbnR7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG5cbiAgICAmX19zcGlubmVye1xuICAgICAgICBwYWRkaW5nOiAyMHB4O1xuICAgIH1cblxufVxuXG4uYmVuZWZpdHN7XG5cbiAgICBoZWlnaHQ6IDEwMCU7XG5cbiAgICAmX19jb250YWluZXJ7XG4gICAgICAgd2lkdGg6IDYwJTtcbiAgICB9XG5cbiAgICAmX190aXRsZXtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIH1cblxufVxuXG4uaW5zdHJ1Y3Rpb257XG5cbiAgICAmX19jYXJke1xuICAgICAgICBwYWRkaW5nOiAyMHB4O1xuICAgIH1cbn1cblxuXG5cbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNjAwcHgpIHtcblxuICAgLmJhbm5lcnsgXG4gICAgICBtYXJnaW4tdG9wOiAxMHZoO1xuICBcbiAgICAgICZfX2ltYWdle1xuICAgICAgICAgIG1heC13aWR0aDogMTAwJTtcbiAgICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICB9XG5cblxuICAgLmJlbmVmaXRze1xuXG4gICAgICBoZWlnaHQ6IDEwMCU7XG5cbiAgICAgICZfX2NvbnRhaW5lcntcbiAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgfVxuXG4gICAgICAmX190aXRsZXtcbiAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgIH1cblxuICAgfVxuXG5cbn0iLCIuYmFubmVyIHtcbiAgbWFyZ2luLXRvcDogMTB2aDtcbn1cbi5iYW5uZXJfX2ltYWdlIHtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbi5pbnRyb19fY29udGFpbmVyLWNvbnRlbnQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uaW50cm9fX3NwaW5uZXIge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBoZWlnaHQ6IDEwMCU7XG59XG4uYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gIHdpZHRoOiA2MCU7XG59XG4uYmVuZWZpdHNfX3RpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uaW5zdHJ1Y3Rpb25fX2NhcmQge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XG4gIC5iYW5uZXIge1xuICAgIG1hcmdpbi10b3A6IDEwdmg7XG4gIH1cbiAgLmJhbm5lcl9faW1hZ2Uge1xuICAgIG1heC13aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IGF1dG87XG4gIH1cblxuICAuYmVuZWZpdHMge1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuICAuYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgLmJlbmVmaXRzX190aXRsZSB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB9XG59Il19 */"
+module.exports = ".banner {\n  margin-top: 10vh;\n}\n.banner__image {\n  max-width: 100%;\n  height: auto;\n}\n.intro__container-content {\n  text-align: center;\n}\n.intro__spinner {\n  padding: 20px;\n}\n.benefits {\n  height: 100%;\n}\n.benefits__container {\n  width: 60%;\n}\n.benefits__title {\n  text-align: center;\n}\n.instruction__card {\n  padding: 20px;\n  background-color: #303030;\n}\n.instruction__title {\n  padding: 20px;\n}\n@media only screen and (max-width: 600px) {\n  .banner {\n    margin-top: 10vh;\n  }\n  .banner__image {\n    max-width: 100%;\n    height: auto;\n  }\n\n  .benefits {\n    height: 100%;\n  }\n  .benefits__container {\n    width: 100%;\n  }\n  .benefits__title {\n    text-align: center;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUcsZ0JBQUE7QUNBSDtBREVJO0VBQ0ksZUFBQTtFQUNBLFlBQUE7QUNBUjtBRE1JO0VBQ0ksa0JBQUE7QUNIUjtBRE1JO0VBQ0ksYUFBQTtBQ0pSO0FEU0E7RUFFSSxZQUFBO0FDUEo7QURTSTtFQUNHLFVBQUE7QUNQUDtBRFVJO0VBQ0ksa0JBQUE7QUNSUjtBRGVJO0VBQ0ksYUFBQTtFQUNBLHlCQUFBO0FDWlI7QURlSTtFQUNHLGFBQUE7QUNiUDtBRG1CQTtFQUVHO0lBQ0csZ0JBQUE7RUNqQko7RURtQkk7SUFDSSxlQUFBO0lBQ0EsWUFBQTtFQ2pCUjs7RURzQkM7SUFFRyxZQUFBO0VDcEJKO0VEc0JJO0lBQ0csV0FBQTtFQ3BCUDtFRHVCSTtJQUNHLGtCQUFBO0VDckJQO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFubmVye1xuXG4gICBtYXJnaW4tdG9wOiAxMHZoOyAgICBcblxuICAgICZfX2ltYWdle1xuICAgICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICB9XG59XG5cbi5pbnRyb3tcblxuICAgICZfX2NvbnRhaW5lci1jb250ZW50e1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgfVxuXG4gICAgJl9fc3Bpbm5lcntcbiAgICAgICAgcGFkZGluZzogMjBweDtcbiAgICB9XG5cbn1cblxuLmJlbmVmaXRze1xuXG4gICAgaGVpZ2h0OiAxMDAlO1xuXG4gICAgJl9fY29udGFpbmVye1xuICAgICAgIHdpZHRoOiA2MCU7XG4gICAgfVxuXG4gICAgJl9fdGl0bGV7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG5cbn1cblxuLmluc3RydWN0aW9ue1xuXG4gICAgJl9fY2FyZHtcbiAgICAgICAgcGFkZGluZzogMjBweDtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzMwMzAzMDtcbiAgICB9XG5cbiAgICAmX190aXRsZXtcbiAgICAgICBwYWRkaW5nOiAyMHB4OyBcbiAgICB9XG59XG5cblxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XG5cbiAgIC5iYW5uZXJ7IFxuICAgICAgbWFyZ2luLXRvcDogMTB2aDtcbiAgXG4gICAgICAmX19pbWFnZXtcbiAgICAgICAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgfVxuXG5cbiAgIC5iZW5lZml0c3tcblxuICAgICAgaGVpZ2h0OiAxMDAlO1xuXG4gICAgICAmX19jb250YWluZXJ7XG4gICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgIH1cblxuICAgICAgJl9fdGl0bGV7XG4gICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICB9XG5cbiAgIH1cblxuXG59IiwiLmJhbm5lciB7XG4gIG1hcmdpbi10b3A6IDEwdmg7XG59XG4uYmFubmVyX19pbWFnZSB7XG4gIG1heC13aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiBhdXRvO1xufVxuXG4uaW50cm9fX2NvbnRhaW5lci1jb250ZW50IHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmludHJvX19zcGlubmVyIHtcbiAgcGFkZGluZzogMjBweDtcbn1cblxuLmJlbmVmaXRzIHtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuLmJlbmVmaXRzX19jb250YWluZXIge1xuICB3aWR0aDogNjAlO1xufVxuLmJlbmVmaXRzX190aXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmluc3RydWN0aW9uX19jYXJkIHtcbiAgcGFkZGluZzogMjBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzMwMzAzMDtcbn1cbi5pbnN0cnVjdGlvbl9fdGl0bGUge1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XG4gIC5iYW5uZXIge1xuICAgIG1hcmdpbi10b3A6IDEwdmg7XG4gIH1cbiAgLmJhbm5lcl9faW1hZ2Uge1xuICAgIG1heC13aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IGF1dG87XG4gIH1cblxuICAuYmVuZWZpdHMge1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuICAuYmVuZWZpdHNfX2NvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgLmJlbmVmaXRzX190aXRsZSB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB9XG59Il19 */"
 
 /***/ }),
 
@@ -557,6 +962,7 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
         this.menChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.percentChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.init = true;
         // Men Count
         this.count = 203728;
         this.i = 0;
@@ -578,6 +984,7 @@ var HomeComponent = /** @class */ (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.init = false;
         setInterval(function () {
             if (_this.i < _this.count) {
                 _this.mode = 'indeterminate';
@@ -934,7 +1341,7 @@ var MaterialModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navbar {\n  position: fixed;\n  background-color: #000;\n  height: 10vh;\n  z-index: 5;\n}\n.navbar__img {\n  width: 200px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxlQUFBO0VBQ0Esc0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtBQ0FKO0FERUk7RUFDSSxZQUFBO0FDQVIiLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhcntcblxuICAgIHBvc2l0aW9uOiBmaXhlZDsgICAgXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcbiAgICBoZWlnaHQ6IDEwdmg7XG4gICAgei1pbmRleDogNTtcblxuICAgICZfX2ltZ3tcbiAgICAgICAgd2lkdGg6IDIwMHB4O1xuICAgIH1cblxuXG59IiwiLm5hdmJhciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcbiAgaGVpZ2h0OiAxMHZoO1xuICB6LWluZGV4OiA1O1xufVxuLm5hdmJhcl9faW1nIHtcbiAgd2lkdGg6IDIwMHB4O1xufSJdfQ== */"
+module.exports = ".navbar {\n  background-color: #000;\n  height: 10vh;\n  padding-left: 10vw;\n  padding-right: 10vw;\n  position: fixed;\n  z-index: 10;\n}\n.navbar__img {\n  width: 200px;\n}\n.navbar__spacer {\n  flex: 1 1 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7QUNDSjtBRENJO0VBQ0ksWUFBQTtBQ0NSO0FERUk7RUFDRSxjQUFBO0FDQU4iLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhcntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwO1xuICAgIGhlaWdodDogMTB2aDtcbiAgICBwYWRkaW5nLWxlZnQ6IDEwdnc7XG4gICAgcGFkZGluZy1yaWdodDogMTB2dztcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgei1pbmRleDogMTA7XG5cbiAgICAmX19pbWd7XG4gICAgICAgIHdpZHRoOiAyMDBweDtcbiAgICB9XG5cbiAgICAmX19zcGFjZXJ7XG4gICAgICBmbGV4OiAxIDEgYXV0bztcbiAgICB9XG5cbn1cblxuIiwiLm5hdmJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDA7XG4gIGhlaWdodDogMTB2aDtcbiAgcGFkZGluZy1sZWZ0OiAxMHZ3O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHZ3O1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHotaW5kZXg6IDEwO1xufVxuLm5hdmJhcl9faW1nIHtcbiAgd2lkdGg6IDIwMHB4O1xufVxuLm5hdmJhcl9fc3BhY2VyIHtcbiAgZmxleDogMSAxIGF1dG87XG59Il19 */"
 
 /***/ }),
 
@@ -966,6 +1373,99 @@ var NavbarComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], NavbarComponent);
     return NavbarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/admin-auth-guard/admin-auth-guard.service.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/services/admin-auth-guard/admin-auth-guard.service.ts ***!
+  \***********************************************************************/
+/*! exports provided: AdminAuthGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminAuthGuardService", function() { return AdminAuthGuardService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/services/auth/auth.service.ts");
+
+
+
+
+var AdminAuthGuardService = /** @class */ (function () {
+    function AdminAuthGuardService(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    AdminAuthGuardService.prototype.canActivate = function () {
+        var user = this.authService.currentUser;
+        if (user && user.admin) {
+            return true;
+        }
+        else {
+            this.router.navigate(['/no-access']);
+            return false;
+        }
+    };
+    AdminAuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
+    ], AdminAuthGuardService);
+    return AdminAuthGuardService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/auth-guard/auth-guard.service.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/services/auth-guard/auth-guard.service.ts ***!
+  \***********************************************************/
+/*! exports provided: AuthGuardService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuardService", function() { return AuthGuardService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth/auth.service */ "./src/app/services/auth/auth.service.ts");
+
+
+
+
+var AuthGuardService = /** @class */ (function () {
+    function AuthGuardService(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    AuthGuardService.prototype.canActivate = function (route, state) {
+        if (!this.authService.isLoggedIn()) {
+            return true;
+        }
+        else {
+            this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+            return false;
+        }
+    };
+    AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
+    ], AuthGuardService);
+    return AuthGuardService;
 }());
 
 
@@ -1068,6 +1568,18 @@ var SerialAuthService = /** @class */ (function () {
         console.log(review);
         return this.http.post('/api/product/review', review).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
     };
+    SerialAuthService.prototype.generateSerialNo = function (serials) {
+        return this.http.post('/api/product/serial/generate', serials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
+    };
+    SerialAuthService.prototype.getSerialNos = function () {
+        return this.http.get('/api/products/serials').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
+    };
+    SerialAuthService.prototype.deleteASerialNo = function (serial) {
+        return this.http.post('/api/product/serial/rm', serial).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
+    };
+    SerialAuthService.prototype.deleteSerialNos = function (serials) {
+        return this.http.post('/api/product/serials/rm', serials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error); }));
+    };
     SerialAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -1130,10 +1642,11 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.authService.login(this.loginForm.value).subscribe(function (response) {
             if (response && response.id) {
-                var token = localStorage.setItem('token', response.token);
-                _this.user = response;
+                localStorage.setItem('token', response.token);
+                _this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'primary' });
+                _this.router.navigate(['/#top']);
             }
-        }, function (error) { return _this.snackBar.open(error, 'X', { duration: 10000 }); });
+        }, function (error) { return _this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'warn' }); });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

@@ -17,7 +17,7 @@
 
                         <mat-form-field class="login__input" appearance="fill">
                            <mat-label>Email</mat-label>
-                           <input matInput placeholder="Email" #email formControlName="email" required>
+                           <input matInput placeholder="Email" #email formControlName="email" required autocomplete="email">
                            <mat-icon matSuffix color="primary">alternate_email</mat-icon>
                            <mat-hint>Enter email here</mat-hint>
                            <mat-error *ngIf="loginForm.get('email').hasError('required')">
@@ -30,7 +30,7 @@
 
                         <mat-form-field class="login__input" appearance="fill">
                            <mat-label>Password</mat-label>
-                           <input matInput type="password" placeholder="Password" formControlName="password" required>
+                           <input matInput type="password" placeholder="Password" formControlName="password" required autocomplete="password">
                            <mat-icon matSuffix color="primary">vpn_key</mat-icon>
                            <mat-hint>Enter password here</mat-hint>
                            <mat-error *ngIf="loginForm.get('password').hasError('required')">

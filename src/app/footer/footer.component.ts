@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+
+   telegram: string = 'https://t.me/@azrin640';
 
   constructor( 
     private iconRegistry: MatIconRegistry, 
@@ -25,5 +28,6 @@ export class FooterComponent implements OnInit {
   {
      this.router.navigate(['products/product/strong-arrow/authenticate'], { fragment: 'top' });
   }
+
   
 }
