@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { throwError, BehaviorSubject, Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -8,7 +8,7 @@ import { User } from 'src/app/model/user';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthServiceService implements OnInit {
    token: string;
    user: User;
    userSource = new BehaviorSubject(this.user);
@@ -16,10 +16,14 @@ export class AuthServiceService {
 
   constructor( private http: HttpClient, private router: Router) 
    { 
+      
+   }  
+
+   ngOnInit(){
       this.isLoggedIn();
       this.decodeToken();
       this.getUserSource()
-   }  
+   }
 
   isLoggedIn()
   {
@@ -34,7 +38,7 @@ export class AuthServiceService {
       const jwtHelper = new JwtHelperService();
       this.user = jwtHelper.decodeToken(token);
     }
-    else this.user = null;;
+    else this.user = null;
   }
   
   getUserSource(): void
@@ -49,6 +53,10 @@ export class AuthServiceService {
     else this.userSource = null;
   }
 
+  logout(){
+      localStorage.removeItem('token');
+      window.location.reload();
+   }
   
 
 }

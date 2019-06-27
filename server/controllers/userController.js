@@ -14,7 +14,6 @@ const mail = require('../handlers/mail');
 const axios = require('axios');
 
 
-
 // ** Reusable **
 exports.validateUserId = [
 
@@ -23,14 +22,12 @@ exports.validateUserId = [
 ];
 
 exports.validationErrors = (req, res, next) => {
-
-   const errors = validationResult(req);    
-
-   if (!errors.isEmpty()) {
-       return res.status(422).json({ errors: errors.array() });    
-   }
-   else return next();
-
+   const errors = validationResult(req);  
+   if (!errors.isEmpty()) {      
+       return res.json({ errors: errors.array(), status: 422 });    
+   }else{      
+      return next();
+   } 
 };
 
 exports.checkMimeType = (req, res, next) => {
@@ -89,7 +86,6 @@ exports.register = async (req, res) => {
 
    // const authToken = crypto.randomBytes(20).toString('hex');
    // const authTokenExpire = Date.now() + 3600000; 
-   console.log('Saving user ...');
    const user = new User({
       email: 'admin@strongarrowpills.com'
       //  authToken,
@@ -114,21 +110,18 @@ exports.register = async (req, res) => {
       //          or this link ${authURL}`
       //  };
       //  var sendMail = mail.send(options); 
-      console.log(response);
    }
 
 };
 
 // ** Login **
 exports.reqValidateLogin = [
-
    body('email').isEmail().normalizeEmail(),
    body('password').not().isEmpty().trim().escape()
-                           
 ];
 
 exports.authenticate = async (req, res, next) => {
-
+   console.log(req.body);
    const authToken = req.body.authToken; 
 
    const authenticate = User.authenticate();
@@ -155,13 +148,14 @@ exports.authenticate = async (req, res, next) => {
    else res.json({ status: 400, statusText: 'Authentication link error. Please register again.' });
 };
 
-exports.login = async (req, res) => {
-
+exports.login = async (req, res) => {   
+   
    const authenticate = User.authenticate();
    const authenticateUser = await authenticate(req.body.email, req.body.password)
        .catch(error => res.json(error));
+   console.log(authenticateUser);
    const user = authenticateUser.user;
-
+   
    if(user){
        
        const token = user.generateJwt();
@@ -298,10 +292,8 @@ exports.editProfile = async (req, res) => {
 exports.addressAutoComplete = async(req, res) => {
    
    const query = req.body.address;
-   console.log(query);
 
    const geocode = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${apiKey}`);
-   console.log(geocode);
 }
 
 exports.saveProfileImage = async (req, res) => {

@@ -1,9 +1,57 @@
 require('express-validator');
+const { check, validationResult } = require('express-validator');
+
+
+exports.autoCheckInput = (req, res) => {
+
+   if(req.body){
+
+      let construct = Object.keys(req.body)
+      .reduce((acc, key) => {
+
+         if(key === 'email'){
+            construct.email = check('email');
+         }
+
+         return constructs;
+
+      }, {});
+      console.log(construct);
+
+      res.json('SUCCESS');
+
+   }
+   else res.json('SUCCESS');
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 exports.serialValidation = (req, res, next) => {
 
-   req.sanitizeBody('serial');
+   
    req.check('serial').not().isEmpty();
+   req.sanitizeBody('serial');
 
    const errors = req.validationErrors();  
    if(errors) res.json(errors);

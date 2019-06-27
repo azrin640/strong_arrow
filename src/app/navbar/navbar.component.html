@@ -5,9 +5,10 @@
       </a>  
    </span> 
    <span class="navbar__spacer"></span>
-   <button class="gold-theme" mat-raised-button routerLink="/login">Login</button>
+   <span ></span>
+   <button class="gold-theme" mat-raised-button routerLink="/login"  *ngIf="!profile">Login</button>
+   <button color="primary" mat-raised-button *ngIf="profile" (click)="logOut()">Logout</button>
 </mat-toolbar>
-
 
 <router-outlet></router-outlet>
 

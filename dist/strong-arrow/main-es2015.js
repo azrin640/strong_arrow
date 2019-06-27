@@ -117,7 +117,7 @@ module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a>  \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\">Login</button>\n</mat-toolbar>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a>  \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <span ></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\"  *ngIf=\"!profile\">Login</button>\n   <button color=\"primary\" mat-raised-button *ngIf=\"profile\" (click)=\"logOut()\">Logout</button>\n</mat-toolbar>\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -896,20 +896,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/auth-service/auth-service.service */ "./src/app/services/auth-service/auth-service.service.ts");
+
 
 
 
 
 
 let FooterComponent = class FooterComponent {
-    constructor(iconRegistry, sanitizer, router) {
+    constructor(iconRegistry, sanitizer, router, profileService) {
         this.iconRegistry = iconRegistry;
         this.sanitizer = sanitizer;
         this.router = router;
+        this.profileService = profileService;
         this.telegram = 'https://t.me/@azrin640';
     }
     ngOnInit() {
         this.iconRegistry.addSvgIcon('whatsapp', this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/whatsapp.svg'));
+        this.profileService.profile.subscribe((response) => {
+            this.profile = response;
+        });
     }
     authenticateProduct() {
         this.router.navigate(['products/product/strong-arrow/authenticate'], { fragment: 'top' });
@@ -923,7 +929,8 @@ FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material_icon__WEBPACK_IMPORTED_MODULE_3__["MatIconRegistry"],
         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+        _services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_5__["AuthServiceService"]])
 ], FooterComponent);
 
 
@@ -1345,11 +1352,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth-service/auth-service.service */ "./src/app/services/auth-service/auth-service.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+
+
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor() { }
+    constructor(authService, snackBar) {
+        this.authService = authService;
+        this.snackBar = snackBar;
+        this.profile = null;
+    }
     ngOnInit() {
+        this.authService.profile.subscribe((response) => {
+            this.profile = response;
+        }, error => this.snackBar.open('Please login to access this page.', 'X', { duration: 10000, panelClass: 'red-theme' }));
+    }
+    logOut() {
+        this.authService.logout();
     }
 };
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1358,7 +1379,8 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/index.js!./src/app/navbar/navbar.component.html"),
         styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_2__["AuthServiceService"],
+        _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
 ], NavbarComponent);
 
 
@@ -1451,6 +1473,78 @@ AuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
         _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
 ], AuthGuardService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/auth-service/auth-service.service.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/services/auth-service/auth-service.service.ts ***!
+  \***************************************************************/
+/*! exports provided: AuthServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthServiceService", function() { return AuthServiceService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+
+
+let AuthServiceService = class AuthServiceService {
+    constructor(http, router) {
+        this.http = http;
+        this.router = router;
+        this.userSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.user);
+        this.profile = this.userSource;
+    }
+    ngOnInit() {
+        this.isLoggedIn();
+        this.decodeToken();
+        this.getUserSource();
+    }
+    isLoggedIn() {
+        let token = localStorage.getItem('token');
+        token ? (this.token = token) : (this.token = null);
+    }
+    decodeToken() {
+        if (this.token) {
+            let token = this.token;
+            const jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]();
+            this.user = jwtHelper.decodeToken(token);
+        }
+        else
+            this.user = null;
+    }
+    getUserSource() {
+        let user = this.user;
+        if (user) {
+            this.http.post('/api/user/profile', { _id: user._id })
+                .subscribe((response) => this.userSource.next(response), error => Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error));
+        }
+        else
+            this.userSource = null;
+    }
+    logout() {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+};
+AuthServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+], AuthServiceService);
 
 
 
@@ -1598,6 +1692,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/auth-service/auth-service.service */ "./src/app/services/auth-service/auth-service.service.ts");
+
 
 
 
@@ -1605,14 +1701,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginComponent = class LoginComponent {
-    constructor(authService, snackBar, router) {
+    constructor(authService, profileService, snackBar, router) {
         this.authService = authService;
+        this.profileService = profileService;
         this.snackBar = snackBar;
         this.router = router;
         this.loginForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]),
             password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required)
         });
+        this.isLoggedIn = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
     }
     ngOnInit() {
     }
@@ -1620,12 +1718,17 @@ let LoginComponent = class LoginComponent {
         this.authService.login(this.loginForm.value).subscribe((response) => {
             if (response && response.id) {
                 localStorage.setItem('token', response.token);
-                this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'primary' });
-                this.router.navigate(['/#top']);
+                this.profileService.ngOnInit();
+                this.router.navigate(['/admin/serial']);
+                this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'gold-theme' });
             }
-        }, error => this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'warn' }));
+        }, error => this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'red-theme' }));
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], LoginComponent.prototype, "isLoggedIn", void 0);
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login',
@@ -1633,6 +1736,7 @@ LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/user/login/login.component.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+        src_app_services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_6__["AuthServiceService"],
         _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"],
         _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
 ], LoginComponent);
