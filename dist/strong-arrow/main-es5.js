@@ -66,6 +66,17 @@ module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/footer/contact-form/contact-form.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/footer/contact-form/contact-form.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html":
 /*!************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/footer/footer.component.html ***!
@@ -73,7 +84,7 @@ module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.\n                  </div>\n                  <a class=\"link-button\" href=\"https://t.me/{{ telegram }}\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Contact Our Representative in {{ location }}\n                  </a>                      \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from {{ contact.country | titlecase }}, please contact our {{ contact.country | titlecase }} representative for any question.\n                  </div>\n                  <a class=\"link-button\" href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Contact Our Representative in {{ contact.country | titlecase }}\n                  </a>                      \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -117,7 +128,7 @@ module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a> \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <span ></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\"  *ngIf=\"!profile\">Login</button>\n   <button color=\"primary\" mat-raised-button *ngIf=\"profile\" (click)=\"logOut()\">Logout</button>\n</mat-toolbar>\n\n<div class=\"location\" fxLayout fxLayoutAlign=\"center center\"*ngIf=\"location\">\n   <mat-toolbar class=\"navbar-detect theme-gold\" >\n      <span fxLayout fxLayoutAlign=\"center center\">\n         <p> \n           We have detected that you are from {{location.country}}. Please use the Telegram button below to contact your nearest representative.\n         </p> \n      </span>\n      <span>\n         <mat-icon>close</mat-icon>\n      </span>\n   </mat-toolbar>\n</div>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a> \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <span ></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\"  *ngIf=\"!profile\">Login</button>\n   <button color=\"primary\" mat-raised-button *ngIf=\"profile\" (click)=\"logOut()\">Logout</button>\n</mat-toolbar>\n\n<div class=\"location\" fxLayout fxLayoutAlign=\"center center\"*ngIf=\"location\">\n   <mat-toolbar class=\"navbar-detect theme-gold\" >\n      <span fxLayout fxLayoutAlign=\"center center\">\n         {{ profile.email }}\n      </span>\n      <span>\n         <mat-icon>close</mat-icon>\n      </span>\n   </mat-toolbar>\n</div>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -659,6 +670,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial-table/admin-serial-table.component */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
+/* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
+
 
 
 
@@ -710,7 +723,8 @@ var AppModule = /** @class */ (function () {
                 _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialComponent"],
                 _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__["AdminSerialTableComponent"],
                 _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__["BottomSheetConfirm"],
-                _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_26__["NavigationComponent"]
+                _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_26__["NavigationComponent"],
+                _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_27__["ContactFormComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -878,6 +892,51 @@ var SerialCheckDialog = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/footer/contact-form/contact-form.component.scss":
+/*!*****************************************************************!*\
+  !*** ./src/app/footer/contact-form/contact-form.component.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9jb250YWN0LWZvcm0vY29udGFjdC1mb3JtLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/footer/contact-form/contact-form.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/footer/contact-form/contact-form.component.ts ***!
+  \***************************************************************/
+/*! exports provided: ContactFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactFormComponent", function() { return ContactFormComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ContactFormComponent = /** @class */ (function () {
+    function ContactFormComponent() {
+    }
+    ContactFormComponent.prototype.ngOnInit = function () {
+    };
+    ContactFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-contact-form',
+            template: __webpack_require__(/*! raw-loader!./contact-form.component.html */ "./node_modules/raw-loader/index.js!./src/app/footer/contact-form/contact-form.component.html"),
+            styles: [__webpack_require__(/*! ./contact-form.component.scss */ "./src/app/footer/contact-form/contact-form.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ContactFormComponent);
+    return ContactFormComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/footer/footer.component.scss":
 /*!**********************************************!*\
   !*** ./src/app/footer/footer.component.scss ***!
@@ -905,6 +964,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/profile-service/profile-service.service */ "./src/app/services/profile-service/profile-service.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+
 
 
 
@@ -912,12 +973,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FooterComponent = /** @class */ (function () {
-    function FooterComponent(iconRegistry, sanitizer, router, profileService) {
+    function FooterComponent(iconRegistry, sanitizer, router, profileService, snackBar) {
         this.iconRegistry = iconRegistry;
         this.sanitizer = sanitizer;
         this.router = router;
         this.profileService = profileService;
-        this.telegram = '';
+        this.snackBar = snackBar;
         this.agents = [
             { country: 'malaysia', telegram: 'strongarrowmalaysia' },
             { country: 'singapore', telegram: 'neezamhm' }
@@ -927,22 +988,24 @@ var FooterComponent = /** @class */ (function () {
         var _this = this;
         this.profileService.profile.subscribe(function (response) { return _this.profile = response; });
         this.profileService.location.subscribe(function (response) {
-            if (response) {
-                _this.location = response;
-                _this.telegram = _this.agents.reduce(function (acc, value) {
-                    if (value.country = response)
-                        var telegram = value.telegram;
-                    acc = telegram;
-                    return acc;
-                }, '');
+            var agents = _this.agents;
+            function findTelegram(country) {
+                return agents.find(function (agent) {
+                    return agent.country === country;
+                });
             }
-            else
-                _this.telegram = _this.agents.reduce(function (acc, value) {
-                    if (value.country = 'malaysia')
-                        var telegram = value.telegram;
-                    acc = telegram;
-                    return acc;
-                }, '');
+            ;
+            var localAgent;
+            switch (response) {
+                case 'MY':
+                    localAgent = findTelegram('malaysia');
+                    break;
+                case 'SG':
+                    localAgent = findTelegram('singapore');
+                    break;
+                default: localAgent = findTelegram('malaysia');
+            }
+            _this.contact = localAgent;
         });
     };
     FooterComponent.prototype.authenticateProduct = function () {
@@ -957,7 +1020,8 @@ var FooterComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material_icon__WEBPACK_IMPORTED_MODULE_3__["MatIconRegistry"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-            _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+            _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"]])
     ], FooterComponent);
     return FooterComponent;
 }());
@@ -1396,24 +1460,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/profile-service/profile-service.service */ "./src/app/services/profile-service/profile-service.service.ts");
 
 
-//import { MatSnackBar, MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material';
+
+
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(
-    //   private profileService: AuthServiceService,
-    //   public snackBar: MatSnackBar,
-    //   public bottomSheet: MatBottomSheet
-    ) {
+    function NavbarComponent(profileService, snackBar, bottomSheet) {
+        this.profileService = profileService;
+        this.snackBar = snackBar;
+        this.bottomSheet = bottomSheet;
         this.profile = null;
     }
     NavbarComponent.prototype.ngOnInit = function () {
-        // this.profileService.profile.subscribe(
-        //    (response: User) => {            
-        //       this.profile = response;
-        //    },
-        //    error => this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme'})
-        // );
+        var _this = this;
+        this.profileService.profile.subscribe(function (response) {
+            _this.profile = response;
+        }, function (error) { return _this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }); });
+        console.log(this.profile);
         // this.profileService.location.subscribe(
         //    (response: any) => {
         //       let location: User['location'] = response as User['location'];
@@ -1451,7 +1516,9 @@ var NavbarComponent = /** @class */ (function () {
             template: './navbar.component.html',
             styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__["ProfileService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheet"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1506,11 +1573,11 @@ var NavigationComponent = /** @class */ (function () {
     function NavigationComponent(profileService, snackBar) {
         this.profileService = profileService;
         this.snackBar = snackBar;
-        this.profile = false;
+        this.profile = null;
     }
     NavigationComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.profileService.profile.subscribe(function (response) { return (response && response.id) ? function () { _this.profile = true; } : function () { _this.profile = false; }; });
+        this.profileService.profile.subscribe(function (response) { return _this.profile = response; });
         this.profileService.location.subscribe(function (response) { if (response)
             _this.snackBar.open("Hello friend from: " + response, 'X', { duration: 10000, panelClass: 'gold-theme' }); });
     };
@@ -1716,6 +1783,8 @@ var ProfileService = /** @class */ (function () {
     function ProfileService(http, router) {
         this.http = http;
         this.router = router;
+        this.decodedToken = false;
+        this.loggedIn = false;
         // Location Profile 
         this.locSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.country);
         this.location = this.locSource;
@@ -1724,38 +1793,32 @@ var ProfileService = /** @class */ (function () {
         this.profile = this.userSource;
         this.getLocation();
         this.isLoggedIn();
-        this.decodeToken();
-        this.getUserSource();
     }
     ProfileService.prototype.getLocation = function () {
         var _this = this;
-        this.http.post('/api/user/location', { location: '' }).subscribe(function (response) {
-            console.log(response.country);
-            _this.locSource.next(response.country);
-        }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error); }));
+        this.http.post('/api/user/location', { location: '' }).subscribe(function (response) { return _this.locSource.next(response.country); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error); }));
     };
     ProfileService.prototype.isLoggedIn = function () {
         var _this = this;
-        var token = localStorage.getItem('token');
-        token ? function () { return _this.token = token; } : function () { return _this.user = null; };
+        var token = this.token = localStorage.getItem('token');
+        token ? this.decodeToken() : function () { return _this.loggedIn = false; };
     };
     ProfileService.prototype.decodeToken = function () {
-        if (this.token) {
-            var token = this.token;
-            var jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]();
-            this.user = jwtHelper.decodeToken(token);
-        }
-        else
-            this.user = null;
+        var _this = this;
+        var token = this.token;
+        var jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]();
+        var user = this.user = jwtHelper.decodeToken(token);
+        user ? this.getUserSource() : function () { return _this.decodedToken = false; };
     };
     ProfileService.prototype.getUserSource = function () {
         var _this = this;
         var user = this.user;
-        if (user) {
-            this.http.post('/api/user/profile', { _id: user.id }).subscribe(function (response) { return _this.userSource.next(response); }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error); }));
-        }
-        else
-            this.userSource = null;
+        this.http.post('/api/user/profile', { _id: user._id }).subscribe(function (response) {
+            if (response && response.id)
+                _this.userSource.next(response);
+            else
+                _this.userSource = null;
+        }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error); }));
     };
     ProfileService.prototype.logout = function () {
         localStorage.removeItem('token');
