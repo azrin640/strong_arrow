@@ -53,12 +53,10 @@
                   <div class="cta__detect">
                      *We have detected that you are from Malaysia, please contact our Malaysia representative for any question.
                   </div>
-                  <form [(action)]="telegram">
-                  <button mat-raised-button color="accent" type="submit">
-                     <i class="fab fa-telegram fa-icon__telegram"></i>
-                     Contact Our Malaysian Representative
-                  </button>   
-                  </form>   
+                  <a class="link-button" href="https://t.me/{{ telegram }}">
+                     <i class="fab fa-telegram" mat-elevation-z8></i>
+                     Contact Our Representative in {{ location }}
+                  </a>                      
                </div>
                <div class="cta" fxLayout="column" fxLayoutAlign="center center">
                   <div class="cta__detect">
@@ -95,7 +93,7 @@
    </div>
 
    <div class="contact__icon">
-      <a [(href)]="telegram" target="blank">
+      <a href="https://t.me/{{ telegram }}" target="blank">
          <img class="shadow__png-ac" fxFlex="60px" src="assets/icons/telegram.png" alt="Strong Arrow Malaysia Telegram">
       </a>
    </div>

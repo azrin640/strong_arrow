@@ -5,7 +5,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const productController = require('../controllers/productController');
 const validateController = require('../controllers/validateController');
 const userController = require('../controllers/userController');
-// const cartController = require('../controllers/cartController');
+const authController = require('../controllers/authController');
 // const contactController = require('../controllers/contactController');
 // const checkoutController = require('../controllers/checkoutController');
 // const walletController = require('../controllers/walletController');
@@ -18,50 +18,58 @@ var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
 
-// router.get('/', userController.test);
+router.get('/test', 
+   authController.authJwtReq,
+   userController.test
+);
 // router.get('/user/dummy', catchErrors(userController.dummy));
 
 //  ** USER **
+
+router.post('/user/location', 
+   catchErrors(userController.reqLocation)
+);
+
 router.get('/user/registration',
     userController.reqValidateRegister,
-    userController.validationErrors,
+    validateController.validationErrors,
     catchErrors(userController.userExist),
     catchErrors(userController.register)    
 );
 
 router.post('/user/authenticate', 
-    userController.reqValidateLogin,
-    userController.validationErrors,
+    validateController.reqValidateLogin,
+    validateController.validationErrors,
     catchErrors(userController.authenticate)
 );
 
 router.post('/user/login', 
-    userController.reqValidateLogin,
-    userController.validationErrors,
+    validateController.reqValidateLogin,
+    validateController.validationErrors,
     catchErrors(userController.login)
 );
 
 router.post('/user/forgot-password',
     userController.reqValidateForgotPassword,
-    userController.validationErrors,
+    validateController.validationErrors,
     catchErrors(userController.forgotPassword)
 );
 
 router.post('/user/reset-password',
     userController.reqValidateResetPassword,
-    userController.validationErrors,
+    validateController.validationErrors,
     catchErrors(userController.resetPassword)
 );
 
 router.post('/user/profile', 
     userController.validateUserId,
-    userController.validationErrors,
+    validateController.validationErrors,
     catchErrors(userController.profileUser)
 );
 
 router.post('/user/profile/edit',
     userController.reqValidateProfile,
-    userController.validationErrors,
+    validateController.validationErrors,
     catchErrors(userController.editProfile)
 );
 

@@ -13,22 +13,28 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const axios = require('axios');
 
+exports.test = (req, res) => {
+   
+};
+
+exports.reqLocation = async (req, res) => {
+   let ip = req.ip.slice(7, 20).trim();
+   console.log(ip);
+   if(ip){
+      let local = await axios.get(`https://geo.ipify.org/api/v1?apiKey=${process.env.IPIFY_KEY}&ipAddress=${ip}`);
+      let country = local.data.location.country;
+      if(local) res.json({ country });
+      else res.json({ country: 'NA'});      
+   }   
+}
 
 // ** Reusable **
 exports.validateUserId = [
 
    body('_id').not().isEmpty().trim().escape()
-
+   
 ];
 
-exports.validationErrors = (req, res, next) => {
-   const errors = validationResult(req);  
-   if (!errors.isEmpty()) {      
-       return res.json({ errors: errors.array(), status: 422 });    
-   }else{      
-      return next();
-   } 
-};
 
 exports.checkMimeType = (req, res, next) => {
    const isFile = req.file.mimetype.startsWith('image/');
@@ -115,10 +121,6 @@ exports.register = async (req, res) => {
 };
 
 // ** Login **
-exports.reqValidateLogin = [
-   body('email').isEmail().normalizeEmail(),
-   body('password').not().isEmpty().trim().escape()
-];
 
 exports.authenticate = async (req, res, next) => {
    console.log(req.body);
@@ -149,6 +151,8 @@ exports.authenticate = async (req, res, next) => {
 };
 
 exports.login = async (req, res) => {   
+
+   console.log(req.body);
    
    const authenticate = User.authenticate();
    const authenticateUser = await authenticate(req.body.email, req.body.password)
@@ -250,6 +254,8 @@ exports.resetPassword = async(req, res) => {
 };
 
 exports.profileUser = async(req, res) => {
+
+   console.log(req.ip);
    
    const user = await User.findOne({_id: req.body._id})
        .catch(error => res.json(error));

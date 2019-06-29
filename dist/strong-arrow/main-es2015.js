@@ -238,7 +238,7 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
     ngOnInit() {
         this.serialService.getSerialNos().subscribe((response) => {
             this.dataSource.data = response;
-        }, error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'warn' }));
+        }, error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'red-theme' }));
     }
     ngAfterViewInit() {
         this.dataSource.sort = this.sort;
@@ -315,20 +315,20 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
                 let currDatas = this.dataSource.data;
                 let index = currDatas.findIndex((serial) => serial.id == response.id);
                 currDatas.splice(index, 1);
-                this.snackBar.open('Serial number is successfully deleted from database.', 'X', { duration: 10000, panelClass: 'primary' });
+                this.snackBar.open('Serial number is successfully deleted from database.', 'X', { duration: 10000, panelClass: 'gold-theme' });
             }
             else
-                this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', { duration: 10000, panelClass: 'warn' });
-        }, error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', { duration: 10000, panelClass: 'warn' }));
+                this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', { duration: 10000, panelClass: 'red-theme' });
+        }, error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }));
     }
     deleteManyReqInDb() {
         this.serialService.deleteSerialNos(this.datasToDelete).subscribe((response) => {
             if (response.ok == 1)
                 this.deleteFromDataSource();
             else
-                this.snackBar.open(`Error deleting file from the server. Please try again`, 'X', { duration: 10000, panelClass: 'warn' });
+                this.snackBar.open(`Error deleting file from the server. Please try again`, 'X', { duration: 10000, panelClass: 'red-theme' });
         }, error => {
-            this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'warn' });
+            this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'red-theme' });
             this.deletedInDb = false;
         });
     }
@@ -346,7 +346,7 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
         this.dataSource.data = dataSource;
         this.selectAction;
         this.checked = false;
-        this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', { duration: 10000, panelClass: 'primary' });
+        this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', { duration: 10000, panelClass: 'gold-theme' });
     }
 };
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -709,7 +709,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _admin_admin_component__WEBPACK_IMPORTED_MODULE_21__["AdminComponent"],
             _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_22__["AdminSerialComponent"],
             _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialTableComponent"],
-            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"]
+            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"],
+            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["BottomSheetInfo"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -733,7 +734,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ],
         entryComponents: [
             _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
-            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"]
+            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"],
+            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["BottomSheetInfo"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
@@ -1344,12 +1346,13 @@ module.exports = ".navbar {\n  background-color: #000;\n  height: 10vh;\n  paddi
 /*!********************************************!*\
   !*** ./src/app/navbar/navbar.component.ts ***!
   \********************************************/
-/*! exports provided: NavbarComponent */
+/*! exports provided: NavbarComponent, BottomSheetInfo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BottomSheetInfo", function() { return BottomSheetInfo; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth-service/auth-service.service */ "./src/app/services/auth-service/auth-service.service.ts");
@@ -1359,18 +1362,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let NavbarComponent = class NavbarComponent {
-    constructor(authService, snackBar) {
-        this.authService = authService;
+    constructor(profileService, snackBar, bottomSheet) {
+        this.profileService = profileService;
         this.snackBar = snackBar;
+        this.bottomSheet = bottomSheet;
         this.profile = null;
     }
     ngOnInit() {
-        this.authService.profile.subscribe((response) => {
+        var bottomSheetRef;
+        this.profileService.profile.subscribe((response) => {
             this.profile = response;
-        }, error => this.snackBar.open('Please login to access this page.', 'X', { duration: 10000, panelClass: 'red-theme' }));
+        }, error => this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }));
+        this.profileService.location.subscribe((response) => {
+            console.log('Country: ' + response);
+            //this.location = response.location;
+        }, error => {
+            let openBottomSheet = this.bottomSheet.open(BottomSheetInfo, { panelClass: 'red-theme' });
+            bottomSheetRef = openBottomSheet;
+        });
     }
     logOut() {
-        this.authService.logout();
+        this.profileService.logout();
     }
 };
 NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1380,8 +1392,37 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service_auth_service_service__WEBPACK_IMPORTED_MODULE_2__["AuthServiceService"],
-        _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]])
+        _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"],
+        _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatBottomSheet"]])
 ], NavbarComponent);
+
+let BottomSheetInfo = class BottomSheetInfo {
+    constructor(bottomSheetRef) {
+        this.bottomSheetRef = bottomSheetRef;
+    }
+    ngOnInit() { }
+};
+BottomSheetInfo = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'bottom-sheet-info',
+        template: `
+                  <div fxLayout="column" fxLayoutAlign="center center" >
+                        <mat-card-title class="card__title">Unknown Location</mat-card-title>
+                        <mat-card-content>
+
+                           <div class="mb__warning" fxLayout="column" fxLayoutAlign="center center">
+                              We are not able to determine your location, thus we are unable to suggest your local representative.
+
+                              Please contact our hq for any info or question.
+                           </div>
+                           
+                        </mat-card-content>
+                  </div>   
+   `,
+        styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatBottomSheetRef"]])
+], BottomSheetInfo);
 
 
 
@@ -1494,27 +1535,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 
 
 
 
 
 
+
+;
 let AuthServiceService = class AuthServiceService {
     constructor(http, router) {
         this.http = http;
         this.router = router;
+        // Location Profile 
+        this.locSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.country);
+        this.location = this.locSource;
+        // Subject Profile
         this.userSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.user);
         this.profile = this.userSource;
-    }
-    ngOnInit() {
+        this.getLocation();
         this.isLoggedIn();
         this.decodeToken();
         this.getUserSource();
     }
+    ngOnInit() {
+    }
+    getLocation() {
+        console.log('1st loc: ' + this.location);
+        this.http.post('/api/user/location', { location: '' }).subscribe((response) => {
+            console.log('response: ' + response);
+            this.country = response.location;
+            console.log('final loc: ' + this.location);
+            return this.location;
+        }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error)));
+    }
     isLoggedIn() {
         let token = localStorage.getItem('token');
-        token ? (this.token = token) : (this.token = null);
+        token ? () => { return this.token = token; } : () => { return this.user = null; };
     }
     decodeToken() {
         if (this.token) {
@@ -1528,7 +1586,7 @@ let AuthServiceService = class AuthServiceService {
     getUserSource() {
         let user = this.user;
         if (user) {
-            this.http.post('/api/user/profile', { _id: user._id })
+            this.http.post('/api/user/profile', { _id: user.id })
                 .subscribe((response) => this.userSource.next(response), error => Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error));
         }
         else

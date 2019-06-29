@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/interface/user';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
+import { ProfileService } from 'src/app/services/profile-service/profile-service.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
      private authService: AuthService,
-     private profileService: AuthServiceService,
+     private profileService: ProfileService,
      public snackBar: MatSnackBar,
      private router: Router
   ) { }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
             if(response && response.id){
 
                localStorage.setItem('token', response.token);
-               this.profileService.ngOnInit();
+               this.profileService.isLoggedIn();
                this.router.navigate(['/admin/serial']);
                this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'gold-theme'} );         
                

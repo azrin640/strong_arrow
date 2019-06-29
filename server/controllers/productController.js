@@ -1,19 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-// const Product =  mongoose.model('Product');
-// const User = mongoose.model('User');
-// const Category = mongoose.model('Category');
 const { promisify } = require('es6-promisify');
 require ('express-validator');
-// const uuidv4 = require('uuid/v4');
 const Serial =  mongoose.model('Serial');
 const Review =  mongoose.model('Review');
-
-// Image Upload and Resizing
-// const multer = require('multer');
-// const jimp = require('jimp');
-
-// var fileName;
 
 // Check serial no authentication
 exports.checkSerialNo = async (req, res) => {

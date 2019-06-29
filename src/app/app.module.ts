@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +26,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AdminComponent } from './admin/admin.component';
 import { AdminSerialComponent } from './admin/admin-serial/admin-serial.component';
 import { AdminSerialTableComponent, BottomSheetConfirm } from './admin/admin-serial/admin-serial-table/admin-serial-table.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MAT_CHECKBOX_CLICK_ACTION, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheetRef } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MAT_CHECKBOX_CLICK_ACTION, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import { NavigationComponent } from './navigation/navigation.component';
 
 export function tokenGetter(){
    return localStorage.getItem('access_token');
@@ -49,7 +50,8 @@ export function tokenGetter(){
     AdminComponent,
     AdminSerialComponent,
     AdminSerialTableComponent,
-    BottomSheetConfirm
+    BottomSheetConfirm,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ export function tokenGetter(){
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
-    {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    //{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    AuthService
   ],
   entryComponents: [
      SerialCheckDialog,

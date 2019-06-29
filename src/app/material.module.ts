@@ -72,7 +72,10 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
         MatDividerModule,
         MatRadioModule,
         MatProgressSpinnerModule,
-        MatBottomSheetModule
+        MatBottomSheetModule,
+        MatTableModule, 
+        MatPaginatorModule, 
+        MatSortModule
     ],
     exports: [
         MatButtonModule,
@@ -107,7 +110,10 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
         MatDividerModule,
         MatRadioModule,
         MatProgressSpinnerModule,
-        MatBottomSheetModule
+        MatBottomSheetModule,
+        MatTableModule, 
+        MatPaginatorModule, 
+        MatSortModule
 
     ]
 })

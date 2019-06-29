@@ -53,7 +53,7 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
          (response: Serial[]) => {
             this.dataSource.data = response;
          },
-         error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'warn'})
+         error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'red-theme'})
       )    
    }
 
@@ -152,11 +152,11 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
                let currDatas = this.dataSource.data;
                let index = currDatas.findIndex((serial) => serial.id == response.id);
                currDatas.splice(index, 1);
-               this.snackBar.open('Serial number is successfully deleted from database.', 'X', {duration: 10000, panelClass: 'primary'});
+               this.snackBar.open('Serial number is successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});
             } 
-            else this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', {duration: 10000, panelClass: 'warn'})          
+            else this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', {duration: 10000, panelClass: 'red-theme'})          
          },
-         error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', {duration: 10000, panelClass: 'warn'})
+         error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', {duration: 10000, panelClass: 'red-theme'})
       );
    }  
 
@@ -165,10 +165,10 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
          this.serialService.deleteSerialNos(this.datasToDelete).subscribe(
             (response: any) => {    
                if(response.ok == 1) this.deleteFromDataSource();
-               else this.snackBar.open(`Error deleting file from the server. Please try again`, 'X', {duration: 10000, panelClass: 'warn'});
+               else this.snackBar.open(`Error deleting file from the server. Please try again`, 'X', {duration: 10000, panelClass: 'red-theme'});
             },
             error => {
-               this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'warn'});
+               this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'red-theme'});
                this.deletedInDb = false;
             }
          )
@@ -190,7 +190,7 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
          this.dataSource.data = dataSource;
          this.selectAction;
          this.checked = false;
-         this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', {duration: 10000, panelClass: 'primary'});
+         this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});
 
    }
 }

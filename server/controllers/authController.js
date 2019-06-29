@@ -1,12 +1,9 @@
-const passport = require('passport');
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const passport    = require('passport');
+var   JwtStrategy = require('passport-jwt').Strategy;
+var   ExtractJwt  = require('passport-jwt').ExtractJwt;
+const mongoose    = require('mongoose');
 
-exports.register = async (req, res) => {
-    const user = new User();
-
-    user.name = req.body.name;
-    user.email = req.body.email;
-    
-    user.setPassword(req.body.password);
-}
+exports.authJwtReq = passport.authenticate('jwt', { 
+   secretOrKey : process.env.MY_SECRET, 
+   session     : false 
+});

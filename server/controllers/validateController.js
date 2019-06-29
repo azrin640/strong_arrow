@@ -1,52 +1,15 @@
-require('express-validator');
-const { check, validationResult } = require('express-validator');
+const { body } = require('express-validator/check');
+const { validationResult } = require('express-validator');
 
 
-exports.autoCheckInput = (req, res) => {
-
-   if(req.body){
-
-      let construct = Object.keys(req.body)
-      .reduce((acc, key) => {
-
-         if(key === 'email'){
-            construct.email = check('email');
-         }
-
-         return constructs;
-
-      }, {});
-      console.log(construct);
-
-      res.json('SUCCESS');
-
-   }
-   else res.json('SUCCESS');
-
-}
+// User
+exports.reqValidateLogin = [
+   body('email').isEmail().normalizeEmail(),
+   body('password').not().isEmpty().trim().escape()
+];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Serial
 exports.serialValidation = (req, res, next) => {
 
    
@@ -79,4 +42,13 @@ exports.newReviewValidation = (req, res, next) => {
    const errors = req.validationErrors();  
    if(errors) res.json(errors);
    return next();
+};
+
+// Middleware to detect any validation error
+exports.validationErrors = (req, res, next) => {
+   const errors = req.body.validationErrors;
+   if (errors) {      
+       return res.json({ errors: errors.array(), status: 422 });    
+   }
+   else return next();
 };
