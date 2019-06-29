@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-// import { AuthServiceService } from '../services/auth-service/auth-service.service';
 import { User } from '../interface/user';
-//import { MatSnackBar, MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material';
+import { MatSnackBar, MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material';
+import { ProfileService } from '../services/profile-service/profile-service.service';
 
 
 @Component({
@@ -15,19 +15,21 @@ export class NavbarComponent implements OnInit {
    location: string;
 
   constructor(
-   //   private profileService: AuthServiceService,
-   //   public snackBar: MatSnackBar,
-   //   public bottomSheet: MatBottomSheet
+     private profileService: ProfileService,
+     public snackBar: MatSnackBar,
+     public bottomSheet: MatBottomSheet
    ) {  }
 
   ngOnInit() {
       
-      // this.profileService.profile.subscribe(
-      //    (response: User) => {            
-      //       this.profile = response;
-      //    },
-      //    error => this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme'})
-      // );
+      this.profileService.profile.subscribe(
+         (response: User) => {            
+            this.profile = response;
+         },
+         error => this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme'})
+      );
+
+      console.log(this.profile);
 
       // this.profileService.location.subscribe(
       //    (response: any) => {

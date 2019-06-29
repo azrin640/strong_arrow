@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { Url } from 'url';
 import { User } from '../model/user';
 import { ProfileService } from '../services/profile-service/profile-service.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-footer',
@@ -13,36 +13,42 @@ import { ProfileService } from '../services/profile-service/profile-service.serv
 })
 export class FooterComponent implements OnInit {
 
-   telegram: string = '';
+   
    profile: User;
    agents = [
       { country: 'malaysia', telegram: 'strongarrowmalaysia'},
       { country: 'singapore', telegram: 'neezamhm'}
    ];
    location: string;
+   contact;
 
 
   constructor( 
     private iconRegistry: MatIconRegistry, 
     private sanitizer: DomSanitizer,
     private router: Router,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    public snackBar: MatSnackBar
   ){ }
 
   ngOnInit() {
       this.profileService.profile.subscribe((response: User) => this.profile = response);
       this.profileService.location.subscribe(response => {
-         if(response) {
-            this.location = response;
-            this.telegram = this.agents.reduce((acc, value) => {
-               if(value.country = response) var telegram = value.telegram;
-               acc = telegram;
-               return acc;  
-            }, ''); }
-         else this.telegram = this.agents.reduce((acc, value) => {
-            if(value.country = 'malaysia') var telegram = value.telegram;
-            acc = telegram;
-            return acc }, ''); });
+
+         let agents = this.agents;
+         function findTelegram(country){return agents.find((agent) => { 
+            return agent.country === country; }); };
+
+         var localAgent;
+         switch(response){
+            case 'MY': localAgent = findTelegram('malaysia'); break;
+            case 'SG': localAgent = findTelegram('singapore'); break;
+            default  : localAgent = findTelegram('malaysia');
+         }
+         
+         this.contact = localAgent;
+      });
+
    }
 
   authenticateProduct()

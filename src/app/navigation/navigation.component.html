@@ -13,9 +13,7 @@
 <div class="location" fxLayout fxLayoutAlign="center center"*ngIf="location">
    <mat-toolbar class="navbar-detect theme-gold" >
       <span fxLayout fxLayoutAlign="center center">
-         <p> 
-           We have detected that you are from {{location.country}}. Please use the Telegram button below to contact your nearest representative.
-         </p> 
+         {{ profile.email }}
       </span>
       <span>
          <mat-icon>close</mat-icon>

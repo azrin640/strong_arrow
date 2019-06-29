@@ -10,7 +10,7 @@ import { ProfileService } from '../services/profile-service/profile-service.serv
 })
 export class NavigationComponent implements OnInit {
 
-   profile: boolean = false;
+   profile: User = null;
    location;
 
   constructor(
@@ -21,11 +21,11 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
 
       this.profileService.profile.subscribe(
-         (response) => (response && response.id) ? ()=>{this.profile = true} : ()=>{this.profile = false});
+         (response) => this.profile = response);
 
       this.profileService.location.subscribe(
          (response: any) => { if(response) this.snackBar.open(`Hello friend from: ${response}`, 'X', { duration: 10000, panelClass: 'gold-theme'})});
-   
+
    }
 
 }

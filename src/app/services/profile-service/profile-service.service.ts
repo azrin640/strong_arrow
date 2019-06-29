@@ -5,14 +5,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/user';
 import { catchError } from 'rxjs/operators';
-import { Location } from 'src/app/interface/location';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
    token: string;
+   decodedToken: boolean = false;
    user: User;
+   loggedIn: boolean = false;
    country;
 
    // Location Profile 
@@ -24,50 +25,31 @@ export class ProfileService {
    profile = this.userSource as Observable<User>;
 
   constructor( private http: HttpClient, private router: Router) 
-   { 
-      this.getLocation();
-      this.isLoggedIn();
-      this.decodeToken();
-      this.getUserSource();
-   }  
+   {  this.getLocation();
+      this.isLoggedIn();   }  
 
-   getLocation()   {
-      this.http.post('/api/user/location', { location: '' }).subscribe(
-         (response: any) => {  
-            console.log(response.country);  
-            this.locSource.next(response.country);
-         },
-         catchError( error => throwError(error) ) 
-      )
-   }
+   getLocation()   
+   {  this.http.post('/api/user/location', { location: '' }).subscribe(
+         (response: any) => this.locSource.next(response.country),
+         catchError( error => throwError(error) ) )}
 
-  isLoggedIn()
-  {
-    let token = localStorage.getItem('token');
-    token ? ()=>{ return this.token = token } : ()=>{ return this.user = null; };
-  }
+   isLoggedIn()
+   {  let token = this.token = localStorage.getItem('token');
+      token    ?  this.decodeToken() : ()=>{ return this.loggedIn = false  }   }
 
-  decodeToken(): void
-  {     
-    if(this.token){
-      let token = this.token;
+   decodeToken()
+   {  let token = this.token;
       const jwtHelper = new JwtHelperService();
-      this.user = jwtHelper.decodeToken(token);
-    }
-    else this.user = null;
-  }
-  
-  getUserSource(): void
-  { 
-    let user = this.user;
-    if(user){
-      this.http.post('/api/user/profile', {_id: user.id}).subscribe(
-         (response: User) => this.userSource.next(response),
-         catchError(error => throwError(error))
-        );        
-    }
-    else this.userSource = null;
-  }
+      let user = this.user = jwtHelper.decodeToken(token); 
+      user ? this.getUserSource() : ()=>{ return this.decodedToken = false }   }
+
+   getUserSource(): void
+   {  let user = this.user;
+      this.http.post('/api/user/profile', {_id: user._id}).subscribe(
+         (response: User) => {
+            if(response && response.id) this.userSource.next(response)
+            else this.userSource = null   },
+         catchError(error => throwError(error)) )}
 
   logout(){
       localStorage.removeItem('token');

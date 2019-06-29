@@ -19,7 +19,6 @@ exports.test = (req, res) => {
 
 exports.reqLocation = async (req, res) => {
    let ip = req.ip.slice(7, 20).trim();
-   console.log(ip);
    if(ip){
       let local = await axios.get(`https://geo.ipify.org/api/v1?apiKey=${process.env.IPIFY_KEY}&ipAddress=${ip}`);
       let country = local.data.location.country;
