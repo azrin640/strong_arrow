@@ -16,11 +16,9 @@ export class ProfileService {
    loggedIn: boolean = false;
    country;
 
-   // Location Profile 
    locSource = new BehaviorSubject(this.country);
    location = this.locSource as Observable<string>;
 
-   // Subject Profile
    userSource = new BehaviorSubject(this.user);
    profile = this.userSource as Observable<User>;
 

@@ -23,7 +23,6 @@ export class AdminSerialComponent implements OnInit {
       {area: 'Malaysia'},
       {area: 'Singapore'} 
    ];
-   serials: Serial;
 
   constructor(
      private serialService: SerialAuthService,
@@ -36,11 +35,12 @@ export class AdminSerialComponent implements OnInit {
   submitSerialForm()
   {
      this.serialService.generateSerialNo(this.serialForm.value).subscribe(
-         (response: Serial) => {
-            if(response.code) this.snackBar.open(`Bulk serial number generation error: ${response.name}`, 'X', { duration: 10000, panelClass: 'primary' });
+         (response: any) => {
+            if(response.code) {               
+               this.snackBar.open(`Bulk serial number generation error: ${response.name}`, 'X', { duration: 10000, panelClass: 'primary' }); }
             else{
+               this.serialService.updateSerials(response);
                this.snackBar.open('Bulk serial number generation is successfull', 'X', { duration: 10000, panelClass: 'primary' });
-               this.serials = response;
             }
          }
       )

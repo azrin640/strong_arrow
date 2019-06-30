@@ -13,25 +13,17 @@ const crypto = require('crypto');
 const mail = require('../handlers/mail');
 const axios = require('axios');
 
-exports.test = (req, res) => {
-   
-};
-
 exports.reqLocation = async (req, res) => {
    let ip = req.ip.slice(7, 20).trim();
    if(ip){
       let local = await axios.get(`https://geo.ipify.org/api/v1?apiKey=${process.env.IPIFY_KEY}&ipAddress=${ip}`);
       let country = local.data.location.country;
       if(local) res.json({ country });
-      else res.json({ country: 'NA'});      
-   }   
-}
+      else res.json({ country: 'NA'});     }} //
 
 // ** Reusable **
 exports.validateUserId = [
-
-   body('_id').not().isEmpty().trim().escape()
-   
+   body('_id').not().isEmpty().trim().escape()   
 ];
 
 
@@ -122,7 +114,6 @@ exports.register = async (req, res) => {
 // ** Login **
 
 exports.authenticate = async (req, res, next) => {
-   console.log(req.body);
    const authToken = req.body.authToken; 
 
    const authenticate = User.authenticate();
@@ -146,17 +137,12 @@ exports.authenticate = async (req, res, next) => {
        }
        else res.json({ status: 401, statusText: 'Your authentication link has already expired. Please register again.' });
    }
-   else res.json({ status: 400, statusText: 'Authentication link error. Please register again.' });
-};
+   else res.json({ status: 400, statusText: 'Authentication link error. Please register again.' });   } //
 
 exports.login = async (req, res) => {   
-
-   console.log(req.body);
-   
    const authenticate = User.authenticate();
    const authenticateUser = await authenticate(req.body.email, req.body.password)
        .catch(error => res.json(error));
-   console.log(authenticateUser);
    const user = authenticateUser.user;
    
    if(user){
@@ -252,17 +238,12 @@ exports.resetPassword = async(req, res) => {
 
 };
 
-exports.profileUser = async(req, res) => {
-
-   console.log(req.ip);
-   
+exports.profileUser = async(req, res) => {   
    const user = await User.findOne({_id: req.body._id})
        .catch(error => res.json(error));
 
    if(user && user._id) res.json(user);
-   else res.json({ status: 400, statusText: 'User does not exist, please register to login.'});  
-
-}
+   else res.json({ status: 400, statusText: 'User does not exist, please register to login.'});    }  //
 
 // ** Edit Profile
 exports.reqValidateProfile = [

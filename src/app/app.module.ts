@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AuthenticateComponent, SerialCheckDialog } from './authenticate/authenticate.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
@@ -38,7 +37,6 @@ export function tokenGetter(){
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent,
     AuthenticateComponent,
     AppComponent,
     FooterComponent,

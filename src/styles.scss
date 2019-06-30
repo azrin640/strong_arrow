@@ -99,6 +99,18 @@ h2{ line-height: 2.5rem !important; }
     }
 }
 
+.instruction{
+
+   &__card{
+       padding: 20px;
+       background-color: #303030;
+   }
+
+   &__title{
+      padding: 20px; 
+   }
+}
+
 .blurp{
 
     padding: 20px;

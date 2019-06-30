@@ -6,9 +6,11 @@ import { LoginComponent } from './user/login/login.component';
 import { AdminSerialComponent } from './admin/admin-serial/admin-serial.component';
 import { AdminAuthGuardService } from './services/admin-auth-guard/admin-auth-guard.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
+import { ContactFormComponent } from './footer/contact-form/contact-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
+  { path: 'contact', component: ContactFormComponent},
   { path: 'products/product/strong-arrow/authenticate', component: AuthenticateComponent },
   
 

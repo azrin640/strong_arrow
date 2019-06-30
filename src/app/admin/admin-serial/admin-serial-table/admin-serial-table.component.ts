@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Inject, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTable, MatSnackBar, MatTableDataSource, MatBottomSheetRef, MatBottomSheet, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 import { SerialAuthService } from 'src/app/services/serial-no/serial-auth.service';
 import { Serial } from 'src/app/interface/serial';
@@ -14,7 +14,8 @@ export interface MbData{ length: number, delete: boolean };
   styleUrls: ['./admin-serial-table.component.scss']
 })
 export class AdminSerialTableComponent implements AfterViewInit, OnInit {
-  
+
+   
    deleteColor: string = 'primary';
    filterColor: string = 'primary';
    selectAllColor: string = 'primary';
@@ -43,24 +44,20 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
      private serialService: SerialAuthService,
      public snackBar: MatSnackBar,
      public bottomSheet: MatBottomSheet
-   ){
-         
+   ){ 
+      this.dataTableUpdate();   
    }
 
-   ngOnInit() {
+   ngOnInit() {}
 
-      this.serialService.getSerialNos().subscribe(
-         (response: Serial[]) => {
-            this.dataSource.data = response;
-         },
-         error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'red-theme'})
-      )    
-   }
+   ngAfterViewInit() 
+   {     this.dataSource.sort = this.sort;
+         this.dataSource.paginator = this.paginator;  }  //
 
-   ngAfterViewInit() {
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-   }
+   dataTableUpdate()
+   {  this.serialService.serials.subscribe(
+         (response: Serial[]) => this.dataSource.data = response,
+         error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'red-theme'})   )} //   
 
    selectAction()
    {
@@ -75,9 +72,8 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
    }
 
    filterTable(filterValue: string)
-   {
+   {  
       this.dataSource.filter = filterValue.trim().toLowerCase();
-      console.log(this.dataSource.filteredData);
    }
 
    deleteASerialNo(serial)
@@ -143,57 +139,44 @@ export class AdminSerialTableComponent implements AfterViewInit, OnInit {
    }
 
    deleteASerialNoInDb()
-   {
-      let serial = this.toDeleteData;
-
+   {  let serial = this.toDeleteData;
       this.serialService.deleteASerialNo(serial).subscribe(
          (response: any) => {
             if(response && response.id){
                let currDatas = this.dataSource.data;
                let index = currDatas.findIndex((serial) => serial.id == response.id);
                currDatas.splice(index, 1);
-               this.snackBar.open('Serial number is successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});
-            } 
-            else this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', {duration: 10000, panelClass: 'red-theme'})          
-         },
-         error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', {duration: 10000, panelClass: 'red-theme'})
-      );
-   }  
+               this.dataSource.data = currDatas;
+               this.snackBar.open('Serial number is successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});    }  // 
+            else this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', {duration: 10000, panelClass: 'red-theme'})    }, //
+         error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', {duration: 10000, panelClass: 'red-theme'})  ); }  //  
 
    deleteManyReqInDb(): void
-   {
-         this.serialService.deleteSerialNos(this.datasToDelete).subscribe(
+   {  this.serialService.deleteSerialNos(this.datasToDelete).subscribe(
             (response: any) => {    
                if(response.ok == 1) this.deleteFromDataSource();
                else this.snackBar.open(`Error deleting file from the server. Please try again`, 'X', {duration: 10000, panelClass: 'red-theme'});
             },
             error => {
                this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', {duration: 10000, panelClass: 'red-theme'});
-               this.deletedInDb = false;
-            }
-         )
-   }
+               this.deletedInDb = false;     })}   //
 
    deleteFromDataSource(): void
-   {   
-         let currData = this.dataSource.data;      
-         let datasToDelete = this.datasToDelete;
+   {  let currData = this.dataSource.data;      
+      let datasToDelete = this.datasToDelete;
 
-         let dataSource = datasToDelete.reduce((acc, val): Serial[] => {
-            if(val) {
-               let index = currData.findIndex((serial) => serial.id === val.id);
-               currData.splice(index, 1);            
-            }  
-            acc = currData;      
-            return acc;
-         }, []);
-         this.dataSource.data = dataSource;
-         this.selectAction;
-         this.checked = false;
-         this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});
-
-   }
-}
+      let dataSource = datasToDelete.reduce((acc, val): Serial[] => {
+         if(val) {
+            let index = currData.findIndex((serial) => serial.id === val.id);
+            currData.splice(index, 1);            
+         }  
+         acc = currData;      
+         return acc;
+      }, []);
+      this.dataSource.data = dataSource;
+      this.selectAction;
+      this.checked = false;
+      this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', {duration: 10000, panelClass: 'gold-theme'});  }}    //
 
 
 @Component({

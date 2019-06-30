@@ -30,6 +30,7 @@ require('./server/models/Blog');
 require('./server/models/Rate');
 require('./server/models/Serial');
 require('./server/models/Review');
+require('./server/models/Contact');
 
 // Start our app!
 const app = require('./app');

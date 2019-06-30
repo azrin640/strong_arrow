@@ -51,12 +51,19 @@
 
                <div class="cta" fxLayout="column" fxLayoutAlign="center center">
                   <div class="cta__detect">
-                     *We have detected that you are from {{ contact.country | titlecase }}, please contact our {{ contact.country | titlecase }} representative for any question.
+                     *We have detected that you are from <strong>{{ contact.country | titlecase }}</strong>, please contact our <strong>{{ contact.country | titlecase }}</strong> representative for any question.
                   </div>
-                  <a class="link-button" href="https://t.me/{{ contact.telegram }}" target="blank">
+                  <a class="link-button" mat-elevation-z8 href="https://t.me/{{ contact.telegram }}" target="blank">
                      <i class="fab fa-telegram" mat-elevation-z8></i>
-                     Contact Our Representative in {{ contact.country | titlecase }}
-                  </a>                      
+                     Telegram our Representative in {{ contact.country | titlecase }}
+                  </a>                       
+                  <a class="link-button" mat-elevation-z8 (click)="useContactForm()">
+                     <i class="fas fa-comment" mat-elevation-z8></i>
+                     Use our contact form to send us your query.
+                  </a>
+                  <div class="contact" *ngIf="useForm">
+                     <app-contact-form></app-contact-form>
+                  </div>              
                </div>
                <div class="cta" fxLayout="column" fxLayoutAlign="center center">
                   <div class="cta__detect">

@@ -6,6 +6,7 @@ const productController = require('../controllers/productController');
 const validateController = require('../controllers/validateController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const contactController = require('../controllers/contactController');
 // const contactController = require('../controllers/contactController');
 // const checkoutController = require('../controllers/checkoutController');
 // const walletController = require('../controllers/walletController');
@@ -17,15 +18,7 @@ const multer = require('multer');
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
-
-router.get('/test', 
-   authController.authJwtReq,
-   userController.test
-);
-// router.get('/user/dummy', catchErrors(userController.dummy));
-
 //  ** USER **
-
 router.post('/user/location', 
    catchErrors(userController.reqLocation)
 );
@@ -44,9 +37,8 @@ router.post('/user/authenticate',
 );
 
 router.post('/user/login', 
-    validateController.reqValidateLogin,
-    validateController.validationErrors,
-    catchErrors(userController.login)
+   validateController.reqValidateLogin,
+   catchErrors(userController.login)
 );
 
 router.post('/user/forgot-password',
@@ -98,6 +90,7 @@ router.post('/product/review',
 );
 
 router.post('/product/serial/generate',
+   validateController.serialCreateValidation,
    catchErrors(productController.generateSerialNo)
 );
 
@@ -112,6 +105,13 @@ router.post('/product/serials/rm',
 router.post('/product/serial/rm',
    catchErrors(productController.deleteSerial)
 );
+
+// Contact Form
+router.post('/contact/form/save',
+   validateController.reqValidateContact,
+   catchErrors(contactController.saveContactForm)
+);
+
 // router.post('/product/category', 
 //     catchErrors(userController.isLoggedIn),
 //     catchErrors(productController.createCategory)

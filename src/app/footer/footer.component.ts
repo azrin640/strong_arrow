@@ -21,6 +21,7 @@ export class FooterComponent implements OnInit {
    ];
    location: string;
    contact;
+   useForm: boolean = false;
 
 
   constructor( 
@@ -49,6 +50,11 @@ export class FooterComponent implements OnInit {
          this.contact = localAgent;
       });
 
+   }
+
+   useContactForm()
+   {
+      this.useForm ? this.useForm=false : this.useForm=true;
    }
 
   authenticateProduct()

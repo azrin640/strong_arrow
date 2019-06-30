@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " <div class=\"table\">\n\n   <div class=\"title__start\" fxLayout=\"column\" fxLayoutAlign=\"start\">\n      Serial Number List \n   </div>\n\n   <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.value)\">\n         \n      <div class=\"table__actions-menu\" fxLayout fxLayoutAlign=\"center center\">\n         <button type=\"button\" mat-icon-button [color]=\"deleteColor\" (click)=\"selectAction()\" \n            matTooltip=\"Open check box to select all serial nos or select serial no to delete\">\n               <mat-icon>delete</mat-icon>\n         </button>\n         <button type=\"button\" mat-icon-button [color]=\"filterColor\" (click)=\"filterAction()\" \n            matTooltip=\"Filter all serial no information.\">\n               <mat-icon>find_in_page</mat-icon>\n         </button>\n      </div>\n      \n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button type=\"button\" mat-icon-button [color]=\"selectAllColor\" (click)=\"selectAll()\"\n            matTooltip=\"Select all serial nos to delete\">\n               <mat-icon>select_all</mat-icon>\n         </button>\n         <button mat-icon-button color=\"primary\"  type=\"submit\" [disabled]=\"!f.form.valid\"\n            matTooltip=\"Delete serial nos, deletion is permanent.\">\n               <mat-icon>delete_forever</mat-icon>\n         </button>\n      </div>\n\n      <div class=\"table__filter-input\" *ngIf=\"filter\">\n         <mat-form-field>\n            <input class=\"table__filter\" \n               type=\"text\" \n               matInput \n               (keyup)=\"filterTable($event.target.value)\"\n               placeholder=\"Filter Table\"\n            >\n         </mat-form-field>\n      </div>\n\n      <div class=\"table__table\">\n         <div class=\"mat-elevation-z8\">\n            <table mat-table class=\"full-width-table\" matSort aria-label=\"Elements\" [dataSource]=\"dataSource\">\n\n               <div class=\"table__check\" *ngIf=\"editMode\">\n                     <ng-container matColumnDef=\"check\">\n                        <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Select</th>\n                        <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                           <mat-checkbox #serial color=\"primary\" [(indeterminate)]=\"indeterminate\" [labelPosition]=\"labelPosition\" \n                              [(checked)]=\"checked\" [(ngModel)]=\"serial.checked\" name=\"{{row.id}}\">\n                           </mat-checkbox>\n                     </ng-container>           \n               </div>\n\n               <ng-container matColumnDef=\"serial\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.serial | uppercase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"market\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>For Market</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.market | titlecase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"delete\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                     <button mat-icon-button type=\"button\" color=\"warn\" (click)=\"deleteASerialNo(row)\">\n                        <mat-icon>clear</mat-icon>\n                     </button>\n                  </td>\n               </ng-container>\n\n               <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n               <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            </table>\n\n            <mat-paginator #paginator\n                  [length]=\"dataSource?.data.length\"\n                  [pageIndex]=\"0\"\n                  [pageSize]=\"25\"\n                  [pageSizeOptions]=\"[25, 50, 100, 250]\">\n            </mat-paginator>\n         </div>\n      </div>\n\n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button mat-icon-button (click)=\"selectAll()\"><mat-icon>select_all</mat-icon></button>\n         <button mat-icon-button type=\"submit\" ><mat-icon>delete_forever</mat-icon></button>\n      </div>\n\n   </form>\n</div>"
+module.exports = " <div class=\"table\">\n\n   <div class=\"title__start\" fxLayout=\"column\" fxLayoutAlign=\"start\">\n      Serial Number List \n   </div>\n\n   <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.value)\">\n         \n      <div class=\"table__actions-menu\" fxLayout fxLayoutAlign=\"center center\">\n         <button type=\"button\" mat-icon-button [color]=\"deleteColor\" (click)=\"selectAction()\" \n            matTooltip=\"Open check box to select all serial nos or select serial no to delete\">\n               <mat-icon>delete</mat-icon>\n         </button>\n         <button type=\"button\" mat-icon-button [color]=\"filterColor\" (click)=\"filterAction()\" \n            matTooltip=\"Filter all serial no information.\">\n               <mat-icon>find_in_page</mat-icon>\n         </button>\n      </div>\n      \n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button type=\"button\" mat-icon-button [color]=\"selectAllColor\" (click)=\"selectAll()\"\n            matTooltip=\"Select all serial nos to delete\">\n               <mat-icon>select_all</mat-icon>\n         </button>\n         <button mat-icon-button color=\"primary\"  type=\"submit\" [disabled]=\"!f.form.valid\"\n            matTooltip=\"Delete serial nos, deletion is permanent.\">\n               <mat-icon>delete_forever</mat-icon>\n         </button>\n      </div>\n\n      <div class=\"table__filter-input\" *ngIf=\"filter\">\n         <mat-form-field>\n            <input class=\"table__filter\" \n               type=\"text\" \n               matInput \n               (keyup)=\"filterTable($event.target.value)\"\n               placeholder=\"Filter Table\"\n            >\n         </mat-form-field>\n      </div>\n\n      <div class=\"table__table\">\n         <div class=\"mat-elevation-z8\">\n            <table mat-table class=\"full-width-table\" matSort aria-label=\"Elements\" [dataSource]=\"dataSource\">\n\n               <div class=\"table__check\" *ngIf=\"editMode\">\n                     <ng-container matColumnDef=\"check\">\n                        <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Select</th>\n                        <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                           <mat-checkbox #serial color=\"primary\" [(indeterminate)]=\"indeterminate\" [labelPosition]=\"labelPosition\" \n                              [(checked)]=\"checked\" [(ngModel)]=\"serial.checked\" name=\"{{row.id}}\">\n                           </mat-checkbox>\n                     </ng-container>           \n               </div>\n\n               <ng-container matColumnDef=\"serial\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.serial | uppercase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"market\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>For Market</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">{{row.market | titlecase}}</td>\n               </ng-container>\n\n               <ng-container matColumnDef=\"delete\">\n                  <th class=\"table__th\" mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>\n                  <td class=\"table__td\" mat-cell *matCellDef=\"let row\">\n                     <button mat-icon-button type=\"button\" color=\"warn\" (click)=\"deleteASerialNo(row)\">\n                        <mat-icon>clear</mat-icon>\n                     </button>\n                  </td>\n               </ng-container>\n\n               <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n               <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            </table>\n\n            <div *ngIf=\"dataSource\">\n            <mat-paginator #paginator \n                  [length]=\"dataSource?.data.length\"\n                  [pageIndex]=\"0\"\n                  [pageSize]=\"25\"\n                  [pageSizeOptions]=\"[25, 50, 100, 250]\">\n            </mat-paginator>\n            </div>\n         </div>\n      </div>\n\n      <div class=\"table__actions-submit\" fxLayout fxLayoutAlign=\"start\"*ngIf=\"editMode\">\n         <button mat-icon-button (click)=\"selectAll()\"><mat-icon>select_all</mat-icon></button>\n         <button mat-icon-button type=\"submit\" ><mat-icon>delete_forever</mat-icon></button>\n      </div>\n\n   </form>\n</div>"
 
 /***/ }),
 
@@ -18,7 +18,7 @@ module.exports = " <div class=\"table\">\n\n   <div class=\"title__start\" fxLay
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" id=\"top\">\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"card\">\n         <mat-card>\n            <mat-card-title>\n               Serial Form \n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"serial__form\">\n\n                  <form [formGroup]=\"serialForm\" (ngSubmit)=\"submitSerialForm()\">\n\n                     <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Serial 1</mat-label>\n                           <input matInput placeholder=\"Serial 1\" #serial1 formControlName=\"serial1\" minlength=\"2\" maxlength=\"2\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: AZ</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('required')\">\n                              Serial 1 is <strong>required</strong>\n                           </mat-error>     \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('minlength')\">\n                              Please enter only <strong>2 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('maxlength')\">\n                              Please enter max <strong>2 digits</strong> alphabet\n                           </mat-error>                   \n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <span matPrefix class=\"serial__form-prefix\" *ngIf=\"serial1.value\">{{ serial1.value }} - </span>\n                           <mat-label>Serial 2</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Serial 2\" formControlName=\"serial2\" min=\"6\" max=\"6\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: 300200</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('required')\">\n                              Serial 2 is <strong>required</strong>\n                           </mat-error>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('minlength')\">\n                              Please enter only <strong>6 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('maxlength')\">\n                              Please enter max <strong>6 digits</strong> alphabet\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Volume</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Volume\" formControlName=\"volume\" required>\n                           <mat-icon matSuffix color=\"primary\">ballot</mat-icon>\n                           <mat-hint>Ex: 100 (Will register AZ300200 - AZ300300)</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('volume').hasError('required')\">\n                              Volume is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Market</mat-label>\n                           <mat-select formControlName=\"market\">\n                             <mat-option *ngFor=\"let market of markets\" [value]=\"market.area\">\n                                 {{ market.area }}\n                             </mat-option>\n                           </mat-select>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"serial__form-button\" type=\"submit\" [disabled]=\"serialForm.invalid\" color=\"primary\">\n                           <mat-icon>check_circle</mat-icon>\n                           Generate Serial No\n                        </button>\n\n                     </div>\n\n                  </form>\n               </div>\n            \n            </mat-card-content>\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"content_100pct\" *ngIf=\"serials\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\">\n\n         <mat-card>\n            <mat-card-title>SERIAL NUMBER GENERATED</mat-card-title>\n            <mat-card-content>\n               <div class=\"serial__save-result\" >\n                  <mat-list>\n                     <mat-list-item *ngFor=\"let result of serials\">\n                        <mat-icon mat-list-icon>view_list</mat-icon>\n                        <h4 mat-line>{{ result.serial | titlecase }}</h4>\n                        <p mat-line> {{ result.market | titlecase }} </p>\n                     </mat-list-item>\n                  </mat-list>\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>               \n   </div>\n\n   <mat-divider></mat-divider>\n\n   <div class=\"content_100pct\">\n      <app-admin-serial-table>      \n      </app-admin-serial-table>\n   </div>\n   \n</div>\n\n"
+module.exports = "<div class=\"content\" id=\"top\">\n\n   <div class=\"content__100vh\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <div class=\"card\">\n         <mat-card>\n            <mat-card-title>\n               Serial Form \n            </mat-card-title>\n            <mat-card-content>\n\n               <div class=\"serial__form\">\n\n                  <form [formGroup]=\"serialForm\" (ngSubmit)=\"submitSerialForm()\">\n\n                     <div fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Serial 1</mat-label>\n                           <input matInput placeholder=\"Serial 1\" #serial1 formControlName=\"serial1\" minlength=\"2\" maxlength=\"2\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: AZ</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('required')\">\n                              Serial 1 is <strong>required</strong>\n                           </mat-error>     \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('minlength')\">\n                              Please enter only <strong>2 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial1').hasError('maxlength')\">\n                              Please enter max <strong>2 digits</strong> alphabet\n                           </mat-error>                   \n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <span matPrefix class=\"serial__form-prefix\" *ngIf=\"serial1.value\">{{ serial1.value }} - </span>\n                           <mat-label>Serial 2</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Serial 2\" formControlName=\"serial2\" min=\"6\" max=\"6\" required>\n                           <mat-icon matSuffix color=\"primary\">input</mat-icon>\n                           <mat-hint>Ex: 300200</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('required')\">\n                              Serial 2 is <strong>required</strong>\n                           </mat-error>\n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('minlength')\">\n                              Please enter only <strong>6 digits</strong> alphabet\n                           </mat-error>   \n                           <mat-error *ngIf=\"serialForm.get('serial2').hasError('maxlength')\">\n                              Please enter max <strong>6 digits</strong> alphabet\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Volume</mat-label>\n                           <input matInput type=\"number\" placeholder=\"Volume\" formControlName=\"volume\" required>\n                           <mat-icon matSuffix color=\"primary\">ballot</mat-icon>\n                           <mat-hint>Ex: 100 (Will register AZ300200 - AZ300300)</mat-hint>\n                           <mat-error *ngIf=\"serialForm.get('volume').hasError('required')\">\n                              Volume is <strong>required</strong>\n                           </mat-error>\n                        </mat-form-field>\n\n                        <mat-form-field class=\"serial__input\" appearance=\"fill\">\n                           <mat-label>Market</mat-label>\n                           <mat-select formControlName=\"market\">\n                             <mat-option *ngFor=\"let market of markets\" [value]=\"market.area\">\n                                 {{ market.area }}\n                             </mat-option>\n                           </mat-select>\n                        </mat-form-field>\n\n                        <button mat-raised-button class=\"serial__form-button\" type=\"submit\" [disabled]=\"serialForm.invalid\" color=\"primary\">\n                           <mat-icon>check_circle</mat-icon>\n                           Generate Serial No\n                        </button>\n\n                     </div>\n\n                  </form>\n               </div>\n            \n            </mat-card-content>\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"content_100pct\" *ngIf=\"serials\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n      <div class=\"card\">\n\n         <mat-card>\n            <mat-card-title>SERIAL NUMBER GENERATED</mat-card-title>\n            <mat-card-content>\n               <div class=\"serial__save-result\" >\n                  <mat-list>\n                     <mat-list-item *ngFor=\"let result of newSerials\">\n                        <mat-icon mat-list-icon>view_list</mat-icon>\n                        <h4 mat-line>{{ result.serial | titlecase }}</h4>\n                        <p mat-line> {{ result.market | titlecase }} </p>\n                     </mat-list-item>\n                  </mat-list>\n               </div>\n            </mat-card-content>\n         </mat-card>\n      \n      </div>               \n   </div>\n\n   <mat-divider></mat-divider>\n\n   <div class=\"content_100pct\">\n      <app-admin-serial-table></app-admin-serial-table>\n   </div>\n   \n</div>\n\n"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<div class=\"content\" id=\"top\" >\n\n   <div class=\"content
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n"
+module.exports = "\n<div class=\"contact\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n   <div class=\"container\"*ngIf=\"useForm\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n      <mat-card class=\"instruction__card\" *ngIf=\"!contact\">\n\n         <mat-card-title>\n            Contact Form\n         </mat-card-title>\n\n         <mat-card-content>            \n            <form [formGroup]=\"contactForm\">\n               <div class=\"cotactForm\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n\n                  <mat-form-field appearance=\"fill\">\n                     <mat-label>Name</mat-label>\n                     <input matInput placeholder=\"Enter Name\" formControlName=\"name\" required>\n                     <mat-icon matSuffix color=\"primary\">contacts</mat-icon>\n                     <mat-hint>Ex: Severus Snape</mat-hint>\n                     <mat-error *ngIf=\"name.invalid\">\n                        Name is <strong>required</strong>\n                     </mat-error>\n                  </mat-form-field>\n\n                  <mat-form-field appearance=\"fill\">\n                     <mat-label>Phone No</mat-label>\n                     <input matInput placeholder=\"Enter Phone No\" formControlName=\"phone\" type=\"number\" required>\n                     <mat-icon matSuffix color=\"primary\">contact_phone</mat-icon>\n                     <mat-hint>Ex: 111111111</mat-hint>\n                     <mat-error *ngIf=\"phone.invalid\">\n                        Phone no is <strong>required</strong>\n                     </mat-error>\n                  </mat-form-field>\n\n                  <mat-form-field appearance=\"fill\">\n                     <mat-label>Email</mat-label>\n                     <input matInput type=\"email\" placeholder=\"Enter email\" formControlName=\"email\" required>\n                     <mat-icon matSuffix color=\"primary\">contact_mail</mat-icon>\n                     <mat-hint>Ex: snape@hogwarts.com</mat-hint>\n                     <mat-error *ngIf=\"email.invalid\">\n                        Email is <strong>required</strong>\n                     </mat-error>\n                  </mat-form-field>\n\n                  <mat-form-field appearance=\"fill\">\n                     <textarea matInput formControlName=\"comment\" placeholder=\"Leave a comment\" required></textarea>\n                     <mat-icon matSuffix color=\"primary\">contact_mail</mat-icon>\n                     <mat-error *ngIf=\"comment.invalid\">\n                        Comment is <strong>required</strong>\n                     </mat-error>\n                  </mat-form-field>\n\n                  <div class=\"card__review-button\" fxLayout fxLayoutAlign=\"center center\">\n                     <button mat-raised-button color=\"primary\" (click)=\"submitContact()\">Submit Contact</button>\n                  </div>\n\n               </div>\n            </form>             \n         </mat-card-content>\n\n      </mat-card>\n\n      <mat-card class=\"gold-theme\" *ngIf=\"contact\">\n         <mat-card-title>\n            Thank You\n         </mat-card-title>\n         <mat-card-content >\n            Your request has been submitted, our local representative will contact you back as soon as possible.\n         </mat-card-content>\n      </mat-card>\n   </div>\n</div>"
 
 /***/ }),
 
@@ -84,7 +84,7 @@ module.exports = "\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from {{ contact.country | titlecase }}, please contact our {{ contact.country | titlecase }} representative for any question.\n                  </div>\n                  <a class=\"link-button\" href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Contact Our Representative in {{ contact.country | titlecase }}\n                  </a>                      \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from <strong>{{ contact.country | titlecase }}</strong>, please contact our <strong>{{ contact.country | titlecase }}</strong> representative for any question.\n                  </div>\n                  <a class=\"link-button\" mat-elevation-z8 href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Telegram our Representative in {{ contact.country | titlecase }}\n                  </a>                       \n                  <a class=\"link-button\" mat-elevation-z8 (click)=\"useContactForm()\">\n                     <i class=\"fas fa-comment\" mat-elevation-z8></i>\n                     Use our contact form to send us your query.\n                  </a>\n                  <div class=\"contact\" *ngIf=\"useForm\">\n                     <app-contact-form></app-contact-form>\n                  </div>              \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -128,7 +128,7 @@ module.exports = " <div class=\"container\">\n\n      <div class=\"card\" fxLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a routerLink=\"/#top\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a> \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <span ></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\"  *ngIf=\"!profile\">Login</button>\n   <button color=\"primary\" mat-raised-button *ngIf=\"profile\" (click)=\"logOut()\">Logout</button>\n</mat-toolbar>\n\n<div class=\"location\" fxLayout fxLayoutAlign=\"center center\"*ngIf=\"location\">\n   <mat-toolbar class=\"navbar-detect theme-gold\" >\n      <span fxLayout fxLayoutAlign=\"center center\">\n         {{ profile.email }}\n      </span>\n      <span>\n         <mat-icon>close</mat-icon>\n      </span>\n   </mat-toolbar>\n</div>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
+module.exports = "<mat-toolbar class=\"navbar\">\n   <span>\n      <a (click)=\"backToHome()\">\n         <img class=\"navbar__img\" src=\"assets/images/logo.png\" alt=\"Strong Arrow Logo\"> \n      </a> \n   </span> \n   <span class=\"navbar__spacer\"></span>\n   <span ></span>\n   <button class=\"gold-theme\" mat-raised-button routerLink=\"/login\"  *ngIf=\"!profile\">Login</button>\n   <button color=\"primary\" mat-raised-button *ngIf=\"profile\" (click)=\"logOut()\">Logout</button>\n</mat-toolbar>\n\n<div class=\"location\" fxLayout fxLayoutAlign=\"center center\"*ngIf=\"location\">\n   <mat-toolbar class=\"navbar-detect theme-gold\" >\n      <span fxLayout fxLayoutAlign=\"center center\">\n         {{ profile.email }}\n      </span>\n      <span>\n         <mat-icon>close</mat-icon>\n      </span>\n   </mat-toolbar>\n</div>\n\n\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -245,16 +245,16 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
         this.datasToDelete = [];
         this.length = 0;
         this.index = [];
+        this.dataTableUpdate();
     }
-    ngOnInit() {
-        this.serialService.getSerialNos().subscribe((response) => {
-            this.dataSource.data = response;
-        }, error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'red-theme' }));
-    }
+    ngOnInit() { }
     ngAfterViewInit() {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-    }
+    } //
+    dataTableUpdate() {
+        this.serialService.serials.subscribe((response) => this.dataSource.data = response, error => this.snackBar.open(`There is a problem getting data from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'red-theme' }));
+    } //   
     selectAction() {
         this.editMode ?
             (this.editMode = false, this.displayedColumns = ['serial', 'market', 'delete'], this.deleteColor = 'primary') :
@@ -265,7 +265,6 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
     }
     filterTable(filterValue) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
-        console.log(this.dataSource.filteredData);
     }
     deleteASerialNo(serial) {
         this.length = 1;
@@ -326,12 +325,15 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
                 let currDatas = this.dataSource.data;
                 let index = currDatas.findIndex((serial) => serial.id == response.id);
                 currDatas.splice(index, 1);
+                this.dataSource.data = currDatas;
                 this.snackBar.open('Serial number is successfully deleted from database.', 'X', { duration: 10000, panelClass: 'gold-theme' });
-            }
+            } // 
             else
                 this.snackBar.open('Error deleting serial number from database. Please reload page and try again', 'X', { duration: 10000, panelClass: 'red-theme' });
-        }, error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }));
-    }
+        }, //
+        //
+        error => this.snackBar.open('Error deleting serial number from database. Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }));
+    } //  
     deleteManyReqInDb() {
         this.serialService.deleteSerialNos(this.datasToDelete).subscribe((response) => {
             if (response.ok == 1)
@@ -342,7 +344,7 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
             this.snackBar.open(`Error deleting file from the server. Error: ${error}`, 'X', { duration: 10000, panelClass: 'red-theme' });
             this.deletedInDb = false;
         });
-    }
+    } //
     deleteFromDataSource() {
         let currData = this.dataSource.data;
         let datasToDelete = this.datasToDelete;
@@ -359,7 +361,7 @@ let AdminSerialTableComponent = class AdminSerialTableComponent {
         this.checked = false;
         this.snackBar.open('Serial numbers are successfully deleted from database.', 'X', { duration: 10000, panelClass: 'gold-theme' });
     }
-};
+}; //
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: false }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"])
@@ -476,11 +478,12 @@ let AdminSerialComponent = class AdminSerialComponent {
     }
     submitSerialForm() {
         this.serialService.generateSerialNo(this.serialForm.value).subscribe((response) => {
-            if (response.code)
+            if (response.code) {
                 this.snackBar.open(`Bulk serial number generation error: ${response.name}`, 'X', { duration: 10000, panelClass: 'primary' });
+            }
             else {
+                this.serialService.updateSerials(response);
                 this.snackBar.open('Bulk serial number generation is successfull', 'X', { duration: 10000, panelClass: 'primary' });
-                this.serials = response;
             }
         });
     }
@@ -561,6 +564,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial.component */ "./src/app/admin/admin-serial/admin-serial.component.ts");
 /* harmony import */ var _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/admin-auth-guard/admin-auth-guard.service */ "./src/app/services/admin-auth-guard/admin-auth-guard.service.ts");
 /* harmony import */ var _services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/auth-guard/auth-guard.service */ "./src/app/services/auth-guard/auth-guard.service.ts");
+/* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
+
 
 
 
@@ -572,6 +577,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: 'contact', component: _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_9__["ContactFormComponent"] },
     { path: 'products/product/strong-arrow/authenticate', component: _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_4__["AuthenticateComponent"] },
     // User routes
     { path: 'login', component: _user_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
@@ -656,27 +662,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
 /* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./authenticate/authenticate.component */ "./src/app/authenticate/authenticate.component.ts");
-/* harmony import */ var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm2015/flex-layout.js");
-/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/intro/intro.component */ "./src/app/home/intro/intro.component.ts");
-/* harmony import */ var _home_how_how_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./home/how/how.component */ "./src/app/home/how/how.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _user_user_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/user.component */ "./src/app/user/user.component.ts");
-/* harmony import */ var _user_login_login_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/login/login.component */ "./src/app/user/login/login.component.ts");
-/* harmony import */ var _user_register_register_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/register/register.component */ "./src/app/user/register/register.component.ts");
-/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
-/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
-/* harmony import */ var _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial.component */ "./src/app/admin/admin-serial/admin-serial.component.ts");
-/* harmony import */ var _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial-table/admin-serial-table.component */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
-/* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
-
+/* harmony import */ var _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./authenticate/authenticate.component */ "./src/app/authenticate/authenticate.component.ts");
+/* harmony import */ var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/auth/auth.service */ "./src/app/services/auth/auth.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm2015/flex-layout.js");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/intro/intro.component */ "./src/app/home/intro/intro.component.ts");
+/* harmony import */ var _home_how_how_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/how/how.component */ "./src/app/home/how/how.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _user_user_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user/user.component */ "./src/app/user/user.component.ts");
+/* harmony import */ var _user_login_login_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./user/login/login.component */ "./src/app/user/login/login.component.ts");
+/* harmony import */ var _user_register_register_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user/register/register.component */ "./src/app/user/register/register.component.ts");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial.component */ "./src/app/admin/admin-serial/admin-serial.component.ts");
+/* harmony import */ var _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./admin/admin-serial/admin-serial-table/admin-serial-table.component */ "./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
+/* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
 
 
 
@@ -713,22 +717,21 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-            _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
-            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["AuthenticateComponent"],
+            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_8__["AuthenticateComponent"],
             _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-            _footer_footer_component__WEBPACK_IMPORTED_MODULE_13__["FooterComponent"],
-            _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_15__["IntroComponent"],
-            _home_how_how_component__WEBPACK_IMPORTED_MODULE_16__["HowComponent"],
-            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
-            _user_user_component__WEBPACK_IMPORTED_MODULE_18__["UserComponent"],
-            _user_login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"],
-            _user_register_register_component__WEBPACK_IMPORTED_MODULE_20__["RegisterComponent"],
-            _admin_admin_component__WEBPACK_IMPORTED_MODULE_22__["AdminComponent"],
-            _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialComponent"],
-            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__["AdminSerialTableComponent"],
-            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__["BottomSheetConfirm"],
-            _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_26__["NavigationComponent"],
-            _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_27__["ContactFormComponent"]
+            _footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"],
+            _home_intro_intro_component__WEBPACK_IMPORTED_MODULE_14__["IntroComponent"],
+            _home_how_how_component__WEBPACK_IMPORTED_MODULE_15__["HowComponent"],
+            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_8__["SerialCheckDialog"],
+            _user_user_component__WEBPACK_IMPORTED_MODULE_17__["UserComponent"],
+            _user_login_login_component__WEBPACK_IMPORTED_MODULE_18__["LoginComponent"],
+            _user_register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
+            _admin_admin_component__WEBPACK_IMPORTED_MODULE_21__["AdminComponent"],
+            _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_22__["AdminSerialComponent"],
+            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialTableComponent"],
+            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"],
+            _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__["NavigationComponent"],
+            _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__["ContactFormComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -736,24 +739,24 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
             _material_module__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__["FlexLayoutModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_17__["FormsModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_17__["ReactiveFormsModule"],
-            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_21__["JwtModule"].forRoot({ config: { tokenGetter: tokenGetter } }),
-            _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatTableModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatPaginatorModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatSortModule"]
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__["FlexLayoutModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"],
+            _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_20__["JwtModule"].forRoot({ config: { tokenGetter: tokenGetter } }),
+            _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatTableModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatPaginatorModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_24__["MatSortModule"]
         ],
         providers: [
-            { provide: _angular_common__WEBPACK_IMPORTED_MODULE_11__["APP_BASE_HREF"], useValue: '/' },
-            { provide: _angular_material__WEBPACK_IMPORTED_MODULE_25__["MAT_CHECKBOX_CLICK_ACTION"], useValue: 'check' },
+            { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["APP_BASE_HREF"], useValue: '/' },
+            { provide: _angular_material__WEBPACK_IMPORTED_MODULE_24__["MAT_CHECKBOX_CLICK_ACTION"], useValue: 'check' },
             //{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
-            _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"]
+            _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"]
         ],
         entryComponents: [
-            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_9__["SerialCheckDialog"],
-            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_24__["BottomSheetConfirm"]
+            _authenticate_authenticate_component__WEBPACK_IMPORTED_MODULE_8__["SerialCheckDialog"],
+            _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })
@@ -913,11 +916,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactFormComponent", function() { return ContactFormComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var src_app_services_contact_contact_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/contact/contact.service */ "./src/app/services/contact/contact.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+
+
+
 
 
 let ContactFormComponent = class ContactFormComponent {
-    constructor() { }
+    constructor(contactService, snackBar) {
+        this.contactService = contactService;
+        this.snackBar = snackBar;
+        this.useForm = true;
+        this.contactForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            phone: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            comment: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required)
+        });
+    }
     ngOnInit() {
+    }
+    get name() { return this.contactForm.get('name'); }
+    get phone() { return this.contactForm.get('phone'); }
+    get email() { return this.contactForm.get('email'); }
+    get comment() { return this.contactForm.get('comment'); }
+    submitContact() {
+        this.contactService.saveContact(this.contactForm.value).subscribe((response) => {
+            this.contact = response;
+        }, //
+        //
+        error => this.snackBar.open('Form submission error, please try again', 'X', { duration: 10000, panelClass: 'warn' }));
     }
 };
 ContactFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -926,7 +956,8 @@ ContactFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./contact-form.component.html */ "./node_modules/raw-loader/index.js!./src/app/footer/contact-form/contact-form.component.html"),
         styles: [__webpack_require__(/*! ./contact-form.component.scss */ "./src/app/footer/contact-form/contact-form.component.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_contact_contact_service__WEBPACK_IMPORTED_MODULE_3__["ContactService"],
+        _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]])
 ], ContactFormComponent);
 
 
@@ -940,7 +971,7 @@ ContactFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".cta__button {\n  width: 15px;\n  z-index: 10;\n  position: absolute;\n}\n.cta__detect {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  text-align: center;\n}\n.footer__card {\n  margin: 10px;\n}\n.footer__copyright {\n  text-align: center;\n}\n.images {\n  width: 100%;\n  height: 100%;\n}\na {\n  text-decoration: none;\n}\n.link-button {\n  padding: 10px;\n  border-radius: 5px;\n  background-color: #f44336;\n  color: #fff;\n  font-size: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUk7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDRFI7QURJSTtFQUNHLGlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxrQkFBQTtBQ0ZQO0FEUUc7RUFDRyxZQUFBO0FDTE47QURRRztFQUNHLGtCQUFBO0FDTk47QURVQTtFQUNHLFdBQUE7RUFDQSxZQUFBO0FDUEg7QURVQTtFQUNHLHFCQUFBO0FDUEg7QURVQTtFQUVHLGFBQUE7RUFDQSxrQkFBQTtFQUNBLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLGVBQUE7QUNSSCIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY3Rhe1xuXG4gICAgJl9fYnV0dG9ue1xuICAgICAgICB3aWR0aDogMTVweDtcbiAgICAgICAgei1pbmRleDogMTA7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB9XG5cbiAgICAmX19kZXRlY3R7XG4gICAgICAgcGFkZGluZy10b3A6IDIwcHg7XG4gICAgICAgcGFkZGluZy1ib3R0b206IDIwcHg7XG4gICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIH1cbn1cblxuLmZvb3RlcntcblxuICAgJl9fY2FyZHtcbiAgICAgIG1hcmdpbjogMTBweDtcbiAgIH1cblxuICAgJl9fY29weXJpZ2h0e1xuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgfVxufVxuXG4uaW1hZ2Vze1xuICAgd2lkdGg6IDEwMCU7XG4gICBoZWlnaHQ6IDEwMCU7XG59XG5cbmF7XG4gICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59XG5cbi5saW5rLWJ1dHRvbntcblxuICAgcGFkZGluZzogMTBweDtcbiAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgIGJhY2tncm91bmQtY29sb3I6ICNmNDQzMzY7XG4gICBjb2xvcjogI2ZmZjtcbiAgIGZvbnQtc2l6ZTogMXJlbTtcblxufSIsIi5jdGFfX2J1dHRvbiB7XG4gIHdpZHRoOiAxNXB4O1xuICB6LWluZGV4OiAxMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuLmN0YV9fZGV0ZWN0IHtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAyMHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5mb290ZXJfX2NhcmQge1xuICBtYXJnaW46IDEwcHg7XG59XG4uZm9vdGVyX19jb3B5cmlnaHQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5pbWFnZXMge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG5hIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufVxuXG4ubGluay1idXR0b24ge1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNDQzMzY7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDFyZW07XG59Il19 */"
+module.exports = ".cta__button {\n  width: 15px;\n  z-index: 10;\n  position: absolute;\n}\n.cta__detect {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  text-align: center;\n}\n.footer__card {\n  margin: 10px;\n}\n.footer__copyright {\n  text-align: center;\n}\n.images {\n  width: 100%;\n  height: 100%;\n}\na {\n  text-decoration: none;\n}\n.link-button {\n  padding: 10px;\n  border-radius: 5px;\n  background-color: #f44336;\n  color: #fff;\n  font-size: 1rem;\n  margin: 10px;\n  width: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUk7RUFDSSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDRFI7QURJSTtFQUNHLGlCQUFBO0VBQ0Esb0JBQUE7RUFDQSxrQkFBQTtBQ0ZQO0FEUUc7RUFDRyxZQUFBO0FDTE47QURRRztFQUNHLGtCQUFBO0FDTk47QURVQTtFQUNHLFdBQUE7RUFDQSxZQUFBO0FDUEg7QURVQTtFQUNHLHFCQUFBO0FDUEg7QURVQTtFQUVHLGFBQUE7RUFDQSxrQkFBQTtFQUNBLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLGVBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtBQ1JIIiwiZmlsZSI6InNyYy9hcHAvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jdGF7XG5cbiAgICAmX19idXR0b257XG4gICAgICAgIHdpZHRoOiAxNXB4O1xuICAgICAgICB6LWluZGV4OiAxMDtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIH1cblxuICAgICZfX2RldGVjdHtcbiAgICAgICBwYWRkaW5nLXRvcDogMjBweDtcbiAgICAgICBwYWRkaW5nLWJvdHRvbTogMjBweDtcbiAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgfVxufVxuXG4uZm9vdGVye1xuXG4gICAmX19jYXJke1xuICAgICAgbWFyZ2luOiAxMHB4O1xuICAgfVxuXG4gICAmX19jb3B5cmlnaHR7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICB9XG59XG5cbi5pbWFnZXN7XG4gICB3aWR0aDogMTAwJTtcbiAgIGhlaWdodDogMTAwJTtcbn1cblxuYXtcbiAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cblxuLmxpbmstYnV0dG9ue1xuXG4gICBwYWRkaW5nOiAxMHB4O1xuICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgYmFja2dyb3VuZC1jb2xvcjogI2Y0NDMzNjtcbiAgIGNvbG9yOiAjZmZmO1xuICAgZm9udC1zaXplOiAxcmVtO1xuICAgbWFyZ2luOiAxMHB4O1xuICAgd2lkdGg6IDUwJTtcblxufVxuXG4iLCIuY3RhX19idXR0b24ge1xuICB3aWR0aDogMTVweDtcbiAgei1pbmRleDogMTA7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cbi5jdGFfX2RldGVjdCB7XG4gIHBhZGRpbmctdG9wOiAyMHB4O1xuICBwYWRkaW5nLWJvdHRvbTogMjBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uZm9vdGVyX19jYXJkIHtcbiAgbWFyZ2luOiAxMHB4O1xufVxuLmZvb3Rlcl9fY29weXJpZ2h0IHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uaW1hZ2VzIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuYSB7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cblxuLmxpbmstYnV0dG9uIHtcbiAgcGFkZGluZzogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjQ0MzM2O1xuICBjb2xvcjogI2ZmZjtcbiAgZm9udC1zaXplOiAxcmVtO1xuICBtYXJnaW46IDEwcHg7XG4gIHdpZHRoOiA1MCU7XG59Il19 */"
 
 /***/ }),
 
@@ -979,6 +1010,7 @@ let FooterComponent = class FooterComponent {
             { country: 'malaysia', telegram: 'strongarrowmalaysia' },
             { country: 'singapore', telegram: 'neezamhm' }
         ];
+        this.useForm = false;
     }
     ngOnInit() {
         this.profileService.profile.subscribe((response) => this.profile = response);
@@ -1002,6 +1034,9 @@ let FooterComponent = class FooterComponent {
             }
             this.contact = localAgent;
         });
+    }
+    useContactForm() {
+        this.useForm ? this.useForm = false : this.useForm = true;
     }
     authenticateProduct() {
         this.router.navigate(['products/product/strong-arrow/authenticate'], { fragment: 'top' });
@@ -1422,107 +1457,6 @@ MaterialModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/navbar/navbar.component.scss":
-/*!**********************************************!*\
-  !*** ./src/app/navbar/navbar.component.scss ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".navbar {\n  background-color: #000;\n  height: 10vh;\n  padding-left: 10vw;\n  padding-right: 10vw;\n  position: fixed;\n  z-index: 10;\n}\n.navbar__img {\n  width: 200px;\n}\n.navbar__spacer {\n  flex: 1 1 auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL25hdmJhci9uYXZiYXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7QUNDSjtBRENJO0VBQ0ksWUFBQTtBQ0NSO0FERUk7RUFDRSxjQUFBO0FDQU4iLCJmaWxlIjoic3JjL2FwcC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhcntcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwO1xuICAgIGhlaWdodDogMTB2aDtcbiAgICBwYWRkaW5nLWxlZnQ6IDEwdnc7XG4gICAgcGFkZGluZy1yaWdodDogMTB2dztcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgei1pbmRleDogMTA7XG5cbiAgICAmX19pbWd7XG4gICAgICAgIHdpZHRoOiAyMDBweDtcbiAgICB9XG5cbiAgICAmX19zcGFjZXJ7XG4gICAgICBmbGV4OiAxIDEgYXV0bztcbiAgICB9XG5cbn1cblxuIiwiLm5hdmJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDA7XG4gIGhlaWdodDogMTB2aDtcbiAgcGFkZGluZy1sZWZ0OiAxMHZ3O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHZ3O1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHotaW5kZXg6IDEwO1xufVxuLm5hdmJhcl9faW1nIHtcbiAgd2lkdGg6IDIwMHB4O1xufVxuLm5hdmJhcl9fc3BhY2VyIHtcbiAgZmxleDogMSAxIGF1dG87XG59Il19 */"
-
-/***/ }),
-
-/***/ "./src/app/navbar/navbar.component.ts":
-/*!********************************************!*\
-  !*** ./src/app/navbar/navbar.component.ts ***!
-  \********************************************/
-/*! exports provided: NavbarComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-/* harmony import */ var _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/profile-service/profile-service.service */ "./src/app/services/profile-service/profile-service.service.ts");
-
-
-
-
-let NavbarComponent = class NavbarComponent {
-    constructor(profileService, snackBar, bottomSheet) {
-        this.profileService = profileService;
-        this.snackBar = snackBar;
-        this.bottomSheet = bottomSheet;
-        this.profile = null;
-    }
-    ngOnInit() {
-        this.profileService.profile.subscribe((response) => {
-            this.profile = response;
-        }, error => this.snackBar.open('Error: ' + error, 'X', { duration: 10000, panelClass: 'red-theme' }));
-        console.log(this.profile);
-        // this.profileService.location.subscribe(
-        //    (response: any) => {
-        //       let location: User['location'] = response as User['location'];
-        //       if(!location){
-        //          let data = {
-        //             title: 'Unable to detect your country location',
-        //             content: 'We are unable to detect your country location in order to suggest your local sale representatives.This usually happen if you disable your  devices location service. However you can contact us for any question or you need additional information.'
-        //          };
-        //          let openBottomSheet = this.bottomSheet.open(NavbarBottomSheet, { panelClass: 'red-theme', data });
-        //          let bottomSheetRef = openBottomSheet;
-        //       }
-        //       else{
-        //          let data = {
-        //                title: ` Welcome friend from ${response.country}`,
-        //                content: `We detected you are from ${response.country}. On the website footer, please find the Telegram contact button for your nearest Strong Arrow representative if you neeed further information or you have any question.`
-        //          };
-        //          let openBottomSheet = this.bottomSheet.open(NavbarBottomSheet, { panelClass: 'red-theme', data });
-        //          let bottomSheetRef = openBottomSheet;
-        //       }
-        //    },
-        //    error => {
-        //       console.log(error);
-        //       let data = {
-        //                      title: 'Unable to detect your country location',
-        //                      content: 'We are unable to detect your country location in order to suggest your local sale representatives.This usually happen if you disable your  devices location service. However you can contact us for any question or you need additional information.'
-        //       };
-        //       let openBottomSheet = this.bottomSheet.open(NavbarBottomSheet , { panelClass: 'red-theme', data: data });
-        //       let bottomSheetRef = openBottomSheet;
-        //    }
-        // );
-    }
-};
-NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-navbar',
-        template: './navbar.component.html',
-        styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__["ProfileService"],
-        _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"],
-        _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheet"]])
-], NavbarComponent);
-
-// @Component({
-//    selector: 'navbar-bottom-sheet',
-//    templateUrl: './bottom-sheet/navbar-bottom-sheet.html',
-//    styleUrls: ['./navbar.component.scss']
-//  })
-//  export class NavbarBottomSheet implements OnInit {
-//    constructor(
-//        private bottomSheetRef: MatBottomSheetRef<NavbarBottomSheet>,
-//        @Inject (MAT_BOTTOM_SHEET_DATA) public data: any
-//    ) { }
-//    ngOnInit() {
-//    }
-//  }
-
-
-/***/ }),
-
 /***/ "./src/app/navigation/navigation.component.scss":
 /*!******************************************************!*\
   !*** ./src/app/navigation/navigation.component.scss ***!
@@ -1548,21 +1482,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
 /* harmony import */ var _services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/profile-service/profile-service.service */ "./src/app/services/profile-service/profile-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 
 let NavigationComponent = class NavigationComponent {
-    constructor(profileService, snackBar) {
+    constructor(profileService, snackBar, router) {
         this.profileService = profileService;
         this.snackBar = snackBar;
+        this.router = router;
         this.profile = null;
     }
     ngOnInit() {
         this.profileService.profile.subscribe((response) => this.profile = response);
         this.profileService.location.subscribe((response) => { if (response)
             this.snackBar.open(`Hello friend from: ${response}`, 'X', { duration: 10000, panelClass: 'gold-theme' }); });
-    }
+    } //
+    backToHome() { this.router.navigate([''], { fragment: 'top' }); } //
+    logOut() { this.profileService.logout(); }
 };
 NavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1571,7 +1510,8 @@ NavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./navigation.component.scss */ "./src/app/navigation/navigation.component.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_profile_service_profile_service_service__WEBPACK_IMPORTED_MODULE_3__["ProfileService"],
-        _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"]])
+        _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBar"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
 ], NavigationComponent);
 
 
@@ -1729,6 +1669,45 @@ AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/services/contact/contact.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/services/contact/contact.service.ts ***!
+  \*****************************************************/
+/*! exports provided: ContactService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactService", function() { return ContactService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
+
+
+
+let ContactService = class ContactService {
+    constructor(http) {
+        this.http = http;
+    }
+    saveContact(form) {
+        return this.http.post('/api/contact/form/save', form).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
+    } //
+};
+ContactService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], ContactService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/profile-service/profile-service.service.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/services/profile-service/profile-service.service.ts ***!
@@ -1759,10 +1738,8 @@ let ProfileService = class ProfileService {
         this.router = router;
         this.decodedToken = false;
         this.loggedIn = false;
-        // Location Profile 
         this.locSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.country);
         this.location = this.locSource;
-        // Subject Profile
         this.userSource = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this.user);
         this.profile = this.userSource;
         this.getLocation();
@@ -1829,26 +1806,43 @@ __webpack_require__.r(__webpack_exports__);
 let SerialAuthService = class SerialAuthService {
     constructor(http) {
         this.http = http;
-    }
+        this.serialSource = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.newSerials);
+        this.serials = this.serialSource;
+        this.getExistingSerialNos();
+    } //
+    updateSerials(serials) {
+        this.serials.subscribe((response) => {
+            let serialSource = response;
+            console.log(serialSource);
+            serialSource.splice(0, 0, serials);
+            console.log(serialSource);
+            this.serialSource.next(serialSource);
+        });
+        this.serialSource.next(serials);
+    } //
+    getExistingSerialNos() {
+        this.http.get('/api/products/serials')
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)))
+            .subscribe((response) => this.serialSource.next(response));
+    } //
     authenticateSerial(serial) {
         return this.http.post('/api/product/authentication', { serial: serial }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
     saveReview(review) {
-        console.log(review);
         return this.http.post('/api/product/review', review).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
     generateSerialNo(serials) {
         return this.http.post('/api/product/serial/generate', serials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
     getSerialNos() {
         return this.http.get('/api/products/serials').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
     deleteASerialNo(serial) {
         return this.http.post('/api/product/serial/rm', serial).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
     deleteSerialNos(serials) {
         return this.http.post('/api/product/serials/rm', serials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)));
-    }
+    } //
 };
 SerialAuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -2027,30 +2021,19 @@ UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/environments/environment.ts":
-/*!*****************************************!*\
-  !*** ./src/environments/environment.ts ***!
-  \*****************************************/
+/***/ "./src/environments/environment.prod.ts":
+/*!**********************************************!*\
+  !*** ./src/environments/environment.prod.ts ***!
+  \**********************************************/
 /*! exports provided: environment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false
+    production: true
 };
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /***/ }),
@@ -2069,13 +2052,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment.prod */ "./src/environments/environment.prod.ts");
 
 
 
 
 
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
+if (_environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])
