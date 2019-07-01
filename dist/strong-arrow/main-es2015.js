@@ -1644,7 +1644,7 @@ let AuthGuardService = class AuthGuardService {
         this.router = router;
         this.authService = authService;
     }
-    canActivate(route, state) {
+    canActivate(routes, state) {
         if (this.authService.isLoggedIn()) {
             return true;
         }
