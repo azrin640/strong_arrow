@@ -28,6 +28,7 @@ import { AdminSerialTableComponent, BottomSheetConfirm } from './admin/admin-ser
 import { MatTableModule, MatPaginatorModule, MatSortModule, MAT_CHECKBOX_CLICK_ACTION, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ContactFormComponent } from './footer/contact-form/contact-form.component';
+import { AdminMessageComponent } from './admin/admin-message/admin-message.component';
 
 export function tokenGetter(){
    return localStorage.getItem('access_token');
@@ -51,7 +52,8 @@ export function tokenGetter(){
     AdminSerialTableComponent,
     BottomSheetConfirm,
     NavigationComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    AdminMessageComponent
   ],
   imports: [
     BrowserModule,

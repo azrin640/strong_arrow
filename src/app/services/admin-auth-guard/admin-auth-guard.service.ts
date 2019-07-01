@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { ProfileService } from '../profile-service/profile-service.service';
+import { User } from 'src/app/interface/user';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
@@ -12,14 +14,9 @@ export class AdminAuthGuardService implements CanActivate{
     private authService: AuthService
   ) { }
 
-  canActivate(){
-    let user = this.authService.currentUser;
-    if (user && user.admin){
-      return true;
-    }
-    else{
-      this.router.navigate(['/no-access']);
-      return false;
-    }
-  }
+   canActivate()
+   {  let user = this.authService.currentUser;
+      if(user && user.admin) return true;
+      else return false;   }  //
+
 }

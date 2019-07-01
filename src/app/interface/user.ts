@@ -5,5 +5,6 @@ export interface User {
    email?: string,
    password?: string,
    token?: string,
-   location?: string 
+   location?: string,
+   admin?: boolean
 }

@@ -39,7 +39,7 @@ export class AdminSerialComponent implements OnInit {
             if(response.code) {               
                this.snackBar.open(`Bulk serial number generation error: ${response.name}`, 'X', { duration: 10000, panelClass: 'primary' }); }
             else{
-               this.serialService.updateSerials(response);
+               this.serialService.updateSerials();
                this.snackBar.open('Bulk serial number generation is successfull', 'X', { duration: 10000, panelClass: 'primary' });
             }
          }

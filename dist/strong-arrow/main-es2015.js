@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-message/admin-message.component.html":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin-message/admin-message.component.html ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  admin-message works!\n</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.html":
 /*!*******************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/admin/admin-serial/admin-serial-table/admin-serial-table.component.html ***!
@@ -84,7 +95,7 @@ module.exports = "\n<div class=\"contact\" fxLayout=\"column\" fxLayoutAlign=\"c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from <strong>{{ contact.country | titlecase }}</strong>, please contact our <strong>{{ contact.country | titlecase }}</strong> representative for any question.\n                  </div>\n                  <a class=\"link-button\" mat-elevation-z8 href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Telegram our Representative in {{ contact.country | titlecase }}\n                  </a>                       \n                  <a class=\"link-button\" mat-elevation-z8 (click)=\"useContactForm()\">\n                     <i class=\"fas fa-comment\" mat-elevation-z8></i>\n                     Use our contact form to send us your query.\n                  </a>\n                  <div class=\"contact\" *ngIf=\"useForm\">\n                     <app-contact-form></app-contact-form>\n                  </div>              \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div>\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
+module.exports = "<div class=\"footer\">\n\n   <div fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutGap=\"10px\" fxLayoutAlign=\"center stretch\">\n\n      <div class=\"footer__card\" fxFlex=\"50\">\n         <mat-card mat-elevation-z8 role=group>\n            <mat-card-title>BUY ORIGINAL AUTHENTIC PRODUCT</mat-card-title>\n            <mat-card-content>  \n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  30 PCS PILLS PER BOTTLE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  COME WITH EXCLUSIVE BLACK BOX\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  CLEAR & BOLD WRITING\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  NEW PACKING WITH QR CODE\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  Scratch codes ON EVERY BOTTLE WITH UNIQUE SERIAL NUMBER\n               </div>\n\n               <div class=\"blurp__content\" fxLayout=\"row\" fxLayoutAlign=\" center\">\n                  <button mat-mini-fab color=\"primary\" style=\"margin-right: 20px;\">\n                  <mat-icon>verified_user</mat-icon>\n                  </button>\n                  MADE IN USA\n               </div>\n\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     *We have detected that you are from <strong>{{ contact.country | titlecase }}</strong>, please contact our <strong>{{ contact.country | titlecase }}</strong> representative for any question.\n                  </div>\n                  <a class=\"link-button\" mat-elevation-z8 href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n                     <i class=\"fab fa-telegram\" mat-elevation-z8></i>\n                     Telegram our Representative in {{ contact.country | titlecase }}\n                  </a>                       \n                  <a class=\"link-button\" mat-elevation-z8 (click)=\"useContactForm()\">\n                     <i class=\"fas fa-comment\" mat-elevation-z8></i>\n                     Use our contact form to send us your query.\n                  </a>\n                  <div class=\"contact\" *ngIf=\"useForm\">\n                     <app-contact-form></app-contact-form>\n                  </div>              \n               </div>\n               <div class=\"cta\" fxLayout=\"column\" fxLayoutAlign=\"center center\">\n                  <div class=\"cta__detect\">\n                     You can check and authenticate your scratch code by pressing the button below. Do not buy imitation product.\n                  </div>\n                  <button mat-raised-button color=\"primary\" (click)=\"authenticateProduct()\">\n                     <mat-icon>vpn_key</mat-icon>\n                     Check or Authenticate your product here!\n                  </button>      \n               </div>\n\n            </mat-card-content>\n         </mat-card>\n      </div>\n\n      <div class=\"footer__card\" fxFlex=\"50\"  >\n\n         <mat-card class=\"mat-elevation-z8\" role=group>\n\n            <mat-card-title>CERTIFIED</mat-card-title>\n            <mat-card-content>\n               <div class=\"images\" fxLayout=\"row wrap\" fxLayoutAlign=\"center center\" fxLayoutGap=\"10px\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/safe.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/gmp.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/nsf.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/hus.png\" alt=\"\">\n                  <img class=\"shadow__png-ac\" src=\"assets/logo_icons/best.png\" alt=\"\">\n               </div>               \n            </mat-card-content>\n\n         </mat-card>\n      </div>\n\n   </div>\n\n   <!-- <div class=\"contact__icon\">\n      <a href=\"https://t.me/{{ contact.telegram }}\" target=\"blank\">\n         <img class=\"shadow__png-ac\" fxFlex=\"60px\" src=\"assets/icons/telegram.png\" alt=\"Strong Arrow Malaysia Telegram\">\n      </a>\n   </div> -->\n\n   <div class=\"toolbar\" >\n      <mat-toolbar color=\"primary\">\n         <div fxLayoutAlign=\"center\">\n            Copyright &copy; 2017, www.strongarrowpills.com\n         </div>\n      </mat-toolbar>\n   </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -185,6 +196,49 @@ webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
 webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-message/admin-message.component.scss":
+/*!******************************************************************!*\
+  !*** ./src/app/admin/admin-message/admin-message.component.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-message/admin-message.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/admin/admin-message/admin-message.component.ts ***!
+  \****************************************************************/
+/*! exports provided: AdminMessageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminMessageComponent", function() { return AdminMessageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AdminMessageComponent = class AdminMessageComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AdminMessageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-admin-message',
+        template: __webpack_require__(/*! raw-loader!./admin-message.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin-message/admin-message.component.html"),
+        styles: [__webpack_require__(/*! ./admin-message.component.scss */ "./src/app/admin/admin-message/admin-message.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], AdminMessageComponent);
+
+
 
 /***/ }),
 
@@ -482,7 +536,7 @@ let AdminSerialComponent = class AdminSerialComponent {
                 this.snackBar.open(`Bulk serial number generation error: ${response.name}`, 'X', { duration: 10000, panelClass: 'primary' });
             }
             else {
-                this.serialService.updateSerials(response);
+                this.serialService.updateSerials();
                 this.snackBar.open('Bulk serial number generation is successfull', 'X', { duration: 10000, panelClass: 'primary' });
             }
         });
@@ -565,6 +619,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/admin-auth-guard/admin-auth-guard.service */ "./src/app/services/admin-auth-guard/admin-auth-guard.service.ts");
 /* harmony import */ var _services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/auth-guard/auth-guard.service */ "./src/app/services/auth-guard/auth-guard.service.ts");
 /* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
+/* harmony import */ var _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./admin/admin-message/admin-message.component */ "./src/app/admin/admin-message/admin-message.component.ts");
+
 
 
 
@@ -583,6 +639,7 @@ const routes = [
     { path: 'login', component: _user_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
     // Admin routes
     { path: 'admin/serial', component: _admin_admin_serial_admin_serial_component__WEBPACK_IMPORTED_MODULE_6__["AdminSerialComponent"], canActivate: [_services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__["AuthGuardService"], _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AdminAuthGuardService"]] },
+    { path: 'admin/message', component: _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_10__["AdminMessageComponent"], canActivate: [_services_auth_guard_auth_guard_service__WEBPACK_IMPORTED_MODULE_8__["AuthGuardService"], _services_admin_auth_guard_admin_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AdminAuthGuardService"]] },
     // Wildcard routes
     { path: '**', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
 ];
@@ -681,6 +738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
 /* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
+/* harmony import */ var _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./admin/admin-message/admin-message.component */ "./src/app/admin/admin-message/admin-message.component.ts");
+
 
 
 
@@ -731,7 +790,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["AdminSerialTableComponent"],
             _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"],
             _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__["NavigationComponent"],
-            _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__["ContactFormComponent"]
+            _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__["ContactFormComponent"],
+            _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_27__["AdminMessageComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1543,14 +1603,11 @@ let AdminAuthGuardService = class AdminAuthGuardService {
     }
     canActivate() {
         let user = this.authService.currentUser;
-        if (user && user.admin) {
+        if (user && user.admin)
             return true;
-        }
-        else {
-            this.router.navigate(['/no-access']);
+        else
             return false;
-        }
-    }
+    } //
 };
 AdminAuthGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1588,7 +1645,7 @@ let AuthGuardService = class AuthGuardService {
         this.authService = authService;
     }
     canActivate(route, state) {
-        if (!this.authService.isLoggedIn()) {
+        if (this.authService.isLoggedIn()) {
             return true;
         }
         else {
@@ -1650,8 +1707,8 @@ let AuthService = class AuthService {
     }
     isLoggedIn() {
         let token = localStorage.getItem('token');
-        let validToken = this.jwtHelper.isTokenExpired(token);
-        if (validToken === true) {
+        let tokenExpired = this.jwtHelper.isTokenExpired(token);
+        if (!tokenExpired) {
             return true;
         }
         else {
@@ -1761,8 +1818,9 @@ let ProfileService = class ProfileService {
     getUserSource() {
         let user = this.user;
         this.http.post('/api/user/profile', { _id: user._id }).subscribe((response) => {
-            if (response && response.id)
+            if (response && response.id) {
                 this.userSource.next(response);
+            }
             else
                 this.userSource = null;
         }, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(error => Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error)));
@@ -1806,20 +1864,12 @@ __webpack_require__.r(__webpack_exports__);
 let SerialAuthService = class SerialAuthService {
     constructor(http) {
         this.http = http;
+        // Serial Table Datasource Behaviour Subject
         this.serialSource = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.newSerials);
         this.serials = this.serialSource;
         this.getExistingSerialNos();
     } //
-    updateSerials(serials) {
-        this.serials.subscribe((response) => {
-            let serialSource = response;
-            console.log(serialSource);
-            serialSource.splice(0, 0, serials);
-            console.log(serialSource);
-            this.serialSource.next(serialSource);
-        });
-        this.serialSource.next(serials);
-    } //
+    updateSerials() { this.getExistingSerialNos(); } //
     getExistingSerialNos() {
         this.http.get('/api/products/serials')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])((error) => Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(error)))
@@ -2021,19 +2071,30 @@ UserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/environments/environment.prod.ts":
-/*!**********************************************!*\
-  !*** ./src/environments/environment.prod.ts ***!
-  \**********************************************/
+/***/ "./src/environments/environment.ts":
+/*!*****************************************!*\
+  !*** ./src/environments/environment.ts ***!
+  \*****************************************/
 /*! exports provided: environment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: true
+    production: false
 };
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /***/ }),
@@ -2052,13 +2113,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment.prod */ "./src/environments/environment.prod.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 
 
 
 
 
-if (_environments_environment_prod__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])

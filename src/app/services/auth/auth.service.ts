@@ -36,8 +36,8 @@ export class AuthService {
 
    isLoggedIn(){
       let token = localStorage.getItem('token');
-      let validToken = this.jwtHelper.isTokenExpired(token);
-      if (validToken === true){
+      let tokenExpired = this.jwtHelper.isTokenExpired(token);
+      if (!tokenExpired){
          return true;
       }
       else {

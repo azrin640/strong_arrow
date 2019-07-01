@@ -7,6 +7,7 @@ import { AdminSerialComponent } from './admin/admin-serial/admin-serial.componen
 import { AdminAuthGuardService } from './services/admin-auth-guard/admin-auth-guard.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { ContactFormComponent } from './footer/contact-form/contact-form.component';
+import { AdminMessageComponent } from './admin/admin-message/admin-message.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   // Admin routes
   { path: 'admin/serial', component: AdminSerialComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+  { path: 'admin/message', component: AdminMessageComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
 
   // Wildcard routes
   { path: '**', component: HomeComponent },

@@ -11,6 +11,7 @@ export class SerialAuthService {
 
    newSerials: Serial[];
 
+   // Serial Table Datasource Behaviour Subject
    serialSource = new BehaviorSubject(this.newSerials);
    serials = this.serialSource as Observable<Serial[]>;
 
@@ -19,16 +20,8 @@ export class SerialAuthService {
      private http: HttpClient
   ) { this.getExistingSerialNos()  }    //
 
-  updateSerials(serials: Serial[])
-  {   this.serials.subscribe((response) => {
-         let serialSource = response as any[];
-         console.log(serialSource);
-         serialSource.splice(0, 0, (serials as any[]));
-         console.log(serialSource);
-         this.serialSource.next(serialSource as Serial[]);
-  })
-     
-   this.serialSource.next(serials)  } //
+  updateSerials()
+  {  this.getExistingSerialNos()   }  //
 
   getExistingSerialNos()
   {   this.http.get('/api/products/serials')

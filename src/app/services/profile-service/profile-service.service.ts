@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/user';
 import { catchError } from 'rxjs/operators';
+import { AdminAuthGuardService } from '../admin-auth-guard/admin-auth-guard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,12 @@ export class ProfileService {
    userSource = new BehaviorSubject(this.user);
    profile = this.userSource as Observable<User>;
 
-  constructor( private http: HttpClient, private router: Router) 
+  constructor( 
+     private http: HttpClient, private router: Router
+   ) 
    {  this.getLocation();
-      this.isLoggedIn();   }  
+      this.isLoggedIn();
+   }  
 
    getLocation()   
    {  this.http.post('/api/user/location', { location: '' }).subscribe(
@@ -45,10 +49,12 @@ export class ProfileService {
    {  let user = this.user;
       this.http.post('/api/user/profile', {_id: user._id}).subscribe(
          (response: User) => {
-            if(response && response.id) this.userSource.next(response)
+            if(response && response.id) {
+               this.userSource.next(response);
+            }
             else this.userSource = null   },
          catchError(error => throwError(error)) )}
-
+   
   logout(){
       localStorage.removeItem('token');
       window.location.reload();
