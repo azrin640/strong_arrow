@@ -112,6 +112,10 @@ router.post('/contact/form/save',
    catchErrors(contactController.saveContactForm)
 );
 
+router.get('/contacts/messages',
+   catchErrors(contactController.getContacts)
+)
+
 // router.post('/product/category', 
 //     catchErrors(userController.isLoggedIn),
 //     catchErrors(productController.createCategory)

@@ -38,11 +38,12 @@ export class LoginComponent implements OnInit {
             if(response && response.id){
 
                localStorage.setItem('token', response.token);
-               this.profileService.isLoggedIn();
+               this.profileService.userSource.next(response);
                this.router.navigate(['/admin/serial']);
                this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'gold-theme'} );         
                
             } 
+            else this.snackBar.open('Login not successfull, please check your login name and password', 'X', { duration: 10000, panelClass: 'red-theme' });
          },
          error => this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'red-theme' })
      )

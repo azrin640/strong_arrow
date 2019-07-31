@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-message/admin-message-table/admin-message-table.component.html":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/admin/admin-message/admin-message-table/admin-message-table.component.html ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"mat-elevation-z8\">\n  <table mat-table class=\"full-width-table\" matSort aria-label=\"Elements\">\n     \n    <!-- Id Column -->\n    <ng-container matColumnDef=\"created\">\n      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>\n      <td mat-cell *matCellDef=\"let row\">{{row.created}}</td>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"name\">\n      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>\n      <td mat-cell *matCellDef=\"let row\">{{row.name}}</td>\n    </ng-container>\n\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n  </table>\n\n  <mat-paginator #paginator\n      [length]=\"dataSource?.data.length\"\n      [pageIndex]=\"0\"\n      [pageSize]=\"50\"\n      [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/admin/admin-message/admin-message.component.html":
 /*!********************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/admin/admin-message/admin-message.component.html ***!
@@ -7,7 +18,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  admin-message works!\n</p>\n"
+module.exports = "<div class=\"message\" fxLayout=\"column\">\n   <div class=\"message__container\" fxFlex=\"100%\">    \n      \n      <mat-card>\n         <mat-card-title>\n            Messages\n         </mat-card-title>\n         <mat-card-content>\n            <app-admin-message-table></app-admin-message-table>\n         </mat-card-content>\n      </mat-card>\n      \n   </div>\n</div>\n"
 
 /***/ }),
 
@@ -199,6 +210,77 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin/admin-message/admin-message-table/admin-message-table.component.scss":
+/*!********************************************************************************************!*\
+  !*** ./src/app/admin/admin-message/admin-message-table/admin-message-table.component.scss ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".full-width-table {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS10YWJsZS9hZG1pbi1tZXNzYWdlLXRhYmxlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hZG1pbi9hZG1pbi1tZXNzYWdlL2FkbWluLW1lc3NhZ2UtdGFibGUvYWRtaW4tbWVzc2FnZS10YWJsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS10YWJsZS9hZG1pbi1tZXNzYWdlLXRhYmxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZ1bGwtd2lkdGgtdGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cbiIsIi5mdWxsLXdpZHRoLXRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/admin/admin-message/admin-message-table/admin-message-table.component.ts":
+/*!******************************************************************************************!*\
+  !*** ./src/app/admin/admin-message/admin-message-table/admin-message-table.component.ts ***!
+  \******************************************************************************************/
+/*! exports provided: AdminMessageTableComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminMessageTableComponent", function() { return AdminMessageTableComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var src_app_services_message_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/message/message.service */ "./src/app/services/message/message.service.ts");
+
+
+
+
+let AdminMessageTableComponent = class AdminMessageTableComponent {
+    constructor(messageService) {
+        this.messageService = messageService;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
+        /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+        this.displayedColumns = ['created', 'email'];
+        this.updateTable();
+    }
+    ngOnInit() {
+    }
+    updateTable() {
+        this.messageService.messages.subscribe((response) => {
+            console.log(response);
+            this.dataSource.data = response;
+        });
+    }
+    ngAfterViewInit() {
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"])
+], AdminMessageTableComponent.prototype, "paginator", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"], { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"])
+], AdminMessageTableComponent.prototype, "sort", void 0);
+AdminMessageTableComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-admin-message-table',
+        template: __webpack_require__(/*! raw-loader!./admin-message-table.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/admin-message/admin-message-table/admin-message-table.component.html"),
+        styles: [__webpack_require__(/*! ./admin-message-table.component.scss */ "./src/app/admin/admin-message/admin-message-table/admin-message-table.component.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_message_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"]])
+], AdminMessageTableComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/admin/admin-message/admin-message.component.scss":
 /*!******************************************************************!*\
   !*** ./src/app/admin/admin-message/admin-message.component.scss ***!
@@ -206,7 +288,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = ".message {\n  margin-top: 10vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2F6cmluL3Byb2plY3Qvc3Ryb25nX2Fycm93L3N0cm9uZy1hcnJvdy9zcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYWRtaW4vYWRtaW4tbWVzc2FnZS9hZG1pbi1tZXNzYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0csZ0JBQUE7QUNDSCIsImZpbGUiOiJzcmMvYXBwL2FkbWluL2FkbWluLW1lc3NhZ2UvYWRtaW4tbWVzc2FnZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tZXNzYWdle1xuICAgbWFyZ2luLXRvcDogMTB2aDtcbn0iLCIubWVzc2FnZSB7XG4gIG1hcmdpbi10b3A6IDEwdmg7XG59Il19 */"
 
 /***/ }),
 
@@ -739,6 +821,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./navigation/navigation.component */ "./src/app/navigation/navigation.component.ts");
 /* harmony import */ var _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./footer/contact-form/contact-form.component */ "./src/app/footer/contact-form/contact-form.component.ts");
 /* harmony import */ var _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./admin/admin-message/admin-message.component */ "./src/app/admin/admin-message/admin-message.component.ts");
+/* harmony import */ var _admin_admin_message_admin_message_table_admin_message_table_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./admin/admin-message/admin-message-table/admin-message-table.component */ "./src/app/admin/admin-message/admin-message-table/admin-message-table.component.ts");
+
 
 
 
@@ -791,7 +875,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _admin_admin_serial_admin_serial_table_admin_serial_table_component__WEBPACK_IMPORTED_MODULE_23__["BottomSheetConfirm"],
             _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_25__["NavigationComponent"],
             _footer_contact_form_contact_form_component__WEBPACK_IMPORTED_MODULE_26__["ContactFormComponent"],
-            _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_27__["AdminMessageComponent"]
+            _admin_admin_message_admin_message_component__WEBPACK_IMPORTED_MODULE_27__["AdminMessageComponent"],
+            _admin_admin_message_admin_message_table_admin_message_table_component__WEBPACK_IMPORTED_MODULE_28__["AdminMessageTableComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1765,6 +1850,48 @@ ContactService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/services/message/message.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/services/message/message.service.ts ***!
+  \*****************************************************/
+/*! exports provided: MessageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+
+let MessageService = class MessageService {
+    constructor(http) {
+        this.http = http;
+        this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.contacts);
+        this.messages = this.messageSource;
+        this.updateMessages();
+    }
+    updateMessages() {
+        this.http.get('/api/contacts/messages').subscribe((response) => {
+            this.messageSource.next(response);
+        }, error => Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(error));
+    } //
+};
+MessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], MessageService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/profile-service/profile-service.service.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/services/profile-service/profile-service.service.ts ***!
@@ -1958,10 +2085,12 @@ let LoginComponent = class LoginComponent {
         this.authService.login(this.loginForm.value).subscribe((response) => {
             if (response && response.id) {
                 localStorage.setItem('token', response.token);
-                this.profileService.isLoggedIn();
+                this.profileService.userSource.next(response);
                 this.router.navigate(['/admin/serial']);
                 this.snackBar.open('Login successful, You are currently logged in', 'X', { duration: 10000, panelClass: 'gold-theme' });
             }
+            else
+                this.snackBar.open('Login not successfull, please check your login name and password', 'X', { duration: 10000, panelClass: 'red-theme' });
         }, error => this.snackBar.open(error, 'X', { duration: 10000, panelClass: 'red-theme' }));
     }
 };

@@ -29,6 +29,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MAT_CHECKBOX_CLICK_A
 import { NavigationComponent } from './navigation/navigation.component';
 import { ContactFormComponent } from './footer/contact-form/contact-form.component';
 import { AdminMessageComponent } from './admin/admin-message/admin-message.component';
+import { AdminMessageTableComponent } from './admin/admin-message/admin-message-table/admin-message-table.component';
 
 export function tokenGetter(){
    return localStorage.getItem('access_token');
@@ -53,7 +54,8 @@ export function tokenGetter(){
     BottomSheetConfirm,
     NavigationComponent,
     ContactFormComponent,
-    AdminMessageComponent
+    AdminMessageComponent,
+    AdminMessageTableComponent
   ],
   imports: [
     BrowserModule,

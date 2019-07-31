@@ -18,7 +18,12 @@ exports.saveContactForm = async (req, res) => {
          res.json(error);
          return;
       }
-   )
-   res.json(saveContact);         
-         
+   )   
+   res.json(saveContact);                  
+}
+
+exports.getContacts = async (req, res) => {
+      const contacts = await Contact.find();
+      if(contacts) res.json(contacts);
+      (error) => res.json(error);
 }
