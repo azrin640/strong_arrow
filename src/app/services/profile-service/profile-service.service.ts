@@ -57,7 +57,8 @@ export class ProfileService {
    
   logout(){
       localStorage.removeItem('token');
-      window.location.reload();
+      this.userSource.next(null);
+      this.router.navigate(['/']);
    }
   
 

@@ -1954,7 +1954,8 @@ let ProfileService = class ProfileService {
     }
     logout() {
         localStorage.removeItem('token');
-        window.location.reload();
+        this.userSource.next(null);
+        this.router.navigate(['/']);
     }
 };
 ProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

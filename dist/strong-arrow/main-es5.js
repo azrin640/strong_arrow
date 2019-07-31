@@ -2005,7 +2005,8 @@ var ProfileService = /** @class */ (function () {
     };
     ProfileService.prototype.logout = function () {
         localStorage.removeItem('token');
-        window.location.reload();
+        this.userSource.next(null);
+        this.router.navigate(['/']);
     };
     ProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
